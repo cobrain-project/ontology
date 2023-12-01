@@ -353,6 +353,21 @@ phenomenon of attachment at the interface between a solid surface and another ma
                  :elucidation "The air supply system feeds and regulates the flow of air to the thermal spray system, including as process gas, as torch cooling medium, and as substrate cooling medium" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/ArrayData
+:ArrayData rdf:type owl:Class ;
+           rdfs:subClassOf :SymbolicData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/BooleanData
+:BooleanData rdf:type owl:Class ;
+             rdfs:subClassOf :SymbolicData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/ByteData
+:ByteData rdf:type owl:Class ;
+          rdfs:subClassOf :ShortData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/Characterization
 :Characterization rdf:type owl:Class ;
                   rdfs:subClassOf :Process .
@@ -483,6 +498,21 @@ It can operate on open- or closed-loop principles.""" ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Critical Load" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/DateTimeData
+:DateTimeData rdf:type owl:Class ;
+              rdfs:subClassOf :SymbolicData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/DateTimeStampData
+:DateTimeStampData rdf:type owl:Class ;
+                   rdfs:subClassOf :DateTimeData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/DecimalData
+:DecimalData rdf:type owl:Class ;
+             rdfs:subClassOf :RationalData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/Deposition
 :Deposition rdf:type owl:Class ;
             rdfs:subClassOf :SprayingStage ;
@@ -501,6 +531,12 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
         rdfs:subClassOf :Object .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/Division
+:Division rdf:type owl:Class ;
+          rdfs:subClassOf :NormalizedStringData ,
+                          :TokenData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/ElasticModulus
 :ElasticModulus rdf:type owl:Class ;
                 rdfs:subClassOf :Property ;
@@ -509,6 +545,12 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                 rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Elastic Modulus" ;
                 :elucidation "The proportionality coefficient between the stress applied to a material and the resulting strain within the linear reversible deformation regime." .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/Equals
+:Equals rdf:type owl:Class ;
+        rdfs:subClassOf :NormalizedStringData ,
+                        :TokenData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/ErosiveWearRate
@@ -548,6 +590,11 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
                                                         "Tooling" ;
          <http://www.w3.org/2004/02/skos/core#prefLabel> "Fixture" ;
          :elucidation "The fixture is a suitably designed system to hold one or more substrates allowing their mounting on a turntable with a suitable geometrical configuration with respect to the thermal spray torch and the manipulator." .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/FloatingPointData
+:FloatingPointData rdf:type owl:Class ;
+                   rdfs:subClassOf :NumericData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/FlowRate
@@ -605,6 +652,12 @@ The friction coefficient is a dimensionless value that measures the resistance t
                  rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Supply System" ;
                  :elucidation "The gas supply system feeds and regulates the flow of the various process gases to the thermal spray system" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/Gradient
+:Gradient rdf:type owl:Class ;
+          rdfs:subClassOf :NormalizedStringData ,
+                          :TokenData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/GunCoolingSystem
@@ -701,6 +754,11 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Holding System" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/IRI
+:IRI rdf:type owl:Class ;
+     rdfs:subClassOf :URI .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/IndentationCurve
 :IndentationCurve rdf:type owl:Class ;
                   rdfs:subClassOf :Property ;
@@ -732,6 +790,31 @@ Indentation hardness is specifically told into:
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/IntData
+:IntData rdf:type owl:Class ;
+         rdfs:subClassOf :LongData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/IntegerData
+:IntegerData rdf:type owl:Class ;
+             rdfs:subClassOf :DecimalData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/JSONData
+:JSONData rdf:type owl:Class ;
+          rdfs:subClassOf :SymbolicData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/LanguageData
+:LanguageData rdf:type owl:Class ;
+              rdfs:subClassOf :NameData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/Laplacian
+:Laplacian rdf:type owl:Class ;
+           rdfs:subClassOf :NCNameData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/LinearThermalExpansionCoefficient
 :LinearThermalExpansionCoefficient rdf:type owl:Class ;
                                    rdfs:subClassOf :Property ;
@@ -754,6 +837,11 @@ Indentation hardness is specifically told into:
 :LiquidFuelledHVOFTorch rdf:type owl:Class ;
                         rdfs:subClassOf :HVOFTorch ;
                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid-Fuelled HVOF torch" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/LongData
+:LongData rdf:type owl:Class ;
+          rdfs:subClassOf :IntegerData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/LowPressureColdSpraying
@@ -808,10 +896,45 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Mass Flow Feeder" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/MatrixData
+:MatrixData rdf:type owl:Class ;
+            rdfs:subClassOf :ArrayData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/MediumPressureColdSpraying
 :MediumPressureColdSpraying rdf:type owl:Class ;
                             rdfs:subClassOf :ColdSpray ;
                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Medium Pressure Cold Spraying" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/Minus
+:Minus rdf:type owl:Class ;
+       rdfs:subClassOf :NMTOKENData ,
+                       :NormalizedStringData ,
+                       :TokenData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/Multiplication
+:Multiplication rdf:type owl:Class ;
+                rdfs:subClassOf :NormalizedStringData ,
+                                :TokenData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NCNameData
+:NCNameData rdf:type owl:Class ;
+            rdfs:subClassOf :NameData ,
+                            :NormalizedStringData ,
+                            :TokenData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NMTOKENData
+:NMTOKENData rdf:type owl:Class ;
+             rdfs:subClassOf :StringData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NameData
+:NameData rdf:type owl:Class ;
+          rdfs:subClassOf :NMTOKENData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/NanoIndenter
@@ -833,6 +956,26 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/NegativeIntegerData
+:NegativeIntegerData rdf:type owl:Class ;
+                     rdfs:subClassOf :NonPositiveIntegerData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NonNegativeIntegerData
+:NonNegativeIntegerData rdf:type owl:Class ;
+                        rdfs:subClassOf :IntegerData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NonPositiveIntegerData
+:NonPositiveIntegerData rdf:type owl:Class ;
+                        rdfs:subClassOf :IntegerData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NormalizedStringData
+:NormalizedStringData rdf:type owl:Class ;
+                      rdfs:subClassOf :StringData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/Nozzle
 :Nozzle rdf:type owl:Class ;
         rdfs:subClassOf :TorchComponent ;
@@ -842,6 +985,11 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
         <http://www.w3.org/2004/02/skos/core#altLabel> "Spray Nozzle" ;
         <http://www.w3.org/2004/02/skos/core#prefLabel> "Nozzle" ;
         :elucidation "The nozzle is the part of a thermal spray gun that contains the outlet opening for the spray jet" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/NumericData
+:NumericData rdf:type owl:Class ;
+             rdfs:subClassOf :SymbolicData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/Object
@@ -883,6 +1031,12 @@ Fitting of the experimental pattern with suitable mathematical functions and int
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Pillar Splitting" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/Plus
+:Plus rdf:type owl:Class ;
+      rdfs:subClassOf :NormalizedStringData ,
+                      :TokenData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/PoreSize
 :PoreSize rdf:type owl:Class ;
           rdfs:subClassOf :Property ;
@@ -900,6 +1054,11 @@ The pore size in a material can be conveyed either through a complete distributi
           rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Porosity" ;
           :elucidation "Porosity refers to the volume percentage of void space in a material. It is defined as the ratio of the volume of pores or voids in a material to the total volume of the material. . It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry." .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/PositiveIntegerData
+:PositiveIntegerData rdf:type owl:Class ;
+                     rdfs:subClassOf :NonNegativeIntegerData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/PowderFeeder
@@ -999,6 +1158,16 @@ These can be or not be integrated into a single monitoring system.""" ;
           rdfs:comment "EMMO Property Concept" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/RationalData
+:RationalData rdf:type owl:Class ;
+              rdfs:subClassOf :RealData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/RealData
+:RealData rdf:type owl:Class ;
+          rdfs:subClassOf :NumericData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/ResidualStress
 :ResidualStress rdf:type owl:Class ;
                 rdfs:subClassOf :Property ;
@@ -1048,6 +1217,11 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
                           owl:onProperty :isSampleOf ;
                           owl:someValuesFrom owl:Thing
                         ] .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/ShortData
+:ShortData rdf:type owl:Class ;
+           rdfs:subClassOf :IntData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/SpecificWearRate
@@ -1131,6 +1305,11 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                :elucidation "Stabilization is a sub-process of thermal spray during which the powder feed rate is made to stabilize while the torch is not depositing material onto the substrate" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/StringData
+:StringData rdf:type owl:Class ;
+            rdfs:subClassOf :SymbolicData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/Substrate
 :Substrate rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayingComponent ;
@@ -1170,6 +1349,11 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
 :SupplySystem rdf:type owl:Class ;
               rdfs:subClassOf :System ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Supply System" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/SymbolicData
+:SymbolicData rdf:type owl:Class ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Symbolic Data"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/System
@@ -1243,6 +1427,11 @@ The definition is adapted from ISO 14917:2017""" ;
            :elucidation "Minimum length of a straight line segment between two parallel planes enclosing an object" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying/TokenData
+:TokenData rdf:type owl:Class ;
+           rdfs:subClassOf :StringData .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying/Tooling
 :Tooling rdf:type owl:Class ;
          rdfs:subClassOf :SubstratePreparation ;
@@ -1269,6 +1458,49 @@ Turntables can also be used to coat planar substrates of limited lateral width t
            <http://www.w3.org/2004/02/skos/core#altLabel> "Mandrel" ;
            <http://www.w3.org/2004/02/skos/core#prefLabel> "Turntable" ;
            :elucidation "The turntable is a rotating device in a thermal spray system onto which the tool holding the substrate(s) is mounted." .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/URI
+:URI rdf:type owl:Class ;
+     rdfs:subClassOf :SymbolicData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/URL
+:URL rdf:type owl:Class ;
+     rdfs:subClassOf :URI .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/URN
+:URN rdf:type owl:Class ;
+     rdfs:subClassOf :URI .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/UnsignedByteData
+:UnsignedByteData rdf:type owl:Class ;
+                  rdfs:subClassOf :ShortData ,
+                                  :UnsignedShortData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/UnsignedIntData
+:UnsignedIntData rdf:type owl:Class ;
+                 rdfs:subClassOf :LongData ,
+                                 :UnsignedLongData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/UnsignedLongData
+:UnsignedLongData rdf:type owl:Class ;
+                  rdfs:subClassOf :NonNegativeIntegerData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/UnsignedShortData
+:UnsignedShortData rdf:type owl:Class ;
+                   rdfs:subClassOf :IntData ,
+                                   :UnsignedIntData .
+
+
+###  https://www.cobrain-project.eu/thermalspraying/VectorData
+:VectorData rdf:type owl:Class ;
+            rdfs:subClassOf :ArrayData .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying/Velocity
