@@ -107,7 +107,25 @@ https://doi.org/10.3030/101092211""" .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#hasLotNumber
-:hasLotNumber rdf:type owl:DatatypeProperty .
+:hasLotNumber rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#hasNominalComposition
+:hasNominalComposition rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#hasReferenceUnit
+:hasReferenceUnit rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:range xsd:string .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#hasSAESteelGrade
+:hasSAESteelGrade rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Steel .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#hasSOPFile
@@ -117,7 +135,8 @@ https://doi.org/10.3030/101092211""" .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#hasSerialNumber
-:hasSerialNumber rdf:type owl:DatatypeProperty .
+:hasSerialNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:string .
 
 
 #################################################################
@@ -143,6 +162,16 @@ phenomenon of attachment at the interface between a solid surface and another ma
  ] .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#AirFlowRate
+:AirFlowRate rdf:type owl:Class ;
+             rdfs:subClassOf :FlowRate .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#AirPressure
+:AirPressure rdf:type owl:Class ;
+             rdfs:subClassOf :Pressure .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#AirSupplysystem
 :AirSupplysystem rdf:type owl:Class ;
                  rdfs:subClassOf :GasSupplySystem ;
@@ -150,6 +179,11 @@ phenomenon of attachment at the interface between a solid surface and another ma
                  rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Supply System" ;
                  :elucidation "The air supply system feeds and regulates the flow of air to the thermal spray system, including as process gas, as torch cooling medium, and as substrate cooling medium" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#Alloy
+:Alloy rdf:type owl:Class ;
+       rdfs:subClassOf elite:Material .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Characterization
@@ -407,6 +441,16 @@ The system can feature flow meters and temperature sensors to monitor the flow r
                   :elucidation "A system that delivers a liquid or gaseous cooling fluid to the thermal spray torch to prevent overheating of critical parts" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#H2FlowRate
+:H2FlowRate rdf:type owl:Class ;
+            rdfs:subClassOf :FlowRate .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#H2Pressure
+:H2Pressure rdf:type owl:Class ;
+            rdfs:subClassOf :Pressure .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#HVAF
 :HVAF rdf:type owl:Class ;
       rdfs:subClassOf :ThermalSpraying ;
@@ -519,6 +563,11 @@ Indentation hardness is specifically told into:
 :Indenter rdf:type owl:Class ;
           rdfs:subClassOf :NanoIndenterComponent ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#Length
+:Length rdf:type owl:Class ;
+        rdfs:subClassOf elite:Property .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#LinearThermalExpansionCoefficient
@@ -634,6 +683,31 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
         :elucidation "The nozzle is the part of a thermal spray gun that contains the outlet opening for the spray jet" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#NumberOfCycles
+:NumberOfCycles rdf:type owl:Class ;
+                rdfs:subClassOf :ThermalSprayingProcessProperty .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#NumberOfPassesPerCycle
+:NumberOfPassesPerCycle rdf:type owl:Class ;
+                        rdfs:subClassOf :ThermalSprayingProcessProperty .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#NumberOfPreHeatingPasses
+:NumberOfPreHeatingPasses rdf:type owl:Class ;
+                          rdfs:subClassOf :ThermalSprayingProcessProperty .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#O2FlowRate
+:O2FlowRate rdf:type owl:Class ;
+            rdfs:subClassOf :FlowRate .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#O2Pressure
+:O2Pressure rdf:type owl:Class ;
+            rdfs:subClassOf :Pressure .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#ParticleSizeDistribution
 :ParticleSizeDistribution rdf:type owl:Class ;
                           rdfs:subClassOf elite:Property ;
@@ -668,6 +742,11 @@ Fitting of the experimental pattern with suitable mathematical functions and int
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Pillar Splitting" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#Pitch
+:Pitch rdf:type owl:Class ;
+       rdfs:subClassOf :ThermalSprayingProcessProperty .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#PoreSize
 :PoreSize rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
@@ -691,6 +770,11 @@ The pore size in a material can be conveyed either through a complete distributi
 :Powder rdf:type owl:Class ;
         rdfs:subClassOf elite:Material ,
                         elite:Solid .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#PowderFeedRate
+:PowderFeedRate rdf:type owl:Class ;
+                rdfs:subClassOf :FeedRate .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#PowderFeeder
@@ -839,6 +923,11 @@ ASTM D4060-19: Taber Abrasion Test""" ;
 It can be measured for sliding, rolling/sliding, and abrasive wear processes.""" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#Speed
+:Speed rdf:type owl:Class ;
+       rdfs:subClassOf :ThermalSprayingProcessProperty .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#SprayJet
 :SprayJet rdf:type owl:Class ;
           rdfs:subClassOf :ThermalSprayingComponent ;
@@ -863,6 +952,12 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
             <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Torch" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#SprayedMass
+:SprayedMass rdf:type owl:Class ;
+             rdfs:subClassOf :ThermalSprayingProcessProperty ,
+                             :Weight .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Spraying
 :Spraying rdf:type owl:Class ;
           rdfs:subClassOf elite:Process ,
@@ -877,6 +972,11 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                             owl:someValuesFrom :Spraying
                           ] ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Process" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#SprayingEfficiency
+:SprayingEfficiency rdf:type owl:Class ;
+                    rdfs:subClassOf :ThermalSprayingProcessProperty .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#SprayingStage
@@ -905,6 +1005,17 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                rdfs:comment "Powder feeders usually take a brief time, from some tens of seconds to a few minutes, to deliver a constant feed rate upon first startup. The powder feeding must be allowed to stabilize before the torch is moved onto the substrate to avoid irregularities and poor deposit quality which would happen if the feed rate is not constant. The stabilization stage also allows to prevent issues that might arise from feeder malfunction, as this would be detected during the stabilization period and the substrate would not be compromised by an irregular deposition from a malfunctioning feeder." ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Stabilization" ;
                :elucidation "Stabilization is a sub-process of thermal spray during which the powder feed rate is made to stabilize while the torch is not depositing material onto the substrate" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#Standoff
+:Standoff rdf:type owl:Class ;
+          rdfs:subClassOf :ThermalSprayingProcessProperty .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#Steel
+:Steel rdf:type owl:Class ;
+       rdfs:subClassOf elite:CondensedMatter ,
+                       :Alloy .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Substrate
@@ -1000,6 +1111,15 @@ The definition is adapted from ISO 14917:2017""" ;
                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying System Component"@en .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayingProcessProperty
+:ThermalSprayingProcessProperty rdf:type owl:Class ;
+                                rdfs:subClassOf elite:Property ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty elite:isPropertyOf ;
+                                                  owl:someValuesFrom :Spraying
+                                                ] .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Thickness
 :Thickness rdf:type owl:Class ;
            rdfs:subClassOf elite:Property ;
@@ -1071,6 +1191,22 @@ Vickers hardness is specifically told into:
 :WearRate rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Rate" .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#Weight
+:Weight rdf:type owl:Class ;
+        rdfs:subClassOf elite:Property .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#WeightGain
+:WeightGain rdf:type owl:Class ;
+            rdfs:subClassOf :ThermalSprayingProcessProperty ,
+                            :Weight .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#Width
+:Width rdf:type owl:Class ;
+       rdfs:subClassOf elite:Property .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#XYManipulator
