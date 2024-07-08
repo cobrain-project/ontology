@@ -70,13 +70,6 @@ https://doi.org/10.3030/101092211""" .
                    rdfs:range :Characterization .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#isComponentOf
-:isComponentOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf elite:isConstituentOf ;
-               rdfs:domain elite:Component ;
-               rdfs:range elite:System .
-
-
 ###  https://www.cobrain-project.eu/thermalspraying#isIndenterFor
 :isIndenterFor rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf elite:participatesTo ;
@@ -100,10 +93,21 @@ https://doi.org/10.3030/101092211""" .
 #    Data properties
 #################################################################
 
-###  https://www.cobrain-project.eu/thermalspraying#hasDatetime
-:hasDatetime rdf:type owl:DatatypeProperty ;
+###  https://www.cobrain-project.eu/thermalspraying#hasDate
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#hasDateTime
+:hasDateTime rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:range xsd:dateTime .
+             rdfs:range xsd:dateTime ;
+             :elucidation "A reference date and time for an entity."@en .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#hasID
+:hasID rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#hasLotNumber
@@ -125,7 +129,8 @@ https://doi.org/10.3030/101092211""" .
 ###  https://www.cobrain-project.eu/thermalspraying#hasSAESteelGrade
 :hasSAESteelGrade rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Steel .
+                  rdfs:domain :Steel ;
+                  :elucidation "The SAE steel grde for the material of the substrate."@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#hasSOPFile
@@ -204,9 +209,33 @@ After removing all contaminants, parts should be protected from airborne debris 
           :elucidation "The process removes all contaminants, such as scale, oil, grease, and paint, from the surface to be roughened and coated." .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#CoatedSubstrate
+:CoatedSubstrate rdf:type owl:Class ;
+                 rdfs:subClassOf elite:Object ,
+                                 elite:System ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasComponent ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Coating
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasComponent ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Substrate
+                                 ] ;
+                 owl:hasKey ( :hasID
+                            ) .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Coating
 :Coating rdf:type owl:Class ;
-         rdfs:subClassOf elite:Object ;
+         rdfs:subClassOf elite:Component ,
+                         elite:Object ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :isComponentOf ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :CoatedSubstrate
+                         ] ;
          rdfs:comment "Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
          rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
          <http://www.w3.org/2004/02/skos/core#altLabel> "Deposit" ,
@@ -254,12 +283,6 @@ Sometimes, the convergent part of the nozzle can also act as a combustion chambe
                    rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Combustion Chamber" ;
                    :elucidation "The combustion chamber is the location within a HVOF or HVAF torch where a confined fuel-comburent combustion takes place at pressures above ambient pressure." .
-
-
-###  https://www.cobrain-project.eu/thermalspraying#Composition
-:Composition rdf:type owl:Class ;
-             rdfs:subClassOf elite:Property ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Composition" .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#ControlSystem
@@ -672,6 +695,12 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#NominalComposition
+:NominalComposition rdf:type owl:Class ;
+                    rdfs:subClassOf elite:Property ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "NominalComposition" .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Nozzle
 :Nozzle rdf:type owl:Class ;
         rdfs:subClassOf :TorchComponent ;
@@ -901,6 +930,11 @@ Micro-scale measurements of residual stresses  are carried out by Focused Ion Be
 The roughness of a profile/surface can be conveyed by calculating one or more of a series of scalar parameters on the basis of a data matrix containing the complete roughness profile/surface.""" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#SAESteelGrade
+:SAESteelGrade rdf:type owl:Class ;
+               rdfs:subClassOf elite:Property .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Sample
 :Sample rdf:type owl:Class ;
         rdfs:subClassOf elite:Object ,
@@ -971,7 +1005,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                                            ] ;
                             owl:someValuesFrom :Spraying
                           ] ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Process" .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying" .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#SprayingEfficiency
@@ -1009,7 +1043,8 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/thermalspraying#Standoff
 :Standoff rdf:type owl:Class ;
-          rdfs:subClassOf :ThermalSprayingProcessProperty .
+          rdfs:subClassOf :ThermalSprayingProcessProperty ;
+          :elucidation "The torch-substrate stand-off distance."@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Steel
