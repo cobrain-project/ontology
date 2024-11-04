@@ -130,7 +130,7 @@ https://doi.org/10.3030/101092211""" .
 :hasSAESteelGrade rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain :Steel ;
-                  :elucidation "The SAE steel grde for the material of the substrate."@en .
+                  :elucidation "The SAE steel grade for the material of the substrate."@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#hasSOPFile
@@ -224,7 +224,9 @@ After removing all contaminants, parts should be protected from airborne debris 
                                    owl:onClass :Substrate
                                  ] ;
                  owl:hasKey ( :hasID
-                            ) .
+                            ) ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Coated Substrate"@en ;
+                 :elucidation "A substrate with a deposited coating layer"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Coating
@@ -236,12 +238,12 @@ After removing all contaminants, parts should be protected from airborne debris 
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :CoatedSubstrate
                          ] ;
-         rdfs:comment "Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
+         rdfs:comment "Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification."@en ;
          rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
-         <http://www.w3.org/2004/02/skos/core#altLabel> "Deposit" ,
-                                                        "Layer" ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating" ;
-         :elucidation "A layer of material built up onto the substrate by a thermal spray process" .
+         <http://www.w3.org/2004/02/skos/core#altLabel> "Deposit"@en ,
+                                                        "Layer"@en ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating"@en ;
+         :elucidation "A layer of material built up onto the substrate by a thermal spray process"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#ColdSpray
@@ -297,13 +299,13 @@ Sometimes, the convergent part of the nozzle can also act as a combustion chambe
                              :ThermalSprayingComponent ;
              rdfs:comment """The control unit is the main user interface to control the process and ensures safety, control and repeatability.
 It can feature analogue and/or digital controls and can feature various degrees of automation. It can optionally record and store the measured quantities.
-It can operate on open- or closed-loop principles.""" ;
+It can operate on open- or closed-loop principles."""@en ;
              rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Command Panel" ,
-                                                            "Command Unit" ,
-                                                            "Control Panel" ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Control Unit" ;
-             :elucidation "The control unit is a system that controls the operation of the thermal spray system, specifically managing gas flows, powder feed, torch startup/shutdown, turntable and manipulator/robot movements, gun cooling system." .
+             <http://www.w3.org/2004/02/skos/core#altLabel> "Command Panel"@en ,
+                                                            "Command Unit"@en ,
+                                                            "Control Panel"@en ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Control Unit"@en ;
+             :elucidation "The control unit is a system that controls the operation of the thermal spray system, specifically managing gas flows, powder feed, torch startup/shutdown, turntable and manipulator/robot movements, gun cooling system."@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#CoolingSystem
@@ -347,6 +349,52 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
             :elucidation "Deposition is the stage of the thermal spray process during which the coating is built up onto the substrate." .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#DepositionLength
+:DepositionLength rdf:type owl:Class ;
+                  rdfs:subClassOf :Length ,
+                                  :ThermalSprayingProcessProperty ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty elite:isPropertyOf ;
+                                    owl:someValuesFrom :Substrate
+                                  ] ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Length"@en ;
+                  :elucidation "The length of the deposition area on the substrate"@en .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#DepositionPassWeights
+:DepositionPassWeights rdf:type owl:Class ;
+                       rdfs:subClassOf :ThermalSprayingProcessDescription ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty elite:hasPart ;
+                                         owl:someValuesFrom :FinalWeight
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty elite:hasPart ;
+                                         owl:someValuesFrom :InitialWeight
+                                       ] ;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Pass Weights"@en ;
+                       :elucidation "A dataset containing the weights before and after a deposition pass/cycle."@en .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#DepositionSpeed
+:DepositionSpeed rdf:type owl:Class ;
+                 rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Speed"@en ;
+                 :elucidation "The relative traverse speed between torch and substrate"@en .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#DepositionWidth
+:DepositionWidth rdf:type owl:Class ;
+                 rdfs:subClassOf :ThermalSprayingProcessProperty ,
+                                 :Width ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty elite:isPropertyOf ;
+                                   owl:someValuesFrom :Substrate
+                                 ] ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Width"@en ;
+                 :elucidation "The width of the deposition area on the substrate."@en .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#ElasticModulus
 :ElasticModulus rdf:type owl:Class ;
                 rdfs:subClassOf elite:Property ;
@@ -382,18 +430,25 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
           :elucidation "The mass of material thatpasses through a given section of a conduit per unit time." .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#FinalWeight
+:FinalWeight rdf:type owl:Class ;
+             rdfs:subClassOf :PlateWeight ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Final Weight"@en ;
+             :elucidation "The final weight of the coated substrate plate."@en .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Fixture
 :Fixture rdf:type owl:Class ;
          rdfs:subClassOf :HoldingSystem ,
                          :ThermalSprayingComponent ;
          rdfs:comment """The fixture must be designed to hold the substrates in a proper configuration so that, in combination with the motion imparted by the turntable and the manipulator, the thermal spray jet is perpendicular to the substrate surface for as long as possible, and should also allow to achieve the desired relative linear velocity and trajectories.
 Shadow masks can be integrated in the fixture.
-Fixtures are usually permanent but may need periodic regeneration to remove deposits that build up in areas of the fixture exposed to the thermal spray jet.""" ;
+Fixtures are usually permanent but may need periodic regeneration to remove deposits that build up in areas of the fixture exposed to the thermal spray jet."""@en ;
          rdfs:seeAlso "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
          <http://www.w3.org/2004/02/skos/core#altLabel> "Tool" ,
                                                         "Tooling" ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Fixture" ;
-         :elucidation "The fixture is a suitably designed system to hold one or more substrates allowing their mounting on a turntable with a suitable geometrical configuration with respect to the thermal spray torch and the manipulator." .
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Fixture"@en ;
+         :elucidation "The fixture is a suitably designed system to hold one or more substrates allowing their mounting on a turntable with a suitable geometrical configuration with respect to the thermal spray torch and the manipulator."@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#FlowRate
@@ -588,6 +643,13 @@ Indentation hardness is specifically told into:
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter" .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#InitialWeight
+:InitialWeight rdf:type owl:Class ;
+               rdfs:subClassOf :PlateWeight ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Initial Weight"@en ;
+               :elucidation "The initial weight of the uncoated substrate plate (after substrate preparation, e.g. grit-blasting and acetone-cleaning)"@en .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#Length
 :Length rdf:type owl:Class ;
         rdfs:subClassOf elite:Property .
@@ -686,7 +748,7 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 ###  https://www.cobrain-project.eu/thermalspraying#NanoIndenterComponent
 :NanoIndenterComponent rdf:type owl:Class ;
                        rdfs:subClassOf elite:Component ;
-                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter Component" .
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter Component"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Nanoindentation
@@ -714,17 +776,23 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
 
 ###  https://www.cobrain-project.eu/thermalspraying#NumberOfCycles
 :NumberOfCycles rdf:type owl:Class ;
-                rdfs:subClassOf :ThermalSprayingProcessProperty .
+                rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Number of Cycles"@en ;
+                :elucidation "The number of repetitions of the toolpath program"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#NumberOfPassesPerCycle
 :NumberOfPassesPerCycle rdf:type owl:Class ;
-                        rdfs:subClassOf :ThermalSprayingProcessProperty .
+                        rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Number of Passes Per Cycles"@en ;
+                        :elucidation "The number of passes within a single repetition of the toolpath program"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#NumberOfPreHeatingPasses
 :NumberOfPreHeatingPasses rdf:type owl:Class ;
-                          rdfs:subClassOf :ThermalSprayingProcessProperty .
+                          rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Number of Pre-Heating Passes"@en ;
+                          :elucidation "The number of preheating passes"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#O2FlowRate
@@ -773,7 +841,29 @@ Fitting of the experimental pattern with suitable mathematical functions and int
 
 ###  https://www.cobrain-project.eu/thermalspraying#Pitch
 :Pitch rdf:type owl:Class ;
-       rdfs:subClassOf :ThermalSprayingProcessProperty .
+       rdfs:subClassOf :ThermalSprayingProcessProperty ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Pitch"@en ;
+       :elucidation "The pitch distance"@en .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#PlateWeight
+:PlateWeight rdf:type owl:Class ;
+             rdfs:subClassOf :ThermalSprayingProcessProperty ,
+                             :Weight ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty elite:isPropertyOf ;
+                               owl:someValuesFrom :Substrate
+                             ] ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Plate Weight"@en ,
+                                                             "The weight of the substrate plate with or without deposited substrate."@en .
+
+
+###  https://www.cobrain-project.eu/thermalspraying#PlateWeightGain
+:PlateWeightGain rdf:type owl:Class ;
+                 rdfs:subClassOf :ThermalSprayingProcessProperty ,
+                                 :Weight ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Plate Weight Gain"@en ;
+                 :elucidation "The mass gain of the plate after coating"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#PoreSize
@@ -836,13 +926,13 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
 ###  https://www.cobrain-project.eu/thermalspraying#PowderFeedstock
 :PowderFeedstock rdf:type owl:Class ;
                  rdfs:subClassOf :ThermalSprayingComponent ;
-                 rdfs:comment "Particle sizes are usually between 5 and 100 microns in size, and can be made from a variety of materials, such as metals, ceramics, polymers, and composites. The exact particle size distribution is an important process parameter and mist be tailored to the specific thermal spray process, the type of material, and the desired outcome/intended application." ;
+                 rdfs:comment "Particle sizes are usually between 5 and 100 microns in size, and can be made from a variety of materials, such as metals, ceramics, polymers, and composites. The exact particle size distribution is an important process parameter and mist be tailored to the specific thermal spray process, the type of material, and the desired outcome/intended application."@en ;
                  rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
                  rdfs:seeAlso "N. Sanpo, J. Wang, C.C. Berndt (2013), Feedstock Material Considerations for Thermal Spray, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                 <http://www.w3.org/2004/02/skos/core#altLabel> "Feedstock" ,
-                                                                "Powder" ;
+                 <http://www.w3.org/2004/02/skos/core#altLabel> "Feedstock"@en ,
+                                                                "Powder"@en ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feedstock" ;
-                 :elucidation "Powder feedstock is a material in powder form used produce a coating on a substrate by feeding into a thermal spray torch" .
+                 :elucidation "Powder feedstock is a material in powder form used produce a coating on a substrate by feeding into a thermal spray torch"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#PreHeating
@@ -932,7 +1022,8 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
 
 ###  https://www.cobrain-project.eu/thermalspraying#SAESteelGrade
 :SAESteelGrade rdf:type owl:Class ;
-               rdfs:subClassOf elite:Property .
+               rdfs:subClassOf elite:Property ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "SAE Steel Grade"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Sample
@@ -957,21 +1048,16 @@ ASTM D4060-19: Taber Abrasion Test""" ;
 It can be measured for sliding, rolling/sliding, and abrasive wear processes.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Speed
-:Speed rdf:type owl:Class ;
-       rdfs:subClassOf :ThermalSprayingProcessProperty .
-
-
 ###  https://www.cobrain-project.eu/thermalspraying#SprayJet
 :SprayJet rdf:type owl:Class ;
           rdfs:subClassOf :ThermalSprayingComponent ;
           rdfs:comment """The definition is taken from ISO 14917:2017: Thermal Spraying - Terminology, classification.
-The characteristics of the particles in the spray jet, i.e. their velocity and their temperature, depend on the process parameters, the thermophysical properties of the particles themselves and their size distribution. The velocity and temperature of the particles, on the other hand, are the key features that determine the properties of the coating (porosity, adhesive and cohesive strength, etc.).""" ;
+The characteristics of the particles in the spray jet, i.e. their velocity and their temperature, depend on the process parameters, the thermophysical properties of the particles themselves and their size distribution. The velocity and temperature of the particles, on the other hand, are the key features that determine the properties of the coating (porosity, adhesive and cohesive strength, etc.)."""@en ;
           rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
           <http://www.w3.org/2004/02/skos/core#altLabel> "Particle Jet" ,
                                                          "Particle Stream" ,
                                                          "Spray Stream" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Jet" ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Jet"@en ;
           :elucidation "The stream of particles emerging from the thermal spray torch." .
 
 
@@ -989,7 +1075,9 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 ###  https://www.cobrain-project.eu/thermalspraying#SprayedMass
 :SprayedMass rdf:type owl:Class ;
              rdfs:subClassOf :ThermalSprayingProcessProperty ,
-                             :Weight .
+                             :Weight ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Sprayed Mass"@en ;
+             :elucidation "The mass of powder sprayed onto a single substrate plate."@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Spraying
@@ -1010,7 +1098,10 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/thermalspraying#SprayingEfficiency
 :SprayingEfficiency rdf:type owl:Class ;
-                    rdfs:subClassOf :ThermalSprayingProcessProperty .
+                    rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                    <http://www.w3.org/2004/02/skos/core#altLabel> "Deposition Efficiency"@en ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Efficiency" ;
+                    :elucidation "The ratio between the mass gain of a plate after coating and the calculated mass of powder sprayed onto a single substrate plate"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#SprayingStage
@@ -1044,6 +1135,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 ###  https://www.cobrain-project.eu/thermalspraying#Standoff
 :Standoff rdf:type owl:Class ;
           rdfs:subClassOf :ThermalSprayingProcessProperty ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Stand-Off"@en ;
           :elucidation "The torch-substrate stand-off distance."@en .
 
 
@@ -1056,13 +1148,12 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 ###  https://www.cobrain-project.eu/thermalspraying#Substrate
 :Substrate rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayingComponent ;
-           rdfs:comment "Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
+           rdfs:comment "Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification."@en ;
            rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
-           <http://www.w3.org/2004/02/skos/core#altLabel> "Component" ,
-                                                          "Part" ,
-                                                          "Workpiece" ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "Substrate" ;
-           :elucidation "The object to be coated (entirely or in part) in a thermal spray process" .
+           <http://www.w3.org/2004/02/skos/core#altLabel> "Plate"@en ,
+                                                          "Workpiece"@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Substrate"@en ;
+           :elucidation "The object to be coated (entirely or in part) in a thermal spray process"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#SubstrateCoolingSystem
@@ -1146,13 +1237,17 @@ The definition is adapted from ISO 14917:2017""" ;
                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying System Component"@en .
 
 
+###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayingProcessDescription
+:ThermalSprayingProcessDescription rdf:type owl:Class ;
+                                   rdfs:subClassOf elite:Description ;
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Description"@en .
+
+
 ###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayingProcessProperty
 :ThermalSprayingProcessProperty rdf:type owl:Class ;
-                                rdfs:subClassOf elite:Property ,
-                                                [ rdf:type owl:Restriction ;
-                                                  owl:onProperty elite:isPropertyOf ;
-                                                  owl:someValuesFrom :Spraying
-                                                ] .
+                                rdfs:subClassOf elite:Property ;
+                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Property"@en ;
+                                :elucidation "A property defined specifically for the description of thermal spraying process"@en .
 
 
 ###  https://www.cobrain-project.eu/thermalspraying#Thickness
@@ -1233,12 +1328,6 @@ Vickers hardness is specifically told into:
         rdfs:subClassOf elite:Property .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#WeightGain
-:WeightGain rdf:type owl:Class ;
-            rdfs:subClassOf :ThermalSprayingProcessProperty ,
-                            :Weight .
-
-
 ###  https://www.cobrain-project.eu/thermalspraying#Width
 :Width rdf:type owl:Class ;
        rdfs:subClassOf elite:Property .
@@ -1267,4 +1356,4 @@ Vickers hardness is specifically told into:
            :elucidation "The MTS G200 system available at the University of Rome laboratory." .
 
 
-###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
