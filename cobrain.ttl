@@ -182,14 +182,32 @@ phenomenon of attachment at the interface between a solid surface and another ma
  ] .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#AirFeed
+:AirFeed rdf:type owl:Class ;
+         rdfs:subClassOf :GasFeedDescription ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty elite:hasDatum ;
+                           owl:someValuesFrom :AirFlowRate
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty elite:hasDatum ;
+                           owl:someValuesFrom :AirPressure
+                         ] ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Feed"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#AirFlowRate
 :AirFlowRate rdf:type owl:Class ;
-             rdfs:subClassOf :FlowRate .
+             rdfs:subClassOf :FlowRate ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Flow Rate"@en ;
+             :elucidation "The flow rate of compressed air (in flow meter reading, FMR)"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AirPressure
 :AirPressure rdf:type owl:Class ;
-             rdfs:subClassOf :Pressure .
+             rdfs:subClassOf :Pressure ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Pressure"@en ;
+             :elucidation "The air pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AirSupplysystem
@@ -502,6 +520,21 @@ The friction coefficient is a dimensionless value that measures the resistance t
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter G200" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#GasFeedDescription
+:GasFeedDescription rdf:type owl:Class ;
+                    rdfs:subClassOf elite:Description ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty elite:hasDatum ;
+                                      owl:someValuesFrom :FlowRate
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty elite:hasDatum ;
+                                      owl:someValuesFrom :Pressure
+                                    ] ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Feed Description"@en ;
+                    :elucidation "A collection of properties to characterise a gas feed into a device or process"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#GasFeeding
 :GasFeeding rdf:type owl:Class ;
             rdfs:subClassOf :SprayingSubProcess ;
@@ -534,14 +567,32 @@ The system can feature flow meters and temperature sensors to monitor the flow r
                   :elucidation "A system that delivers a liquid or gaseous cooling fluid to the thermal spray torch to prevent overheating of critical parts" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#H2Feed
+:H2Feed rdf:type owl:Class ;
+        rdfs:subClassOf :GasFeedDescription ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty elite:hasDatum ;
+                          owl:someValuesFrom :H2FlowRate
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty elite:hasDatum ;
+                          owl:someValuesFrom :H2Pressure
+                        ] ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "H₂ Feed"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#H2FlowRate
 :H2FlowRate rdf:type owl:Class ;
-            rdfs:subClassOf :FlowRate .
+            rdfs:subClassOf :FlowRate ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "H₂ Flow Rate"@en ;
+            :elucidation "The flow rate of hydrogen fuel (in flow meter reading, FMR)"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#H2Pressure
 :H2Pressure rdf:type owl:Class ;
-            rdfs:subClassOf :Pressure .
+            rdfs:subClassOf :Pressure ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "H₂ Pressure"@en ;
+            :elucidation "The hydrogen pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAF
@@ -810,14 +861,32 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
                           :elucidation "The number of preheating passes"@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#O2Feed
+:O2Feed rdf:type owl:Class ;
+        rdfs:subClassOf :GasFeedDescription ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty elite:hasDatum ;
+                          owl:someValuesFrom :O2FlowRate
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty elite:hasDatum ;
+                          owl:someValuesFrom :O2Pressure
+                        ] ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "O₂ Feed"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#O2FlowRate
 :O2FlowRate rdf:type owl:Class ;
-            rdfs:subClassOf :FlowRate .
+            rdfs:subClassOf :FlowRate ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "O₂ Flow Rate"@en ;
+            :elucidation "The flow rate of oxygen (in flow meter reading, FMR)"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#O2Pressure
 :O2Pressure rdf:type owl:Class ;
-            rdfs:subClassOf :Pressure .
+            rdfs:subClassOf :Pressure ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "O₂ Pressure"@en ;
+            :elucidation "The oxygen pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ParticleSizeDistribution
@@ -869,8 +938,8 @@ Fitting of the experimental pattern with suitable mathematical functions and int
                                owl:onProperty elite:isPropertyOf ;
                                owl:someValuesFrom :Substrate
                              ] ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Plate Weight"@en ,
-                                                             "The weight of the substrate plate with or without deposited substrate."@en .
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Plate Weight"@en ;
+             :elucidation "The weight of the substrate plate with or without deposited substrate."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PlateWeightGain
@@ -908,7 +977,10 @@ The pore size in a material can be conveyed either through a complete distributi
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedRate
 :PowderFeedRate rdf:type owl:Class ;
-                rdfs:subClassOf :FeedRate .
+                rdfs:subClassOf :FeedRate ,
+                                :ThermalSprayingProcessProperty ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feed Rate"@en ;
+                :elucidation "Tthe powder feed rate"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeeder
