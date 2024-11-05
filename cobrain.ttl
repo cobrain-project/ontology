@@ -1,26 +1,27 @@
-@prefix : <https://www.cobrain-project.eu/thermalspraying#> .
+@prefix : <https://www.cobrain-project.eu/ontology/cobrain#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix elite: <https://w3id.org/emmo/emmo-lite#> .
-@base <https://www.cobrain-project.eu/thermalspraying#> .
+@base <https://www.cobrain-project.eu/ontology/cobrain#> .
 
-<https://www.cobrain-project.eu/thermalspraying> rdf:type owl:Ontology ;
-                                                  owl:imports <https://w3id.org/emmo/emmo-lite/0.0.1> ;
-                                                  <http://purl.org/dc/terms/contributor> """Alvise Bianchin
+<https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
+                                                   owl:versionIRI <https://www.cobrain-project.eu/ontology/cobrain/0.0.1> ;
+                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.1> ;
+                                                   <http://purl.org/dc/terms/contributor> """Alvise Bianchin
 Matres scrl
 alvise.bianchin@matres.org""" ,
-                                                                                         """Giovanni Bolelli
+                                                                                          """Giovanni Bolelli
 Università degli Studi di Modena e Reggio Emilia
 giovanni.bolelli@unimore.it""" ;
-                                                  <http://purl.org/dc/terms/creator> """Emanuele Ghedini
+                                                   <http://purl.org/dc/terms/creator> """Emanuele Ghedini
 Alma Mater Studiorum - Università di Bologna
 emanuele.ghedini@unibo.it""" ;
-                                                  <http://purl.org/dc/terms/license> """This work is licensed under CC BY 4.0
+                                                   <http://purl.org/dc/terms/license> """This work is licensed under CC BY 4.0
 https://creativecommons.org/licenses/by/4.0/""" ;
-                                                  rdfs:comment """Work performed in the framework of CoBRAIN Project
+                                                   rdfs:comment """Work performed in the framework of CoBRAIN Project
 Funded under European Commission Horizon Europe: Digital, Industry and Space
 Grant agreement ID: 101092211
 https://doi.org/10.3030/101092211""" .
@@ -51,11 +52,11 @@ https://doi.org/10.3030/101092211""" .
                                                 rdfs:subPropertyOf rdfs:label .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#elucidation
+###  https://www.cobrain-project.eu/ontology/cobrain#elucidation
 :elucidation rdf:type owl:AnnotationProperty .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#productionInformation
+###  https://www.cobrain-project.eu/ontology/cobrain#productionInformation
 :productionInformation rdf:type owl:AnnotationProperty ;
                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Production Information" .
 
@@ -64,25 +65,33 @@ https://doi.org/10.3030/101092211""" .
 #    Object Properties
 #################################################################
 
-###  https://www.cobrain-project.eu/thermalspraying#isCharacterizedIn
+###  https://www.cobrain-project.eu/ontology/cobrain#hasComponent
+:hasComponent rdf:type owl:ObjectProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#isCharacterizedIn
 :isCharacterizedIn rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf elite:participatesTo ;
                    rdfs:range :Characterization .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#isIndenterFor
+###  https://www.cobrain-project.eu/ontology/cobrain#isComponentOf
+:isComponentOf rdf:type owl:ObjectProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#isIndenterFor
 :isIndenterFor rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf elite:participatesTo ;
                rdfs:domain :Indenter ;
                rdfs:range :Nanoindentation .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#isInstrumentOf
+###  https://www.cobrain-project.eu/ontology/cobrain#isInstrumentOf
 :isInstrumentOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf elite:participatesTo .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#isSampleOf
+###  https://www.cobrain-project.eu/ontology/cobrain#isSampleOf
 :isSampleOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf elite:isRemovedfrom ;
             rdfs:domain :Sample ;
@@ -93,53 +102,59 @@ https://doi.org/10.3030/101092211""" .
 #    Data properties
 #################################################################
 
-###  https://www.cobrain-project.eu/thermalspraying#hasDate
+###  https://www.cobrain-project.eu/ontology/cobrain#hasDate
 :hasDate rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasDateTime
+###  https://www.cobrain-project.eu/ontology/cobrain#hasDateTime
 :hasDateTime rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:range xsd:dateTime ;
              :elucidation "A reference date and time for an entity."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasID
-:hasID rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  https://www.cobrain-project.eu/thermalspraying#hasLotNumber
+###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
 :hasLotNumber rdf:type owl:DatatypeProperty ;
               rdfs:range xsd:string .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasNominalComposition
+###  https://www.cobrain-project.eu/ontology/cobrain#hasNominalComposition
 :hasNominalComposition rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasReferenceUnit
+###  https://www.cobrain-project.eu/ontology/cobrain#hasReferenceUnit
 :hasReferenceUnit rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:range xsd:string .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasSAESteelGrade
+###  https://www.cobrain-project.eu/ontology/cobrain#hasRunNumber
+:hasRunNumber rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#hasSAESteelGrade
 :hasSAESteelGrade rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain :Steel ;
                   :elucidation "The SAE steel grade for the material of the substrate."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasSOPFile
+###  https://www.cobrain-project.eu/ontology/cobrain#hasSOPFile
 :hasSOPFile rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
             rdfs:range xsd:anyURI .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#hasSerialNumber
+###  https://www.cobrain-project.eu/ontology/cobrain#hasSampleID
+:hasSampleID rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Sample .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#hasSerialNumber
 :hasSerialNumber rdf:type owl:DatatypeProperty ;
                  rdfs:range xsd:string .
 
@@ -148,7 +163,7 @@ https://doi.org/10.3030/101092211""" .
 #    Classes
 #################################################################
 
-###  https://www.cobrain-project.eu/thermalspraying#Adhesion
+###  https://www.cobrain-project.eu/ontology/cobrain#Adhesion
 :Adhesion rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:seeAlso "ASTM C633-13 (2017)" ,
@@ -167,17 +182,17 @@ phenomenon of attachment at the interface between a solid surface and another ma
  ] .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#AirFlowRate
+###  https://www.cobrain-project.eu/ontology/cobrain#AirFlowRate
 :AirFlowRate rdf:type owl:Class ;
              rdfs:subClassOf :FlowRate .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#AirPressure
+###  https://www.cobrain-project.eu/ontology/cobrain#AirPressure
 :AirPressure rdf:type owl:Class ;
              rdfs:subClassOf :Pressure .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#AirSupplysystem
+###  https://www.cobrain-project.eu/ontology/cobrain#AirSupplysystem
 :AirSupplysystem rdf:type owl:Class ;
                  rdfs:subClassOf :GasSupplySystem ;
                  rdfs:comment "This system is designed to provide a consistent, safe, and high-quality supply of compressed air to the thermal spray system. The system can be pressure- and/or volume flow-controlled. Compressed air is usually produced on-site with a suitably sized compressor." ;
@@ -186,17 +201,17 @@ phenomenon of attachment at the interface between a solid surface and another ma
                  :elucidation "The air supply system feeds and regulates the flow of air to the thermal spray system, including as process gas, as torch cooling medium, and as substrate cooling medium" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Alloy
+###  https://www.cobrain-project.eu/ontology/cobrain#Alloy
 :Alloy rdf:type owl:Class ;
        rdfs:subClassOf elite:Material .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Characterization
+###  https://www.cobrain-project.eu/ontology/cobrain#Characterization
 :Characterization rdf:type owl:Class ;
                   rdfs:subClassOf elite:Process .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Cleaning
+###  https://www.cobrain-project.eu/ontology/cobrain#Cleaning
 :Cleaning rdf:type owl:Class ;
           rdfs:subClassOf :SubstratePreparation ;
           rdfs:comment """This is the first step for the substrate preparation.
@@ -209,7 +224,7 @@ After removing all contaminants, parts should be protected from airborne debris 
           :elucidation "The process removes all contaminants, such as scale, oil, grease, and paint, from the surface to be roughened and coated." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#CoatedSubstrate
+###  https://www.cobrain-project.eu/ontology/cobrain#CoatedSubstrate
 :CoatedSubstrate rdf:type owl:Class ;
                  rdfs:subClassOf elite:Object ,
                                  elite:System ,
@@ -223,13 +238,13 @@ After removing all contaminants, parts should be protected from airborne debris 
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Substrate
                                  ] ;
-                 owl:hasKey ( :hasID
+                 owl:hasKey ( :hasSampleID
                             ) ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Coated Substrate"@en ;
                  :elucidation "A substrate with a deposited coating layer"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Coating
+###  https://www.cobrain-project.eu/ontology/cobrain#Coating
 :Coating rdf:type owl:Class ;
          rdfs:subClassOf elite:Component ,
                          elite:Object ,
@@ -246,7 +261,7 @@ After removing all contaminants, parts should be protected from airborne debris 
          :elucidation "A layer of material built up onto the substrate by a thermal spray process"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ColdSpray
+###  https://www.cobrain-project.eu/ontology/cobrain#ColdSpray
 :ColdSpray rdf:type owl:Class ;
            rdfs:subClassOf :Spraying ;
            rdfs:comment """There are three variants of cold spraying:
@@ -263,7 +278,7 @@ After removing all contaminants, parts should be protected from airborne debris 
            :elucidation "A thermal spray process utilizing a supersonic jet of produced by the expansion of a compressed through a converging/diverging nozzle gas to accelerate, at or near room temperature, powder particles to high velocities. The solid particles traveling at speeds often above 500 m/s plastically deform and consolidate on impact with their substrate to create a coating." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ColdSprayTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#ColdSprayTorch
 :ColdSprayTorch rdf:type owl:Class ;
                 rdfs:subClassOf :SprayTorch ;
                 rdfs:comment """The torch has no combustion chamber.
@@ -277,7 +292,7 @@ Cold Spray torches can either have a water-cooled nozzle or (especially in low-p
                 :elucidation "A thermal spray torch specifically designed to perform the Cold Spray process" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#CombustionChamber
+###  https://www.cobrain-project.eu/ontology/cobrain#CombustionChamber
 :CombustionChamber rdf:type owl:Class ;
                    rdfs:subClassOf :TorchComponent ;
                    rdfs:comment """Fuel and comburent can be pre-mixed before entering the combustion chamber, as in most gas-fuelled HVOF and HVAF torch types, or they can be mixed in the combustion chamber, as in most liquid-fuelled HVOF torches.
@@ -287,13 +302,13 @@ Sometimes, the convergent part of the nozzle can also act as a combustion chambe
                    :elucidation "The combustion chamber is the location within a HVOF or HVAF torch where a confined fuel-comburent combustion takes place at pressures above ambient pressure." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ControlSystem
+###  https://www.cobrain-project.eu/ontology/cobrain#ControlSystem
 :ControlSystem rdf:type owl:Class ;
                rdfs:subClassOf elite:System ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Control System" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ControlUnit
+###  https://www.cobrain-project.eu/ontology/cobrain#ControlUnit
 :ControlUnit rdf:type owl:Class ;
              rdfs:subClassOf :ControlSystem ,
                              :ThermalSprayingComponent ;
@@ -308,13 +323,13 @@ It can operate on open- or closed-loop principles."""@en ;
              :elucidation "The control unit is a system that controls the operation of the thermal spray system, specifically managing gas flows, powder feed, torch startup/shutdown, turntable and manipulator/robot movements, gun cooling system."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#CoolingSystem
+###  https://www.cobrain-project.eu/ontology/cobrain#CoolingSystem
 :CoolingSystem rdf:type owl:Class ;
                rdfs:subClassOf elite:System ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooling System" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#CorrosionCurrentDensity
+###  https://www.cobrain-project.eu/ontology/cobrain#CorrosionCurrentDensity
 :CorrosionCurrentDensity rdf:type owl:Class ;
                          rdfs:subClassOf elite:Property ;
                          rdfs:seeAlso "Pierre R. Roberge (2000), Handbook of Corrosion Engineering. McGraw-Hill, New York. D.J. De Renzo (1985), CORROSION RESISTANT MATERIALS HANDBOOK, Fourth Edition. NOYES DATA CORPORATION Park Ridge, New Jersey, U.S.A." ;
@@ -322,7 +337,7 @@ It can operate on open- or closed-loop principles."""@en ;
                          :elucidation "The current corrosion density value represents the rate at which a metal or alloy is corroding in a specific environment. It is a measure of the amount of metal ions that are being released from the material due to the corrosion process." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#CorrosionPotential
+###  https://www.cobrain-project.eu/ontology/cobrain#CorrosionPotential
 :CorrosionPotential rdf:type owl:Class ;
                     rdfs:subClassOf elite:Property ;
                     rdfs:seeAlso "Pierre R. Roberge (2000), Handbook of Corrosion Engineering. McGraw-Hill, New York. D.J. De Renzo (1985), CORROSION RESISTANT MATERIALS HANDBOOK, Fourth Edition. NOYES DATA CORPORATION Park Ridge, New Jersey, U.S.A." ;
@@ -330,13 +345,13 @@ It can operate on open- or closed-loop principles."""@en ;
                     :elucidation "The corrosion potential value represents the tendency of a metal or alloy to corrode in a specific environment. It is a measure of the electrochemical potential difference between the metal and its environment, which is the driving force for the corrosion process." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#CriticalLoad
+###  https://www.cobrain-project.eu/ontology/cobrain#CriticalLoad
 :CriticalLoad rdf:type owl:Class ;
               rdfs:subClassOf elite:Property ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Critical Load" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Deposition
+###  https://www.cobrain-project.eu/ontology/cobrain#Deposition
 :Deposition rdf:type owl:Class ;
             rdfs:subClassOf :SprayingStage ;
             rdfs:comment """During this stage, the torch is moved in front of the substrates with a specified kinematics and for a specified number of cycles by using the coordinated motion of the turntable and the manipulator or robot.
@@ -349,7 +364,7 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
             :elucidation "Deposition is the stage of the thermal spray process during which the coating is built up onto the substrate." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#DepositionLength
+###  https://www.cobrain-project.eu/ontology/cobrain#DepositionLength
 :DepositionLength rdf:type owl:Class ;
                   rdfs:subClassOf :Length ,
                                   :ThermalSprayingProcessProperty ,
@@ -361,7 +376,7 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                   :elucidation "The length of the deposition area on the substrate"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#DepositionPassWeights
+###  https://www.cobrain-project.eu/ontology/cobrain#DepositionPassWeights
 :DepositionPassWeights rdf:type owl:Class ;
                        rdfs:subClassOf :ThermalSprayingProcessDescription ,
                                        [ rdf:type owl:Restriction ;
@@ -376,14 +391,14 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                        :elucidation "A dataset containing the weights before and after a deposition pass/cycle."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#DepositionSpeed
+###  https://www.cobrain-project.eu/ontology/cobrain#DepositionSpeed
 :DepositionSpeed rdf:type owl:Class ;
                  rdfs:subClassOf :ThermalSprayingProcessProperty ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Speed"@en ;
                  :elucidation "The relative traverse speed between torch and substrate"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#DepositionWidth
+###  https://www.cobrain-project.eu/ontology/cobrain#DepositionWidth
 :DepositionWidth rdf:type owl:Class ;
                  rdfs:subClassOf :ThermalSprayingProcessProperty ,
                                  :Width ,
@@ -395,7 +410,7 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                  :elucidation "The width of the deposition area on the substrate."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ElasticModulus
+###  https://www.cobrain-project.eu/ontology/cobrain#ElasticModulus
 :ElasticModulus rdf:type owl:Class ;
                 rdfs:subClassOf elite:Property ;
                 rdfs:isDefinedBy "ISO 14577 (Instrumented indentation test)" ,
@@ -405,7 +420,7 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                 :elucidation "The proportionality coefficient between the stress applied to a material and the resulting strain within the linear reversible deformation regime." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ErosiveWearRate
+###  https://www.cobrain-project.eu/ontology/cobrain#ErosiveWearRate
 :ErosiveWearRate rdf:type owl:Class ;
                  rdfs:subClassOf :WearRate ;
                  rdfs:seeAlso """ASTM G76-18: Erosion Test by Solid Particle Impingement Using Gas Jet
@@ -415,13 +430,13 @@ ASTM G211-14(2020): Elevated Temperature Erosion Test by Solid Particle Impingem
 The erosive wear rate is expressed as the volume of material removed per unit mass of impinging solid particles.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#FIB
+###  https://www.cobrain-project.eu/ontology/cobrain#FIB
 :FIB rdf:type owl:Class ;
      rdfs:subClassOf :Characterization ;
      <http://www.w3.org/2004/02/skos/core#prefLabel> "Focused Ion Beam" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#FeedRate
+###  https://www.cobrain-project.eu/ontology/cobrain#FeedRate
 :FeedRate rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
@@ -430,14 +445,14 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
           :elucidation "The mass of material thatpasses through a given section of a conduit per unit time." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#FinalWeight
+###  https://www.cobrain-project.eu/ontology/cobrain#FinalWeight
 :FinalWeight rdf:type owl:Class ;
              rdfs:subClassOf :PlateWeight ;
              <http://www.w3.org/2004/02/skos/core#prefLabel> "Final Weight"@en ;
              :elucidation "The final weight of the coated substrate plate."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Fixture
+###  https://www.cobrain-project.eu/ontology/cobrain#Fixture
 :Fixture rdf:type owl:Class ;
          rdfs:subClassOf :HoldingSystem ,
                          :ThermalSprayingComponent ;
@@ -451,7 +466,7 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
          :elucidation "The fixture is a suitably designed system to hold one or more substrates allowing their mounting on a turntable with a suitable geometrical configuration with respect to the thermal spray torch and the manipulator."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#FlowRate
+###  https://www.cobrain-project.eu/ontology/cobrain#FlowRate
 :FlowRate rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
@@ -460,7 +475,7 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
           :elucidation "The volume of a gas passing across the section of a conduit per unit time" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#FractureToughness
+###  https://www.cobrain-project.eu/ontology/cobrain#FractureToughness
 :FractureToughness rdf:type owl:Class ;
                    rdfs:subClassOf elite:Property ;
                    rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
@@ -468,7 +483,7 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
                    :elucidation "Toughness is the ability of a material to resist fracture or failure when subjected to stress, shock, or impact. It is a property of a material that combines its strength and its ability to absorb energy without breaking." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#FrictionCoefficient
+###  https://www.cobrain-project.eu/ontology/cobrain#FrictionCoefficient
 :FrictionCoefficient rdf:type owl:Class ;
                      rdfs:subClassOf elite:Property ;
                      rdfs:isDefinedBy "ISO 80000-4:2019" ;
@@ -481,25 +496,25 @@ ASTM G77-17: Block-on-Ring Sliding Test""" ,
 The friction coefficient is a dimensionless value that measures the resistance to relative motion, caused by dissipative effects such as asperity-level adhesion, abrasion, (visco)elastic hysteresis, third-body effects.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#G200NanoIndenter
+###  https://www.cobrain-project.eu/ontology/cobrain#G200NanoIndenter
 :G200NanoIndenter rdf:type owl:Class ;
                   rdfs:subClassOf :NanoIndenter ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter G200" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#GasFeeding
+###  https://www.cobrain-project.eu/ontology/cobrain#GasFeeding
 :GasFeeding rdf:type owl:Class ;
             rdfs:subClassOf :SprayingSubProcess ;
             <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Feeding" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#GasFuelledHVOFTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#GasFuelledHVOFTorch
 :GasFuelledHVOFTorch rdf:type owl:Class ;
                      rdfs:subClassOf :HVOFTorch ;
                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas-Fuelled HVOF torch" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#GasSupplySystem
+###  https://www.cobrain-project.eu/ontology/cobrain#GasSupplySystem
 :GasSupplySystem rdf:type owl:Class ;
                  rdfs:subClassOf :SupplySystem ;
                  rdfs:comment "This system is designed to provide consistent, safe, and high-quality supply of gases to the thermal spray system. Gases other than air are usually taken from compressed gas bottles, although other sources are possible (e.g. in-situ hydrogen generators). The flow can be pressure- and/or volume-flow controlled." ;
@@ -508,7 +523,7 @@ The friction coefficient is a dimensionless value that measures the resistance t
                  :elucidation "The gas supply system feeds and regulates the flow of the various process gases to the thermal spray system" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#GunCoolingSystem
+###  https://www.cobrain-project.eu/ontology/cobrain#GunCoolingSystem
 :GunCoolingSystem rdf:type owl:Class ;
                   rdfs:subClassOf :CoolingSystem ;
                   rdfs:comment """The gun cooling system can use either liquids (deionized water), gases (compressed air), or a mixture or both.
@@ -519,17 +534,17 @@ The system can feature flow meters and temperature sensors to monitor the flow r
                   :elucidation "A system that delivers a liquid or gaseous cooling fluid to the thermal spray torch to prevent overheating of critical parts" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#H2FlowRate
+###  https://www.cobrain-project.eu/ontology/cobrain#H2FlowRate
 :H2FlowRate rdf:type owl:Class ;
             rdfs:subClassOf :FlowRate .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#H2Pressure
+###  https://www.cobrain-project.eu/ontology/cobrain#H2Pressure
 :H2Pressure rdf:type owl:Class ;
             rdfs:subClassOf :Pressure .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HVAF
+###  https://www.cobrain-project.eu/ontology/cobrain#HVAF
 :HVAF rdf:type owl:Class ;
       rdfs:subClassOf :ThermalSpraying ;
       rdfs:comment """HVAF (High Velocity Air Fuel) is a thermal spray process similar to HVOF but using compressed air instead of pure oxygen as the comburent. Fuels are typically gaseous (propane, propylene); powder injection is typically axial in the combustion chamber. Nozzles may feature a secondary air-fuel injection. Fuel mixtures, e.g. propane+hydrogen, can sometimes be employed.
@@ -543,7 +558,7 @@ Compressed air is also used to cool the torch before being injected into the com
       :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of air and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HVAFTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#HVAFTorch
 :HVAFTorch rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayTorch ;
            rdfs:comment """HVAF torches can usually be fit with multiple, interchangeable, and separate combustion chambers and nozzles, offering more hardware variety in a single device than do HVOF torches. Often, the combustion chamber ends with a converging/diverging nozzle and a separate, secondary nozzle is installed downstream of the chamber-integrated nozzle.
@@ -555,7 +570,7 @@ Process gas flows are usually regulated by adjusting their inlet pressure, whils
            :elucidation "A thermal spray torch specifically designed to perform the HVAF process" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HVOF
+###  https://www.cobrain-project.eu/ontology/cobrain#HVOF
 :HVOF rdf:type owl:Class ;
       rdfs:subClassOf :ThermalSpraying ;
       rdfs:comment """Fuels can be liquid (e.g. kerosene), gaesous (e.g. hydrogen, propane, prolpylene, ethene, ecc.)
@@ -572,7 +587,7 @@ Expansion nozzles can be converging or converging/diverging (De Laval type) and 
       :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of oxygen and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HVOFTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#HVOFTorch
 :HVOFTorch rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayTorch ;
            rdfs:comment """HVOF torches are available in multiple variants that differ in construction details such as presence/absence of a distinct combustion chamber, type of nozzle, presence or absence of interchangeable barrels after the nozzle, powder injection location, fuel type, which result in different particle velocity/temperature combinations:
@@ -594,31 +609,31 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
            :elucidation "A thermal spray torch specifically designed to perform the HVOF process" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HighPressureColdSpraying
+###  https://www.cobrain-project.eu/ontology/cobrain#HighPressureColdSpraying
 :HighPressureColdSpraying rdf:type owl:Class ;
                           rdfs:subClassOf :ColdSpray ;
                           <http://www.w3.org/2004/02/skos/core#prefLabel> "High Pressure Cold Spraying" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HighSpeed3DMapping
+###  https://www.cobrain-project.eu/ontology/cobrain#HighSpeed3DMapping
 :HighSpeed3DMapping rdf:type owl:Class ;
                     rdfs:subClassOf :Nanoindentation ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "High-Speed 3D Mapping" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#HoldingSystem
+###  https://www.cobrain-project.eu/ontology/cobrain#HoldingSystem
 :HoldingSystem rdf:type owl:Class ;
                rdfs:subClassOf elite:System ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Holding System" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#IndentationCurve
+###  https://www.cobrain-project.eu/ontology/cobrain#IndentationCurve
 :IndentationCurve rdf:type owl:Class ;
                   rdfs:subClassOf elite:Property ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation Curve" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#IndentationHardness
+###  https://www.cobrain-project.eu/ontology/cobrain#IndentationHardness
 :IndentationHardness rdf:type owl:Class ;
                      rdfs:subClassOf elite:Property ;
                      rdfs:seeAlso """SO 14577-1:2015
@@ -637,25 +652,25 @@ Indentation hardness is specifically told into:
 - Nano-hardness: h ≤ 0.2 μm""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Indenter
+###  https://www.cobrain-project.eu/ontology/cobrain#Indenter
 :Indenter rdf:type owl:Class ;
           rdfs:subClassOf :NanoIndenterComponent ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#InitialWeight
+###  https://www.cobrain-project.eu/ontology/cobrain#InitialWeight
 :InitialWeight rdf:type owl:Class ;
                rdfs:subClassOf :PlateWeight ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Initial Weight"@en ;
                :elucidation "The initial weight of the uncoated substrate plate (after substrate preparation, e.g. grit-blasting and acetone-cleaning)"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Length
+###  https://www.cobrain-project.eu/ontology/cobrain#Length
 :Length rdf:type owl:Class ;
         rdfs:subClassOf elite:Property .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#LinearThermalExpansionCoefficient
+###  https://www.cobrain-project.eu/ontology/cobrain#LinearThermalExpansionCoefficient
 :LinearThermalExpansionCoefficient rdf:type owl:Class ;
                                    rdfs:subClassOf elite:Property ;
                                    rdfs:isDefinedBy "ISO 80000-5:2019" ;
@@ -663,7 +678,7 @@ Indentation hardness is specifically told into:
                                    :elucidation "Relative change of length of a material with temperature." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#LiquidFuelSupplySystem
+###  https://www.cobrain-project.eu/ontology/cobrain#LiquidFuelSupplySystem
 :LiquidFuelSupplySystem rdf:type owl:Class ;
                         rdfs:subClassOf :SupplySystem ;
                         rdfs:comment "The system is typically based on a volumetric pump. Fuels such as kerosene or paraffin are taken from tanks. This system is usually equipped only in thermal spray system intended to operate with a liquid-fuelled HVOF torch." ;
@@ -673,19 +688,19 @@ Indentation hardness is specifically told into:
                         :elucidation "The liquid fuel supply system feeds and regulated the flow of liquid fuels to a thermal spray system" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#LiquidFuelledHVOFTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#LiquidFuelledHVOFTorch
 :LiquidFuelledHVOFTorch rdf:type owl:Class ;
                         rdfs:subClassOf :HVOFTorch ;
                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid-Fuelled HVOF torch" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#LowPressureColdSpraying
+###  https://www.cobrain-project.eu/ontology/cobrain#LowPressureColdSpraying
 :LowPressureColdSpraying rdf:type owl:Class ;
                          rdfs:subClassOf :ColdSpray ;
                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Low Pressure Cold Spraying" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Manipulator
+###  https://www.cobrain-project.eu/ontology/cobrain#Manipulator
 :Manipulator rdf:type owl:Class ;
              rdfs:subClassOf elite:Device ;
              rdfs:comment """Definition adapted from EN 1395-6:2007: Thermal spraying - Acceptance inspection of thermal spraying equipment - Part 6: Manipulator systems.
@@ -706,7 +721,7 @@ The manipulator can optionally be synchronized with the turntable to add one mor
              :elucidation "Manipulators are employed to move the thermal spray torch with respect to the substrate or, more infrequently, to move the substrate with respect to a stationary thermal spray torch." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Masking
+###  https://www.cobrain-project.eu/ontology/cobrain#Masking
 :Masking rdf:type owl:Class ;
          rdfs:subClassOf :SubstratePreparation ;
          rdfs:comment """This process is necessary to prevent deposit formation on areas where it is not wanted. It also improves the uniformity of the deposit when coating limited areas.
@@ -725,45 +740,45 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
          :elucidation "The process consists of applying a physical protection to prevent deposit adhesion to areas of the substrate not to be coated" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#MassFlowFeeder
+###  https://www.cobrain-project.eu/ontology/cobrain#MassFlowFeeder
 :MassFlowFeeder rdf:type owl:Class ;
                 rdfs:subClassOf :PowderFeeder ;
                 owl:disjointWith :VolumeFlowFeeder ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Mass Flow Feeder" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#MediumPressureColdSpraying
+###  https://www.cobrain-project.eu/ontology/cobrain#MediumPressureColdSpraying
 :MediumPressureColdSpraying rdf:type owl:Class ;
                             rdfs:subClassOf :ColdSpray ;
                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Medium Pressure Cold Spraying" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#NanoIndenter
+###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenter
 :NanoIndenter rdf:type owl:Class ;
               rdfs:subClassOf elite:Device ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter" ;
               :elucidation "The Nano Indenter G200 indentation testing system, designed for nanoscale measurements during characterization and development of a wide range of materials." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#NanoIndenterComponent
+###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenterComponent
 :NanoIndenterComponent rdf:type owl:Class ;
                        rdfs:subClassOf elite:Component ;
                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter Component"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Nanoindentation
+###  https://www.cobrain-project.eu/ontology/cobrain#Nanoindentation
 :Nanoindentation rdf:type owl:Class ;
                  rdfs:subClassOf :Characterization ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#NominalComposition
+###  https://www.cobrain-project.eu/ontology/cobrain#NominalComposition
 :NominalComposition rdf:type owl:Class ;
                     rdfs:subClassOf elite:Property ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "NominalComposition" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Nozzle
+###  https://www.cobrain-project.eu/ontology/cobrain#Nozzle
 :Nozzle rdf:type owl:Class ;
         rdfs:subClassOf :TorchComponent ;
         rdfs:comment """Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification.
@@ -774,38 +789,38 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
         :elucidation "The nozzle is the part of a thermal spray gun that contains the outlet opening for the spray jet" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#NumberOfCycles
+###  https://www.cobrain-project.eu/ontology/cobrain#NumberOfCycles
 :NumberOfCycles rdf:type owl:Class ;
                 rdfs:subClassOf :ThermalSprayingProcessProperty ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Number of Cycles"@en ;
                 :elucidation "The number of repetitions of the toolpath program"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#NumberOfPassesPerCycle
+###  https://www.cobrain-project.eu/ontology/cobrain#NumberOfPassesPerCycle
 :NumberOfPassesPerCycle rdf:type owl:Class ;
                         rdfs:subClassOf :ThermalSprayingProcessProperty ;
                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Number of Passes Per Cycles"@en ;
                         :elucidation "The number of passes within a single repetition of the toolpath program"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#NumberOfPreHeatingPasses
+###  https://www.cobrain-project.eu/ontology/cobrain#NumberOfPreHeatingPasses
 :NumberOfPreHeatingPasses rdf:type owl:Class ;
                           rdfs:subClassOf :ThermalSprayingProcessProperty ;
                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Number of Pre-Heating Passes"@en ;
                           :elucidation "The number of preheating passes"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#O2FlowRate
+###  https://www.cobrain-project.eu/ontology/cobrain#O2FlowRate
 :O2FlowRate rdf:type owl:Class ;
             rdfs:subClassOf :FlowRate .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#O2Pressure
+###  https://www.cobrain-project.eu/ontology/cobrain#O2Pressure
 :O2Pressure rdf:type owl:Class ;
             rdfs:subClassOf :Pressure .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ParticleSizeDistribution
+###  https://www.cobrain-project.eu/ontology/cobrain#ParticleSizeDistribution
 :ParticleSizeDistribution rdf:type owl:Class ;
                           rdfs:subClassOf elite:Property ;
                           rdfs:isDefinedBy "ISO 13320:2020 - Particle size analysis — Laser diffraction method" ,
@@ -820,7 +835,7 @@ It is measured by laser scattering, sieving, or image analysis on optical or SEM
 The distribution is summarized by the 10th, 50th and 90th quantiles or by average and standard deviation.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PhaseComposition
+###  https://www.cobrain-project.eu/ontology/cobrain#PhaseComposition
 :PhaseComposition rdf:type owl:Class ;
                   rdfs:subClassOf elite:Property ;
                   rdfs:seeAlso """EN 13925-1:2003
@@ -833,20 +848,20 @@ The pattern obtained by diffraction of a monochromatic beam of X-rays from a sam
 Fitting of the experimental pattern with suitable mathematical functions and integration of peaks' areas allows quantitative assessment of the relative mass fraction of phases by suitable techniques such as the external standard method, internal standard method, or the reference intensity ratio method.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PillarSplitting
+###  https://www.cobrain-project.eu/ontology/cobrain#PillarSplitting
 :PillarSplitting rdf:type owl:Class ;
                  rdfs:subClassOf :Nanoindentation ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Pillar Splitting" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Pitch
+###  https://www.cobrain-project.eu/ontology/cobrain#Pitch
 :Pitch rdf:type owl:Class ;
        rdfs:subClassOf :ThermalSprayingProcessProperty ;
        <http://www.w3.org/2004/02/skos/core#prefLabel> "Pitch"@en ;
        :elucidation "The pitch distance"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PlateWeight
+###  https://www.cobrain-project.eu/ontology/cobrain#PlateWeight
 :PlateWeight rdf:type owl:Class ;
              rdfs:subClassOf :ThermalSprayingProcessProperty ,
                              :Weight ,
@@ -858,7 +873,7 @@ Fitting of the experimental pattern with suitable mathematical functions and int
                                                              "The weight of the substrate plate with or without deposited substrate."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PlateWeightGain
+###  https://www.cobrain-project.eu/ontology/cobrain#PlateWeightGain
 :PlateWeightGain rdf:type owl:Class ;
                  rdfs:subClassOf :ThermalSprayingProcessProperty ,
                                  :Weight ;
@@ -866,7 +881,7 @@ Fitting of the experimental pattern with suitable mathematical functions and int
                  :elucidation "The mass gain of the plate after coating"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PoreSize
+###  https://www.cobrain-project.eu/ontology/cobrain#PoreSize
 :PoreSize rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:isDefinedBy "ISO 15901-1:2016 (mercury intrusion porosimetry)" ;
@@ -875,7 +890,7 @@ Fitting of the experimental pattern with suitable mathematical functions and int
 The pore size in a material can be conveyed either through a complete distribution curve or through an average value. It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Porosity
+###  https://www.cobrain-project.eu/ontology/cobrain#Porosity
 :Porosity rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:isDefinedBy "ASTM E2109-01(2021) - Porosity of thermal spray coatings by image analysis" ,
@@ -885,18 +900,18 @@ The pore size in a material can be conveyed either through a complete distributi
           :elucidation "Porosity refers to the volume percentage of void space in a material. It is defined as the ratio of the volume of pores or voids in a material to the total volume of the material. . It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Powder
+###  https://www.cobrain-project.eu/ontology/cobrain#Powder
 :Powder rdf:type owl:Class ;
         rdfs:subClassOf elite:Material ,
                         elite:Solid .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PowderFeedRate
+###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedRate
 :PowderFeedRate rdf:type owl:Class ;
                 rdfs:subClassOf :FeedRate .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PowderFeeder
+###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeeder
 :PowderFeeder rdf:type owl:Class ;
               rdfs:subClassOf :SupplySystem ;
               rdfs:comment """The definition is adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification.
@@ -914,7 +929,7 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
               :elucidation "The powder feeder is a system for a controlled supply of powder feedstock to a thermal spray torch" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PowderFeeding
+###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeeding
 :PowderFeeding rdf:type owl:Class ;
                rdfs:subClassOf :SprayingSubProcess ;
                rdfs:comment "Powder feeding is done using either gravimetric or volumetric powder feeders. The feed rate is usually measured as a mass flow rate. The powder is usually carried with a flow of inert gas (nitrogen, argon)." ;
@@ -923,7 +938,7 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
                :elucidation "Powder feeding is the process of supplying the powder feedstock to a thermal spray torch at a controlled rate." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PowderFeedstock
+###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedstock
 :PowderFeedstock rdf:type owl:Class ;
                  rdfs:subClassOf :ThermalSprayingComponent ;
                  rdfs:comment "Particle sizes are usually between 5 and 100 microns in size, and can be made from a variety of materials, such as metals, ceramics, polymers, and composites. The exact particle size distribution is an important process parameter and mist be tailored to the specific thermal spray process, the type of material, and the desired outcome/intended application."@en ;
@@ -935,7 +950,7 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
                  :elucidation "Powder feedstock is a material in powder form used produce a coating on a substrate by feeding into a thermal spray torch"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PreHeating
+###  https://www.cobrain-project.eu/ontology/cobrain#PreHeating
 :PreHeating rdf:type owl:Class ;
             rdfs:subClassOf :SprayingStage ;
             rdfs:comment """Pre-heating can be achieved either by using a separate heating system or, more frequently, by performing one or more passes of the torch onto the substrate without powder feed to increase the substrate temperature using the heat of the gas jet itself.
@@ -946,7 +961,7 @@ Pre-heating serves multiple purposes: it removed adsorbates and condensates (e.g
             :elucidation "Pre-heating is a sub-process of thermal spray whereby the temperature of the substrate is increased above room temperature shortly before deposition so that the substrate temperature is higher than room temperature when deposition begins." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Pressure
+###  https://www.cobrain-project.eu/ontology/cobrain#Pressure
 :Pressure rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
@@ -954,20 +969,20 @@ Pre-heating serves multiple purposes: it removed adsorbates and condensates (e.g
           :elucidation "Quotient of the component of a force normal to a surface and its area" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PressurelessFeeder
+###  https://www.cobrain-project.eu/ontology/cobrain#PressurelessFeeder
 :PressurelessFeeder rdf:type owl:Class ;
                     rdfs:subClassOf :PowderFeeder ;
                     owl:disjointWith :PressurizedFeeder ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressureless Feeder" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#PressurizedFeeder
+###  https://www.cobrain-project.eu/ontology/cobrain#PressurizedFeeder
 :PressurizedFeeder rdf:type owl:Class ;
                    rdfs:subClassOf :PowderFeeder ;
                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressurized Feeder" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ProcessMonitoring
+###  https://www.cobrain-project.eu/ontology/cobrain#ProcessMonitoring
 :ProcessMonitoring rdf:type owl:Class ;
                    rdfs:subClassOf :SprayingSubProcess ;
                    rdfs:comment """Process monitoring includes both parameters directly measured by the control unit, and measures from additional sensors such as pyrometers/thermocameras for substrate temperature, in-flight process diagnostics for particle velocities/temperatures, etc.
@@ -978,7 +993,7 @@ These can be or not be integrated into a single monitoring system.""" ;
                    :elucidation "Measuring and controlling key parameters of the thermal spray process in real-time, such as gas flow rates, powder feed rate, substrate temperature, robot movements, etc." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ResidualStress
+###  https://www.cobrain-project.eu/ontology/cobrain#ResidualStress
 :ResidualStress rdf:type owl:Class ;
                 rdfs:subClassOf elite:Property ;
                 rdfs:isDefinedBy "EN 15305:2018 - Residual stress measurement by XRD" ;
@@ -991,13 +1006,13 @@ Residual stresses can be measured non-destructively by X-ray diffraction or (les
 Micro-scale measurements of residual stresses  are carried out by Focused Ion Beam (FIB) milling coupled with Digital Image Correlation (DIC).""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#RobotManipulator
+###  https://www.cobrain-project.eu/ontology/cobrain#RobotManipulator
 :RobotManipulator rdf:type owl:Class ;
                   rdfs:subClassOf :Manipulator ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Robot Manipulator" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Roughening
+###  https://www.cobrain-project.eu/ontology/cobrain#Roughening
 :Roughening rdf:type owl:Class ;
             rdfs:subClassOf :SubstratePreparation ;
             rdfs:comment "The substrate roughening in most cases is achieved by grit blasting: a compressed air stream containing abrasive particles is directed, through a nozzle, toward the part to be treated. It is also possible to use water jets with pressures, or to machine with suitably profiled tools (e.g. dove-tail profiles). Grit blasting or water jet roughening also induces compressive stress in the first tenths of mm below the substrate-roughened surface." ;
@@ -1010,7 +1025,7 @@ Micro-scale measurements of residual stresses  are carried out by Focused Ion Be
             :elucidation "Roughening the surface to provide asperities or irregularities to enhance coating adhesion and provide a larger effective surface." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Roughness
+###  https://www.cobrain-project.eu/ontology/cobrain#Roughness
 :Roughness rdf:type owl:Class ;
            rdfs:subClassOf elite:Property ;
            rdfs:isDefinedBy "ISO 21920-2:2021 (profile surface texture)" ,
@@ -1020,13 +1035,13 @@ Micro-scale measurements of residual stresses  are carried out by Focused Ion Be
 The roughness of a profile/surface can be conveyed by calculating one or more of a series of scalar parameters on the basis of a data matrix containing the complete roughness profile/surface.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SAESteelGrade
+###  https://www.cobrain-project.eu/ontology/cobrain#SAESteelGrade
 :SAESteelGrade rdf:type owl:Class ;
                rdfs:subClassOf elite:Property ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "SAE Steel Grade"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Sample
+###  https://www.cobrain-project.eu/ontology/cobrain#Sample
 :Sample rdf:type owl:Class ;
         rdfs:subClassOf elite:Object ,
                         [ rdf:type owl:Restriction ;
@@ -1035,7 +1050,7 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
                         ] .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SpecificWearRate
+###  https://www.cobrain-project.eu/ontology/cobrain#SpecificWearRate
 :SpecificWearRate rdf:type owl:Class ;
                   rdfs:subClassOf :WearRate ;
                   rdfs:seeAlso """ASTM G99-17: Pin-on-Disc Sliding Test
@@ -1048,7 +1063,7 @@ ASTM D4060-19: Taber Abrasion Test""" ;
 It can be measured for sliding, rolling/sliding, and abrasive wear processes.""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SprayJet
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayJet
 :SprayJet rdf:type owl:Class ;
           rdfs:subClassOf :ThermalSprayingComponent ;
           rdfs:comment """The definition is taken from ISO 14917:2017: Thermal Spraying - Terminology, classification.
@@ -1061,7 +1076,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
           :elucidation "The stream of particles emerging from the thermal spray torch." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SprayTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayTorch
 :SprayTorch rdf:type owl:Class ;
             rdfs:subClassOf elite:Device ;
             rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
@@ -1072,7 +1087,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
             <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Torch" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SprayedMass
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayedMass
 :SprayedMass rdf:type owl:Class ;
              rdfs:subClassOf :ThermalSprayingProcessProperty ,
                              :Weight ;
@@ -1080,7 +1095,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
              :elucidation "The mass of powder sprayed onto a single substrate plate."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Spraying
+###  https://www.cobrain-project.eu/ontology/cobrain#Spraying
 :Spraying rdf:type owl:Class ;
           rdfs:subClassOf elite:Process ,
                           [ rdf:type owl:Restriction ;
@@ -1096,7 +1111,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SprayingEfficiency
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayingEfficiency
 :SprayingEfficiency rdf:type owl:Class ;
                     rdfs:subClassOf :ThermalSprayingProcessProperty ;
                     <http://www.w3.org/2004/02/skos/core#altLabel> "Deposition Efficiency"@en ;
@@ -1104,7 +1119,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                     :elucidation "The ratio between the mass gain of a plate after coating and the calculated mass of powder sprayed onto a single substrate plate"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SprayingStage
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayingStage
 :SprayingStage rdf:type owl:Class ;
                rdfs:subClassOf elite:Process ,
                                [ rdf:type owl:Restriction ;
@@ -1114,7 +1129,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Stage" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SprayingSubProcess
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayingSubProcess
 :SprayingSubProcess rdf:type owl:Class ;
                     rdfs:subClassOf elite:Process ,
                                     [ rdf:type owl:Restriction ;
@@ -1124,7 +1139,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Sub Process" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Stabilization
+###  https://www.cobrain-project.eu/ontology/cobrain#Stabilization
 :Stabilization rdf:type owl:Class ;
                rdfs:subClassOf :SprayingStage ;
                rdfs:comment "Powder feeders usually take a brief time, from some tens of seconds to a few minutes, to deliver a constant feed rate upon first startup. The powder feeding must be allowed to stabilize before the torch is moved onto the substrate to avoid irregularities and poor deposit quality which would happen if the feed rate is not constant. The stabilization stage also allows to prevent issues that might arise from feeder malfunction, as this would be detected during the stabilization period and the substrate would not be compromised by an irregular deposition from a malfunctioning feeder." ;
@@ -1132,20 +1147,20 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                :elucidation "Stabilization is a sub-process of thermal spray during which the powder feed rate is made to stabilize while the torch is not depositing material onto the substrate" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Standoff
+###  https://www.cobrain-project.eu/ontology/cobrain#Standoff
 :Standoff rdf:type owl:Class ;
           rdfs:subClassOf :ThermalSprayingProcessProperty ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Stand-Off"@en ;
           :elucidation "The torch-substrate stand-off distance."@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Steel
+###  https://www.cobrain-project.eu/ontology/cobrain#Steel
 :Steel rdf:type owl:Class ;
        rdfs:subClassOf elite:CondensedMatter ,
                        :Alloy .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Substrate
+###  https://www.cobrain-project.eu/ontology/cobrain#Substrate
 :Substrate rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayingComponent ;
            rdfs:comment "Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification."@en ;
@@ -1156,7 +1171,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
            :elucidation "The object to be coated (entirely or in part) in a thermal spray process"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SubstrateCoolingSystem
+###  https://www.cobrain-project.eu/ontology/cobrain#SubstrateCoolingSystem
 :SubstrateCoolingSystem rdf:type owl:Class ;
                         rdfs:subClassOf :CoolingSystem ;
                         rdfs:comment """Compressed air is the most typical coolant, but CO2, liquid nitrogen, or even liquid Ar can also be used in special cases.
@@ -1167,7 +1182,7 @@ In addition to cooling, the jet also serves the purpose of limiting the amount o
                         :elucidation "A system that delivers a stream of coolant to the substrate surface" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SubstratePreparation
+###  https://www.cobrain-project.eu/ontology/cobrain#SubstratePreparation
 :SubstratePreparation rdf:type owl:Class ;
                       rdfs:subClassOf elite:Process ;
                       rdfs:comment """The sequence of operations during substrate preparation can vary.
@@ -1179,13 +1194,13 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
                       :elucidation "The purpose of substrate preparation is to allow deposition on selected substrate areas and ensure adequate adhesion of the sprayed material. This process comprises the sub-processes of cleaning, roughening, masking, and tooling." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#SupplySystem
+###  https://www.cobrain-project.eu/ontology/cobrain#SupplySystem
 :SupplySystem rdf:type owl:Class ;
               rdfs:subClassOf elite:System ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Supply System" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Temperature
+###  https://www.cobrain-project.eu/ontology/cobrain#Temperature
 :Temperature rdf:type owl:Class ;
              rdfs:subClassOf elite:Property ;
              rdfs:seeAlso "ISO 80000-5:2019" ;
@@ -1193,13 +1208,13 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
              :elucidation "Partial derivative of internal energy of a system with respect to entropy at constant volume and constant number of particles in the system." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ThermalSpraySystem
+###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSpraySystem
 :ThermalSpraySystem rdf:type owl:Class ;
                     rdfs:subClassOf elite:System ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spray System" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayTorch
+###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayTorch
 :ThermalSprayTorch rdf:type owl:Class ;
                    rdfs:subClassOf :SprayTorch ;
                    rdfs:comment """Definition taken with slight adaptation from ISO 14917:2017: Thermal Spraying - Terminology, classification.
@@ -1211,7 +1226,7 @@ The combustion-based torch design typically consists of a combustion chamber, a 
                    :elucidation "The unit with which the feedstock is heated to the plastic or molten state, accelerated and projected onto the prepared substrate surface." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ThermalSpraying
+###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSpraying
 :ThermalSpraying rdf:type owl:Class ;
                  rdfs:subClassOf :Spraying ;
                  rdfs:comment """Thermal spraying is distinguished by cladding processes by the lack of substrate melting during the process.
@@ -1231,26 +1246,26 @@ The definition is adapted from ISO 14917:2017""" ;
  ] .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayingComponent
+###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingComponent
 :ThermalSprayingComponent rdf:type owl:Class ;
                           rdfs:subClassOf elite:Component ;
                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying System Component"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayingProcessDescription
+###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingProcessDescription
 :ThermalSprayingProcessDescription rdf:type owl:Class ;
                                    rdfs:subClassOf elite:Description ;
                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Description"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#ThermalSprayingProcessProperty
+###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingProcessProperty
 :ThermalSprayingProcessProperty rdf:type owl:Class ;
                                 rdfs:subClassOf elite:Property ;
                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Property"@en ;
                                 :elucidation "A property defined specifically for the description of thermal spraying process"@en .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Thickness
+###  https://www.cobrain-project.eu/ontology/cobrain#Thickness
 :Thickness rdf:type owl:Class ;
            rdfs:subClassOf elite:Property ;
            rdfs:isDefinedBy "ISO 80000-3:2019" ;
@@ -1258,7 +1273,7 @@ The definition is adapted from ISO 14917:2017""" ;
            :elucidation "Minimum length of a straight line segment between two parallel planes enclosing an object" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Tooling
+###  https://www.cobrain-project.eu/ontology/cobrain#Tooling
 :Tooling rdf:type owl:Class ;
          rdfs:subClassOf :SubstratePreparation ;
          rdfs:comment """The tool must be suitable for coupling with the turntable and, together with the turntable and the manipulators/robot, must ensure suitable part configuration and motion with respect to the thermal spray torch.
@@ -1268,13 +1283,13 @@ The sample holder (\"tool\") might include shadow masks. In this case, the proce
          :elucidation "Substrates are attached to a suitable sample holder e.g. through screws or springs." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#TorchComponent
+###  https://www.cobrain-project.eu/ontology/cobrain#TorchComponent
 :TorchComponent rdf:type owl:Class ;
                 rdfs:subClassOf elite:Component ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Torch Component" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Turntable
+###  https://www.cobrain-project.eu/ontology/cobrain#Turntable
 :Turntable rdf:type owl:Class ;
            rdfs:subClassOf elite:Device ;
            rdfs:comment """Turntables can feature simple continuous rotation or be synchronized with the manipulator.
@@ -1286,7 +1301,7 @@ Turntables can also be used to coat planar substrates of limited lateral width t
            :elucidation "The turntable is a rotating device in a thermal spray system onto which the tool holding the substrate(s) is mounted." .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Velocity
+###  https://www.cobrain-project.eu/ontology/cobrain#Velocity
 :Velocity rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           rdfs:isDefinedBy "ISO 80000-3:2019" ;
@@ -1294,7 +1309,7 @@ Turntables can also be used to coat planar substrates of limited lateral width t
           :elucidation "Vector quantity corresponding to the rate of change of position" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#VickersHardness
+###  https://www.cobrain-project.eu/ontology/cobrain#VickersHardness
 :VickersHardness rdf:type owl:Class ;
                  rdfs:subClassOf elite:Property ;
                  rdfs:seeAlso """ISO 6507-1:2018
@@ -1311,35 +1326,35 @@ Vickers hardness is specifically told into:
 - Vickers micro-hardness: 0.009807 N (1 gf) ≤ F < 1.961 N (200 gf)""" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#VolumeFlowFeeder
+###  https://www.cobrain-project.eu/ontology/cobrain#VolumeFlowFeeder
 :VolumeFlowFeeder rdf:type owl:Class ;
                   rdfs:subClassOf :PowderFeeder ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Volume Flow Feeder" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#WearRate
+###  https://www.cobrain-project.eu/ontology/cobrain#WearRate
 :WearRate rdf:type owl:Class ;
           rdfs:subClassOf elite:Property ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Rate" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Weight
+###  https://www.cobrain-project.eu/ontology/cobrain#Weight
 :Weight rdf:type owl:Class ;
         rdfs:subClassOf elite:Property .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#Width
+###  https://www.cobrain-project.eu/ontology/cobrain#Width
 :Width rdf:type owl:Class ;
        rdfs:subClassOf elite:Property .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#XYManipulator
+###  https://www.cobrain-project.eu/ontology/cobrain#XYManipulator
 :XYManipulator rdf:type owl:Class ;
                rdfs:subClassOf :Manipulator ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "X-Y Manipulator" .
 
 
-###  https://www.cobrain-project.eu/thermalspraying#XYZManipulator
+###  https://www.cobrain-project.eu/ontology/cobrain#XYZManipulator
 :XYZManipulator rdf:type owl:Class ;
                 rdfs:subClassOf :Manipulator ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "X-Y-Z Manipulator" .
@@ -1349,7 +1364,7 @@ Vickers hardness is specifically told into:
 #    Individuals
 #################################################################
 
-###  https://www.cobrain-project.eu/thermalspraying#MTSG200-1
+###  https://www.cobrain-project.eu/ontology/cobrain#MTSG200-1
 :MTSG200-1 rdf:type owl:NamedIndividual ,
                     :G200NanoIndenter ;
            <http://www.w3.org/2004/02/skos/core#prefLabel> "MTS G200 UR3" ;
