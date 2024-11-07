@@ -712,6 +712,14 @@ Indentation hardness is specifically told into:
                :elucidation "The initial weight of the uncoated substrate plate (after substrate preparation, e.g. grit-blasting and acetone-cleaning)"@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#LaserPyrometer
+:LaserPyrometer rdf:type owl:Class ;
+                rdfs:subClassOf :Pyrometer ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Laser Pyrometer"@en ;
+                :elucidation """An infrared radiation thermometer that projects a laser beam on to a target and uses the reflected laser energy to calculate the target effective emissivity and automatically correct the target temperature (assuming that the target is a diffuse reflector)
+https://www.iso.org/obp/ui/#iso:std:iso:10878:ed-1:v1:en:term:1.69"""@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#Length
 :Length rdf:type owl:Class ;
         rdfs:subClassOf elite:Property .
@@ -745,6 +753,13 @@ Indentation hardness is specifically told into:
 :LowPressureColdSpraying rdf:type owl:Class ;
                          rdfs:subClassOf :ColdSpray ;
                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Low Pressure Cold Spraying" .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#LuchsingerOPTRISCTlaser
+:LuchsingerOPTRISCTlaser rdf:type owl:Class ;
+                         rdfs:subClassOf :LaserPyrometer ;
+                         rdfs:seeAlso <https://www.optris.com/en/products/infrared-thermometers/cslaser-ctlaser-series/> ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Luchsinger OPTRIS CTlaser"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Manipulator
@@ -1059,6 +1074,18 @@ These can be or not be integrated into a single monitoring system.""" ;
                    <http://www.w3.org/2004/02/skos/core#altLabel> "Process Control" ;
                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Monitoring" ;
                    :elucidation "Measuring and controlling key parameters of the thermal spray process in real-time, such as gas flow rates, powder feed rate, substrate temperature, robot movements, etc." .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometer
+:Pyrometer rdf:type owl:Class ;
+           rdfs:subClassOf elite:Device ;
+           rdfs:seeAlso <https://en.wikipedia.org/wiki/Pyrometer> ;
+           :elucidation "A type of remote sensing thermometer used to measure the temperature of distant objects."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometry
+:Pyrometry rdf:type owl:Class ;
+           rdfs:subClassOf elite:Characterisation .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ResidualStress
@@ -1436,6 +1463,13 @@ Vickers hardness is specifically told into:
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://www.cobrain-project.eu/ontology/cobrain#LuchsingerOPTRISCTlaserUNIMORE
+:LuchsingerOPTRISCTlaserUNIMORE rdf:type owl:NamedIndividual ,
+                                         :LaserPyrometer ;
+                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Luchsinger OPTRIS CTlaser UNIMORE"@en ;
+                                :elucidation "Optical Pyrometer available at UNIMORE for temperature measurements."@en .
+
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#MTSG200-1
 :MTSG200-1 rdf:type owl:NamedIndividual ,
