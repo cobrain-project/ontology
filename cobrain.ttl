@@ -98,11 +98,6 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
-###  https://www.cobrain-project.eu/ontology/cobrain#hasDate
-:hasDate rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf owl:topDataProperty .
-
-
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasDateTime
 :hasDateTime rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
@@ -112,23 +107,27 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
 :hasLotNumber rdf:type owl:DatatypeProperty ;
-              rdfs:range xsd:string .
+              rdfs:range xsd:string ;
+              :elucidation "The lot number of a product that comes in batches."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasNominalComposition
 :hasNominalComposition rdf:type owl:DatatypeProperty ;
-                       rdfs:subPropertyOf owl:topDataProperty .
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       :elucidation "A string that provide information about the composition of a material."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasReferenceUnit
 :hasReferenceUnit rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:range xsd:string .
+                  rdfs:range xsd:string ;
+                  :elucidation "A string that associate a property with a reference unit."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasRunNumber
 :hasRunNumber rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty .
+              rdfs:subPropertyOf owl:topDataProperty ;
+              :elucidation "An integer the specify that the deposition run is a part of a sequence."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSAESteelGrade
@@ -147,12 +146,13 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSampleID
 :hasSampleID rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:domain :Sample .
+             :elucidation "A human friendly non unique identifier that may be used to tag different entities under a same name or keyword."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSerialNumber
 :hasSerialNumber rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:string .
+                 rdfs:range xsd:string ;
+                 :elucidation "The serial number of a product."@en .
 
 
 #################################################################
@@ -252,8 +252,6 @@ After removing all contaminants, parts should be protected from airborne debris 
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Substrate
                                  ] ;
-                 owl:hasKey ( :hasSampleID
-                            ) ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Coated Substrate"@en ;
                  :elucidation "A substrate with a deposited coating layer"@en .
 
