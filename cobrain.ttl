@@ -146,7 +146,8 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSampleID
 :hasSampleID rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             :elucidation "A human friendly non unique identifier that may be used to tag different entities under a same name or keyword."@en .
+             rdfs:comment "The string provided by this data property is a useful tag for querying several ontological entities related to the same set of operanting conditions such as materials or procedures, used to generate a sample."@en ;
+             :elucidation "A human friendly non unique identifier that may be used to tag different entities related to a coated sample preparation or characterization (e.g. the sample, the deposition process) under a same name or keyword."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSerialNumber
