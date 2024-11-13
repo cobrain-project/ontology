@@ -69,22 +69,31 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://www.cobrain-project.eu/ontology/cobrain#isCharacterizedIn
-:isCharacterizedIn rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf elite:participatesTo ;
-                   rdfs:range :Characterization .
+###  https://www.cobrain-project.eu/ontology/cobrain#hasMeasurer
+:hasMeasurer rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf elite:affects ;
+             owl:inverseOf :isMeasurerFor .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#isIndenterFor
-:isIndenterFor rdf:type owl:ObjectProperty ;
+###  https://www.cobrain-project.eu/ontology/cobrain#hasSample
+:hasSample rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf elite:hasInput ;
+           owl:inverseOf :isSampleFor ;
+           rdfs:domain elite:Measurement ;
+           rdfs:range :Sample .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#isMeasurerFor
+:isMeasurerFor rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf elite:participatesTo ;
-               rdfs:domain :Indenter ;
-               rdfs:range :Nanoindentation .
+               rdfs:domain elite:Measurer ;
+               rdfs:range elite:Measurement .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#isInstrumentOf
-:isInstrumentOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf elite:participatesTo .
+###  https://www.cobrain-project.eu/ontology/cobrain#isSampleFor
+:isSampleFor rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf elite:isInputOf ;
+             rdfs:range :Characterization .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isSampleOf
@@ -92,6 +101,19 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
             rdfs:subPropertyOf elite:isRemovedfrom ;
             rdfs:domain :Sample ;
             rdfs:range elite:Object .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#propertyProvidedBy
+:propertyProvidedBy rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf elite:isOutputOf ;
+                    owl:inverseOf :providesProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#providesProperty
+:providesProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf elite:hasOutput ;
+                  rdfs:domain elite:Measurement ;
+                  rdfs:range elite:Property .
 
 
 #################################################################
@@ -107,8 +129,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasDepositionDate
 :hasDepositionDate rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf :hasDateTime ;
-                   rdfs:domain :Spraying .
+                   rdfs:subPropertyOf :hasDateTime .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
