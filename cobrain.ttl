@@ -105,6 +105,12 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
              :elucidation "A reference date and time for an entity."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#hasDepositionDate
+:hasDepositionDate rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :hasDateTime ;
+                   rdfs:domain :Spraying .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
 :hasLotNumber rdf:type owl:DatatypeProperty ;
               rdfs:range xsd:string ;
@@ -219,6 +225,14 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#Alloy
 :Alloy rdf:type owl:Class ;
        rdfs:subClassOf elite:Material .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#AverageMaximaTemperature
+:AverageMaximaTemperature rdf:type owl:Class ;
+                          rdfs:subClassOf :Temperature ,
+                                          :ThermalSprayingProcessProperty ;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Maxima Temperature"@en ;
+                          :elucidation "Average of measured peak temperatures of an entity."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Characterization
@@ -808,6 +822,14 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Mass Flow Feeder" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#MaximaTemperatureStandardDeviation
+:MaximaTemperatureStandardDeviation rdf:type owl:Class ;
+                                    rdfs:subClassOf :Temperature ,
+                                                    :ThermalSprayingProcessProperty ;
+                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Maxima Temperatures Standard Deviation"@en ;
+                                    :elucidation "Standard deviation of measured temperature peaks of an entity."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#MediumPressureColdSpraying
 :MediumPressureColdSpraying rdf:type owl:Class ;
                             rdfs:subClassOf :ColdSpray ;
@@ -1305,6 +1327,15 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
              rdfs:seeAlso "ISO 80000-5:2019" ;
              <http://www.w3.org/2004/02/skos/core#prefLabel> "Temperature" ;
              :elucidation "Partial derivative of internal energy of a system with respect to entropy at constant volume and constant number of particles in the system." .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#TemperaturePeaks
+:TemperaturePeaks rdf:type owl:Class ;
+                  rdfs:subClassOf elite:ArrayData ,
+                                  :Temperature ,
+                                  :ThermalSprayingProcessProperty ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Temperature Peaks"@en ;
+                  :elucidation "An array with the temperature peaks of an entity measured during an interval of time."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSpraySystem
