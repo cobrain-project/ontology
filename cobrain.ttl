@@ -9,7 +9,7 @@
 
 <https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
                                                    owl:versionIRI <https://www.cobrain-project.eu/ontology/cobrain/0.0.1> ;
-                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.1> ;
+                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.2> ;
                                                    <http://purl.org/dc/terms/contributor> """Alvise Bianchin
 Matres scrl
 alvise.bianchin@matres.org""" ,
@@ -24,7 +24,7 @@ https://creativecommons.org/licenses/by/4.0/""" ;
                                                    rdfs:comment """Work performed in the framework of CoBRAIN Project
 Funded under European Commission Horizon Europe: Digital, Industry and Space
 Grant agreement ID: 101092211
-https://doi.org/10.3030/101092211""" .
+https://doi.org/10.3030/101092211"""@en .
 
 #################################################################
 #    Annotation properties
@@ -374,7 +374,7 @@ It can operate on open- or closed-loop principles."""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoolingSystem
 :CoolingSystem rdf:type owl:Class ;
                rdfs:subClassOf elite:System ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooling System" .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooling Systemen"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CorrosionCurrentDensity
@@ -490,7 +490,7 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
           rdfs:seeAlso "Glossary of Terms, in: R.C. Tucker Jr. (Ed.), ASM Handbook Vol. 5A, ASM International, Materials Park, OH, USA, 2013, pp. 351-381." ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Feed Rate" ;
-          :elucidation "The mass of material thatpasses through a given section of a conduit per unit time." .
+          :elucidation "The mass of material that passes through a given section of a conduit per unit time."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FinalWeight
@@ -1045,7 +1045,7 @@ There are various types of powder feeders that can be distinguished into:
 - Pressurized/pressureless feeders - the former type is needed when powder must be fed into a high-pressure region of a thermal spray jet.
 - Volume flow controlled/mass flow controlled feeders. The former typically have simpler construction with systems such as rotating grooved discs or endless screws to feed meters volumes of material. The latter are usually based on an electronic balance with an output-based, closed-loop control and can be based on principles such as fluidized bed systems.
 
-The power is usually uptaken with a flow of carrier gas then trnasports it through a tube toward the torch.""" ;
+The power is usually uptaken with a flow of carrier gas then trnasports it through a tube toward the torch."""@en ;
               rdfs:isDefinedBy "EN 1395-7:2007: Thermal Spraying - Acceptance inspection of thermal spraying equipment - Part 7: Powder feed systems" ,
                                "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
               rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
