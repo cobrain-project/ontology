@@ -141,13 +141,25 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
 :hasLotNumber rdf:type owl:DatatypeProperty ;
               rdfs:range xsd:string ;
+              <http://www.w3.org/2004/02/skos/core#altLabel> "hasBatchReference"@en ;
               :elucidation "The lot number of a product that comes in batches."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#hasMaterialShortName
+:hasMaterialShortName rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasNominalComposition
 :hasNominalComposition rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        :elucidation "A string that provide information about the composition of a material."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#hasNonUniqueID
+:hasNonUniqueID rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:comment "An ID potentially shared by more than one individuals, used to identify individuals sharing a common trait."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasReferenceUnit
@@ -178,15 +190,22 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSampleID
 :hasSampleID rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:subPropertyOf :hasNonUniqueID ;
              rdfs:comment "The string provided by this data property is a useful tag for querying several ontological entities related to the same set of operanting conditions such as materials or procedures, used to generate a sample."@en ;
              :elucidation "A human friendly non unique identifier that may be used to tag different entities related to a coated sample preparation or characterization (e.g. the sample, the deposition process) under a same name or keyword."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSerialNumber
 :hasSerialNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :hasUniqueID ;
                  rdfs:range xsd:string ;
                  :elucidation "The serial number of a product."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#hasUniqueID
+:hasUniqueID rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment "An ID that univocally identifies an individual."@en .
 
 
 #################################################################
@@ -643,6 +662,13 @@ Compressed air is also used to cool the torch before being injected into the com
                                                      "High Velocity Air Fuel" ,
                                                      "High Velocity Air Fuel Spraying" ;
       :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of air and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle." .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#HVAFProperty
+:HVAFProperty rdf:type owl:Class ;
+              rdfs:subClassOf :ThermalSprayingProcessProperty ;
+              rdfs:comment "Property that is specific to HVAF process."@en ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Process Properties"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFTorch
@@ -1133,7 +1159,8 @@ These can be or not be integrated into a single monitoring system.""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometry
 :Pyrometry rdf:type owl:Class ;
-           rdfs:subClassOf elite:Characterisation .
+           rdfs:subClassOf elite:Characterisation ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyrometry"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ResidualStress
