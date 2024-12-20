@@ -9,7 +9,7 @@
 
 <https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
                                                    owl:versionIRI <https://www.cobrain-project.eu/ontology/cobrain/0.0.1> ;
-                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.2> ;
+                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.3> ;
                                                    <http://purl.org/dc/terms/contributor> """Alvise Bianchin
 Matres scrl
 alvise.bianchin@matres.org""" ,
@@ -71,13 +71,15 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasMeasurer
 :hasMeasurer rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf elite:affects ;
+             rdfs:subPropertyOf elite:affects ,
+                                elite:hasInterpreter ;
              owl:inverseOf :isMeasurerFor .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSample
 :hasSample rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf elite:hasInput ;
+           rdfs:subPropertyOf elite:hasInput ,
+                              elite:hasReferent ;
            owl:inverseOf :isSampleFor ;
            rdfs:domain elite:Measurement ;
            rdfs:range :Sample .
@@ -85,15 +87,17 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isMeasurerFor
 :isMeasurerFor rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf elite:participatesTo ;
+               rdfs:subPropertyOf elite:isInterpreterFor ,
+                                  elite:participatesTo ;
                rdfs:domain elite:Measurer ;
                rdfs:range elite:Measurement .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isSampleFor
 :isSampleFor rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf elite:isInputOf ;
-             rdfs:range :Characterization .
+             rdfs:subPropertyOf elite:isInputOf ,
+                                elite:isReferentFor ;
+             rdfs:range elite:Characterisation .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isSampleOf
@@ -105,13 +109,15 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#propertyProvidedBy
 :propertyProvidedBy rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf elite:isOutputOf ;
+                    rdfs:subPropertyOf elite:isOutputOf ,
+                                       elite:isSignFor ;
                     owl:inverseOf :providesProperty .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#providesProperty
 :providesProperty rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf elite:hasOutput ;
+                  rdfs:subPropertyOf elite:hasOutput ,
+                                     elite:hasSign ;
                   rdfs:domain elite:Measurement ;
                   rdfs:range elite:Property .
 
@@ -256,9 +262,9 @@ phenomenon of attachment at the interface between a solid surface and another ma
                           :elucidation "Average of measured peak temperatures of an entity."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#Characterization
-:Characterization rdf:type owl:Class ;
-                  rdfs:subClassOf elite:Process .
+###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisationDevice
+:CharacterisationDevice rdf:type owl:Class ;
+                        rdfs:subClassOf elite:Device .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Cleaning
@@ -480,7 +486,7 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FIB
 :FIB rdf:type owl:Class ;
-     rdfs:subClassOf :Characterization ;
+     rdfs:subClassOf elite:Characterisation ;
      <http://www.w3.org/2004/02/skos/core#prefLabel> "Focused Ion Beam" .
 
 
@@ -859,7 +865,7 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenter
 :NanoIndenter rdf:type owl:Class ;
-              rdfs:subClassOf elite:Device ;
+              rdfs:subClassOf :CharacterisationDevice ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter" ;
               :elucidation "The Nano Indenter G200 indentation testing system, designed for nanoscale measurements during characterization and development of a wide range of materials." .
 
@@ -872,7 +878,7 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Nanoindentation
 :Nanoindentation rdf:type owl:Class ;
-                 rdfs:subClassOf :Characterization ;
+                 rdfs:subClassOf elite:Characterisation ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
 
 
@@ -1120,7 +1126,7 @@ These can be or not be integrated into a single monitoring system.""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometer
 :Pyrometer rdf:type owl:Class ;
-           rdfs:subClassOf elite:Device ;
+           rdfs:subClassOf :CharacterisationDevice ;
            rdfs:seeAlso <https://en.wikipedia.org/wiki/Pyrometer> ;
            :elucidation "A type of remote sensing thermometer used to measure the temperature of distant objects."@en .
 
@@ -1234,7 +1240,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Spraying
 :Spraying rdf:type owl:Class ;
-          rdfs:subClassOf elite:Process ,
+          rdfs:subClassOf :SprayingRelatedProcess ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty [ owl:inverseOf elite:isStageOf
                                            ] ;
@@ -1256,9 +1262,14 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                     :elucidation "The ratio between the mass gain of a plate after coating and the calculated mass of powder sprayed onto a single substrate plate"@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#SprayingRelatedProcess
+:SprayingRelatedProcess rdf:type owl:Class ;
+                        rdfs:subClassOf elite:Process .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#SprayingStage
 :SprayingStage rdf:type owl:Class ;
-               rdfs:subClassOf elite:Process ,
+               rdfs:subClassOf :SprayingRelatedProcess ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty elite:isStageOf ;
                                  owl:someValuesFrom :Spraying
@@ -1268,7 +1279,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SprayingSubProcess
 :SprayingSubProcess rdf:type owl:Class ;
-                    rdfs:subClassOf elite:Process ,
+                    rdfs:subClassOf :SprayingRelatedProcess ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty elite:isSubProcessOf ;
                                       owl:someValuesFrom :Spraying
@@ -1326,7 +1337,7 @@ In addition to cooling, the jet also serves the purpose of limiting the amount o
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SubstratePreparation
 :SubstratePreparation rdf:type owl:Class ;
-                      rdfs:subClassOf elite:Process ;
+                      rdfs:subClassOf :SprayingRelatedProcess ;
                       rdfs:comment """The sequence of operations during substrate preparation can vary.
 Cleaning can be done before and/or after roughening, the latter also exerting a cleaning action. Masking is optional and not necessary in every case, and it can be done before or after roughening, before or after tooling, or the tool itself can include a shadow mask.""" ;
                       rdfs:isDefinedBy "EN 13507:2018: Thermal Spraying - Pre-treatment of surfaces of metallic parts and components for thermal spraying" ;
