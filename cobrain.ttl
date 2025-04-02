@@ -277,6 +277,12 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
                      :elucidation "The code for the HVAF secondary nozzle type."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#substrateDimensions
+:substrateDimensions rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     :elucidation "The dimensions of the substrate, not necessarily related to deposition surface."@en .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -433,6 +439,20 @@ phenomenon of attachment at the interface between a solid surface and another ma
                           :elucidation "Average of measured peak temperatures of an entity."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#BlastingMediaConsumption
+:BlastingMediaConsumption rdf:type owl:Class ;
+                          rdfs:subClassOf :GritBlastingProcessProperties ;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Blasting Media Consumption"@en ;
+                          :elucidation "The mass flow rate of abrasive consumed during the sandblasting process."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#BlastingMediaConsumptionPerLayer
+:BlastingMediaConsumptionPerLayer rdf:type owl:Class ;
+                                  rdfs:subClassOf :GritBlastingProcessProperties ;
+                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Blasting Media Consumption Per Layer"@en ;
+                                  :elucidation "The mass flow rate of abrasive consumed per layer during the sandblasting process."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#Cantor
 :Cantor rdf:type owl:Class ;
         owl:equivalentClass [ rdf:type owl:Restriction ;
@@ -514,6 +534,14 @@ After removing all contaminants, parts should be protected from airborne debris 
                                                         "Layer"@en ;
          <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating"@en ;
          :elucidation "A layer of material built up onto the substrate by a thermal spray process"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#CoatingWeight
+:CoatingWeight rdf:type owl:Class ;
+               rdfs:subClassOf :ThermalSprayingProcessProperty ;
+               rdfs:comment "The difference between the initial weight and the final weight provides the coating weight value, which is a direct measure of the amount of material deposited on the substrate during the process. This calculation is useful for monitoring the effectiveness of the deposition process, the amount of material used, and the quality of the applied coating"@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating Weight"@en ;
+               :elucidation "The weight of the coating applied to the substrate, determined by measuring the weight of the sample before and after the coating has been deposed."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ColdSpray
@@ -619,6 +647,14 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
             :elucidation "Deposition is the stage of the thermal spray process during which the coating is built up onto the substrate." .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#DepositionArea
+:DepositionArea rdf:type owl:Class ;
+                rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                rdfs:comment "This area may differ from the total dimensions of the specimen based on the equipment used to block the samples during the process."@en ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Area"@en ;
+                :elucidation "The area on which the material will actually be deposited and which will be used in subsequent calculations."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#DepositionLength
 :DepositionLength rdf:type owl:Class ;
                   rdfs:subClassOf :Length ,
@@ -648,7 +684,8 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#DepositionSpeed
 :DepositionSpeed rdf:type owl:Class ;
-                 rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                 rdfs:subClassOf :ThermalSprayingProcessProperty ,
+                                 :Velocity ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Speed"@en ;
                  :elucidation "The relative traverse speed between torch and substrate"@en .
 
@@ -801,9 +838,47 @@ The friction coefficient is a dimensionless value that measures the resistance t
               :elucidation "Method of cleaning or finishing using an abrasive in a stream of compressed air, with or without water"@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingAirPressure
+:GritBlastingAirPressure rdf:type owl:Class ;
+                         rdfs:subClassOf :GritBlastingProcessProperties ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting Air Pressure"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelFirstStagePressure
+:GritBlastingGPLFuelFirstStagePressure rdf:type owl:Class ;
+                                       rdfs:subClassOf :GritBlastingProcessProperties .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelSecondStagePressure
+:GritBlastingGPLFuelSecondStagePressure rdf:type owl:Class ;
+                                        rdfs:subClassOf :GritBlastingProcessProperties .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelTotalConsumptionPerLayer
+:GritBlastingGPLFuelTotalConsumptionPerLayer rdf:type owl:Class ;
+                                             rdfs:subClassOf :GritBlastingProcessProperties ;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Total Consumption Per Layer"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelTotalFlowRate
+:GritBlastingGPLFuelTotalFlowRate rdf:type owl:Class ;
+                                  rdfs:subClassOf :GritBlastingProcessProperties .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingN2CarrierConsumptionPerLayer
+:GritBlastingN2CarrierConsumptionPerLayer rdf:type owl:Class ;
+                                          rdfs:subClassOf :GritBlastingProcessProperties .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingN2CarrierFlowRate
+:GritBlastingN2CarrierFlowRate rdf:type owl:Class ;
+                               rdfs:subClassOf :GritBlastingProcessProperties .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingProcessProperties
 :GritBlastingProcessProperties rdf:type owl:Class ;
-                               rdfs:subClassOf elite:Property .
+                               rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting Process Properties"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GunCoolingSystem
@@ -880,7 +955,8 @@ Compressed air is also used to cool the torch before being injected into the com
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFGPLFuelTotalConsumptionPerLayer
 :HVAFGPLFuelTotalConsumptionPerLayer rdf:type owl:Class ;
                                      rdfs:subClassOf :HVAFProperty ;
-                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel Total Consumption Per Layer"@en .
+                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel Total Consumption Per Layer"@en ;
+                                     :elucidation "Volume of liquid LPG used for each layer per unit of surface area."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFGPLFuelTotalFlowRate
@@ -892,7 +968,7 @@ Compressed air is also used to cool the torch before being injected into the com
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFN2CarrierConsumptionPerLayer
 :HVAFN2CarrierConsumptionPerLayer rdf:type owl:Class ;
                                   rdfs:subClassOf :HVAFProperty ;
-                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF N2 Carrier Consumption Per Layer"@en .
+                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF N₂ Carrier Consumption Per Layer"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFN2CarrierFlowRate
@@ -1154,7 +1230,14 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NominalComposition
 :NominalComposition rdf:type owl:Class ;
                     rdfs:subClassOf elite:Property ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "NominalComposition" .
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Nominal Composition"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#NominalElectricityConsumption
+:NominalElectricityConsumption rdf:type owl:Class ;
+                               rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Nominal Electricity Consumption"@en ;
+                               :elucidation "The electrical energy consumption of the spraying process, calculated per second per unit of surface and per layer."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Nozzle
@@ -1350,6 +1433,12 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
                  :elucidation "Powder feedstock is a material in powder form used produce a coating on a substrate by feeding into a thermal spray torch"@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedstockPerLayer
+:PowderFeedstockPerLayer rdf:type owl:Class ;
+                         rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feedstock Per Layer"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#PreHeating
 :PreHeating rdf:type owl:Class ;
             rdfs:subClassOf :ThermalSprayingStage ;
@@ -1391,6 +1480,13 @@ These can be or not be integrated into a single monitoring system.""" ;
                    <http://www.w3.org/2004/02/skos/core#altLabel> "Process Control" ;
                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Monitoring" ;
                    :elucidation "Measuring and controlling key parameters of the thermal spray process in real-time, such as gas flow rates, powder feed rate, substrate temperature, robot movements, etc." .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#ProcessTimePerLayer
+:ProcessTimePerLayer rdf:type owl:Class ;
+                     rdfs:subClassOf :ThermalSprayingProcessProperty ;
+                     rdfs:comment "Estimated time spent per unit of surface (expressed in cm²) for each layer deposited on the sample."@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Time Per Layer"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometer
@@ -1663,7 +1759,7 @@ The definition is adapted from ISO 14917:2017""" ;
 :ThermalSprayingProcessProperty rdf:type owl:Class ;
                                 rdfs:subClassOf elite:Property ;
                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Property"@en ;
-                                :elucidation "A property defined specifically for the description of thermal spraying process"@en .
+                                :elucidation "A property defined specifically for the description of thermal spraying process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingRelatedProcess
@@ -1815,6 +1911,11 @@ The definition is adapted from ISO 14917:2017""" ;
             <http://purl.org/dc/terms/source> "CoBRAIN CerMet for CGS based on AlMo"@en ;
             <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 19wt% - Al 1 Cr4 Fe21 Ni24Mo30" ;
             <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC30-AlMo" .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Time
+:Time rdf:type owl:Class ;
+      rdfs:subClassOf elite:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Tooling
