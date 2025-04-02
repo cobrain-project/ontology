@@ -130,6 +130,12 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
+###  https://www.cobrain-project.eu/ontology/cobrain#blastingMedia
+:blastingMedia rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :hasHVAFData ;
+               :elucidation "The code for the blasting media used in blasting process for substrate preparation."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasDateTime
 :hasDateTime rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
@@ -144,29 +150,34 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasHVAFData
 :hasHVAFData rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty .
+             rdfs:subPropertyOf owl:topDataProperty ;
+             :elucidation "Data property that refers to HVAF process specific data."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
 :hasLotNumber rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf :hasMBNID ,
                                  :hasUniqueID ;
+              rdf:type owl:FunctionalProperty ;
               rdfs:domain elite:Material ;
               rdfs:range xsd:string ;
+              rdfs:comment "A lot number univocally identify a material batch that can be used by different processes. Since the EMMO represents 4D entities, the domain of this data property is a material entity extending in space and time, including the ramifications when portions of the batch goes through different locations."@en ;
               <http://www.w3.org/2004/02/skos/core#altLabel> "hasBatchReference"@en ;
               :elucidation "MBN ID code for material batches"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasMBNID
 :hasMBNID rdf:type owl:DatatypeProperty ;
-          rdfs:comment "MBN unique ID system"@en .
+          rdfs:comment "The data properties includes uniivocal and non-univocal IDs."@en ;
+          :elucidation "Data properties for the MBN ID system."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasMBNLabCode
 :hasMBNLabCode rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :hasMBNID ,
                                   :hasUniqueID ;
-               rdfs:comment "MBN ID code for laboratory samples"@en .
+               rdf:type owl:FunctionalProperty ;
+               :elucidation "MBN ID code for laboratory samples"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasMaterialShortName
@@ -184,14 +195,14 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasNonUniqueID
 :hasNonUniqueID rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:comment "An ID potentially shared by more than one individuals, used to identify individuals sharing a common trait."@en .
+                :elucidation "An ID potentially shared by more than one individuals, used to identify individuals sharing a common trait."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasProcessID
 :hasProcessID rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf :hasMBNID ,
                                  :hasNonUniqueID ;
-              rdfs:comment "MBN ID code for processes"@en .
+              :elucidation "MBN ID code for processes"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasReferenceUnit
@@ -243,17 +254,20 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#injectorType
 :injectorType rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :hasHVAFData .
+              rdfs:subPropertyOf :hasHVAFData ;
+              :elucidation "The code for the HVAF injector type."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#primaryNozzleType
 :primaryNozzleType rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf :hasHVAFData .
+                   rdfs:subPropertyOf :hasHVAFData ;
+                   :elucidation "The code for the HVAFprimary nozzle type."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#secondaryNozzleType
 :secondaryNozzleType rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf :hasHVAFData .
+                     rdfs:subPropertyOf :hasHVAFData ;
+                     :elucidation "The code for the HVAF secondary nozzle type."@en .
 
 
 #################################################################
