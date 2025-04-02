@@ -258,6 +258,13 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
               :elucidation "The code for the HVAF injector type."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#numberOfDepositionLayers
+:numberOfDepositionLayers rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:comment "It is used for both deoposition and blasting processes, since the blasting and deposition devices are the same."@en ;
+                          :elucidation "The number of passes performed by the torch following the deposition program on the set of substrates mounted on the equipment."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#primaryNozzleType
 :primaryNozzleType rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf :hasHVAFData ;
