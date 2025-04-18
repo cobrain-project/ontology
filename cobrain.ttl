@@ -9,7 +9,7 @@
 
 <https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
                                                    owl:versionIRI <https://www.cobrain-project.eu/ontology/cobrain/0.0.1> ;
-                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.3> ;
+                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.4> ;
                                                    <http://purl.org/dc/terms/contributor> """Alvise Bianchin
 Matres scrl
 alvise.bianchin@matres.org""" ,
@@ -55,6 +55,10 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
                                                rdfs:subPropertyOf rdfs:label .
 
 
+###  http://www.w3.org/2004/02/skos/core#example
+<http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
 <http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty ;
                                                 rdfs:subPropertyOf rdfs:label .
@@ -72,6 +76,10 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #################################################################
 #    Object Properties
 #################################################################
+
+###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
+elite:isRemovedfrom rdf:type owl:ObjectProperty .
+
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasMeasurer
 :hasMeasurer rdf:type owl:ObjectProperty ;
@@ -130,132 +138,122 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
+###  https://www.cobrain-project.eu/ontology/cobrain#HVAFData
+:HVAFData rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          :elucidation "The super property for all data properties refering to HVAF process specific data."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#MBNID
+:MBNID rdf:type owl:DatatypeProperty ;
+       rdfs:comment "The data properties includes uniivocal and non-univocal IDs."@en ;
+       :elucidation "Data properties for the MBN ID system."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#SAESteelGrade
+:SAESteelGrade rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Steel ;
+               rdfs:range xsd:string .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#SOPFile
+:SOPFile rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:range xsd:anyURI .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#UMRID
+:UMRID rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       :elucidation "Data properties for the UNIMORE ID system."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#atComposition
+:atComposition rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :composition .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#blastingMedia
 :blastingMedia rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf :hasHVAFData ;
+               rdfs:subPropertyOf :HVAFData ;
                :elucidation "The code for the blasting media used in blasting process for substrate preparation."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#hasDateTime
-:hasDateTime rdf:type owl:DatatypeProperty ;
+###  https://www.cobrain-project.eu/ontology/cobrain#composition
+:composition rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:range xsd:dateTime ;
-             :elucidation "A reference date and time for an entity."@en .
+             :elucidation "A string that provides informations about the composition of a material."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#hasDepositionDate
-:hasDepositionDate rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf :hasDateTime .
+###  https://www.cobrain-project.eu/ontology/cobrain#depositionDate
+:depositionDate rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :executionDate ;
+                :elucidation "The date and time of execution of a deposition process"@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#hasHVAFData
-:hasHVAFData rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
-             :elucidation "Data property that refers to HVAF process specific data."@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#elements
+:elements rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :composition .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#hasLotNumber
-:hasLotNumber rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :hasMBNID ,
-                                 :hasUniqueID ;
-              rdf:type owl:FunctionalProperty ;
-              rdfs:domain elite:Material ;
-              rdfs:range xsd:string ;
-              rdfs:comment "A lot number univocally identify a material batch that can be used by different processes. Since the EMMO represents 4D entities, the domain of this data property is a material entity extending in space and time, including the ramifications when portions of the batch goes through different locations."@en ;
-              <http://www.w3.org/2004/02/skos/core#altLabel> "hasBatchReference"@en ;
-              :elucidation "MBN ID code for material batches"@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasMBNID
-:hasMBNID rdf:type owl:DatatypeProperty ;
-          rdfs:comment "The data properties includes uniivocal and non-univocal IDs."@en ;
-          :elucidation "Data properties for the MBN ID system."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasMBNLabCode
-:hasMBNLabCode rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf :hasMBNID ,
-                                  :hasUniqueID ;
-               rdf:type owl:FunctionalProperty ;
-               :elucidation "MBN ID code for laboratory samples"@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasMaterialShortName
-:hasMaterialShortName rdf:type owl:DatatypeProperty ;
-                      rdfs:subPropertyOf owl:topDataProperty ;
-                      <http://www.w3.org/2004/02/skos/core#altLabel> "hasMaterialNickname"@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasNominalComposition
-:hasNominalComposition rdf:type owl:DatatypeProperty ;
-                       rdfs:subPropertyOf owl:topDataProperty ;
-                       :elucidation "A string that provide information about the molar composition of a material."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasNonUniqueID
-:hasNonUniqueID rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                :elucidation "An ID potentially shared by more than one individuals, used to identify individuals sharing a common trait."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasProcessID
-:hasProcessID rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :hasMBNID ,
-                                 :hasNonUniqueID ;
-              :elucidation "MBN ID code for processes"@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasReferenceUnit
-:hasReferenceUnit rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:range xsd:string ;
-                  :elucidation "A string that associate a property with a reference unit."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasRunNumber
-:hasRunNumber rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              :elucidation "An integer the specify that the deposition run is a part of a sequence."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasSAESteelGrade
-:hasSAESteelGrade rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Steel ;
-                  :elucidation "The SAE steel grade for the material of the substrate."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasSOPFile
-:hasSOPFile rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf owl:topDataProperty ;
-            rdfs:range xsd:anyURI .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasSampleID
-:hasSampleID rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf :hasNonUniqueID ;
-             rdfs:comment "The string provided by this data property is a useful tag for querying several ontological entities related to the same set of operanting conditions such as materials or procedures, used to generate a sample."@en ;
-             :elucidation "A human friendly non unique identifier that may be used to tag different entities related to a coated sample preparation or characterization (e.g. the sample, the deposition process) under a same name or keyword."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasSerialNumber
-:hasSerialNumber rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf :hasUniqueID ;
-                 rdf:type owl:FunctionalProperty ;
-                 rdfs:range xsd:string ;
-                 :elucidation "The serial number of a product."@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#hasUniqueID
-:hasUniqueID rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:comment "An ID that univocally identifies an individual."@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#executionDate
+:executionDate rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:range xsd:dateTime ;
+               :elucidation "A reference date and time for an entity."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#injectorType
 :injectorType rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :hasHVAFData ;
+              rdfs:subPropertyOf :HVAFData ;
               :elucidation "The code for the HVAF injector type."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#labCode
+:labCode rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf :MBNID ,
+                            :uniqueID ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:range xsd:string ;
+         :elucidation "MBN ID code for laboratory samples"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#lotNumber
+:lotNumber rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :MBNID ,
+                              :uniqueID ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain elite:Material ;
+           rdfs:range xsd:string ;
+           rdfs:comment "A lot number univocally identifies a material batch that can be used by different processes. Since the EMMO represents 4D entities, the domain of this data property is a material entity extending in space and time, including the ramifications when portions of the batch goes through different locations."@en ;
+           <http://www.w3.org/2004/02/skos/core#altLabel> "hasBatchReference"@en ;
+           :elucidation "MBN ID code for material batches"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#materialName
+:materialName rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              :elucidation "A name that can be used to identify a material, not necessarily well-formed."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#materialNickname
+:materialNickname rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf :materialName ;
+                  :elucidation "A name used to univocally identify a material type within the CoBRAIN project."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#nominalComposition
+:nominalComposition rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :composition ;
+                    <http://www.w3.org/2004/02/skos/core#example> "Al0(Cr20)Mn25Fe40Ni15)86+60vol.%TiC"@en ;
+                    :elucidation "An string that provide information about the molar composition of a material in free format (i.e., without a specific syntactic definition)."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#nonUniqueID
+:nonUniqueID rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             :elucidation "An ID potentially shared by more than one individuals, used to identify individuals sharing a common trait."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#numberOfDepositionLayers
@@ -267,20 +265,75 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#primaryNozzleType
 :primaryNozzleType rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf :hasHVAFData ;
+                   rdfs:subPropertyOf :HVAFData ;
                    :elucidation "The code for the HVAFprimary nozzle type."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#processID
+:processID rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :MBNID ,
+                              :nonUniqueID ;
+           rdfs:range xsd:string ;
+           :elucidation "MBN ID code for processes"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#runNumber
+:runNumber rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           :elucidation "An integer the specify that the deposition run is a part of a sequence."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#sampleID
+:sampleID rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :UMRID ,
+                             :nonUniqueID ;
+          rdfs:range xsd:string ;
+          rdfs:comment "The string provided by this data property is a useful tag for querying several ontological entities related to the same set of operanting conditions such as materials or procedures, used to generate a sample."@en ;
+          :elucidation "A human friendly non unique identifier that may be used to tag different entities related to a coated sample preparation or characterization (e.g. the sample, the deposition process) under a same name or keyword."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#secondaryNozzleType
 :secondaryNozzleType rdf:type owl:DatatypeProperty ;
-                     rdfs:subPropertyOf :hasHVAFData ;
+                     rdfs:subPropertyOf :HVAFData ;
                      :elucidation "The code for the HVAF secondary nozzle type."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#serialNumber
+:serialNumber rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :uniqueID ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:range xsd:string ;
+              :elucidation "The serial number of a product."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#standardDeviation
+:standardDeviation rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain elite:Data ;
+                   :elucidation "Given a data value which is an average over a list of values, this data property provides its standard deviation."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#substrateDimensions
 :substrateDimensions rdf:type owl:DatatypeProperty ;
                      rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:range xsd:string ;
                      :elucidation "The dimensions of the substrate, not necessarily related to deposition surface."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#uniqueID
+:uniqueID rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:comment "An ID that univocally identifies an individual."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#volComposition
+:volComposition rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :composition .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#wtComposition
+:wtComposition rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :composition .
 
 
 #################################################################
@@ -346,13 +399,25 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#Al0
 :Al0 rdf:type owl:Class ;
      owl:equivalentClass [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasMaterialShortName ;
+                           owl:onProperty :materialNickname ;
                            owl:hasValue "Al0"
                          ] ;
      rdfs:subClassOf :HighEntropyAlloy ,
                      [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasNominalComposition ;
+                       owl:onProperty :atComposition ;
                        owl:hasValue "Cr20Fe40Mn25Ni15"
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :elements ;
+                       owl:hasValue "CrFeMnNi"
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :volComposition ;
+                       owl:hasValue "CrFeMnNi100"
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :wtComposition ;
+                       owl:hasValue "Cr18.8Fe40.4Mn25Ni15.9"
                      ] ;
      <http://purl.org/dc/terms/source> "Literature"@en ;
      <http://www.w3.org/2004/02/skos/core#altLabel> "Al0(Cr20Fe40Mn25Ni15)100" ,
@@ -363,13 +428,25 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#Al10
 :Al10 rdf:type owl:Class ;
       owl:equivalentClass [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasMaterialShortName ;
+                            owl:onProperty :materialNickname ;
                             owl:hasValue "Al10"
                           ] ;
       rdfs:subClassOf :HighEntropyAlloy ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNominalComposition ;
+                        owl:onProperty :atComposition ;
                         owl:hasValue "Al10Cr18Fe36Mn22.5Ni13.5"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :elements ;
+                        owl:hasValue "AlCrFeMnNi"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :volComposition ;
+                        owl:hasValue "AlCrFeMnNi100"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :wtComposition ;
+                        owl:hasValue "Al5.1Cr17.8Fe38.3Mn22.5Ni15.1"
                       ] ;
       <http://purl.org/dc/terms/source> "Literature"@en ;
       <http://www.w3.org/2004/02/skos/core#altLabel> "Al10(CrFeMnNi)" ,
@@ -380,13 +457,25 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#Al14
 :Al14 rdf:type owl:Class ;
       owl:equivalentClass [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasMaterialShortName ;
+                            owl:onProperty :materialNickname ;
                             owl:hasValue "Al14"
                           ] ;
       rdfs:subClassOf :HighEntropyAlloy ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNominalComposition ;
+                        owl:onProperty :atComposition ;
                         owl:hasValue "Al14Cr17.2Fe34.5Mn21.3Ni12.9"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :elements ;
+                        owl:hasValue "AlCrFeMnNi"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :volComposition ;
+                        owl:hasValue "AlCrFeMnNi100"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :wtComposition ;
+                        owl:hasValue "Al7.4Cr17.5Fe37.5Mn21.3Ni14.8"
                       ] ;
       <http://purl.org/dc/terms/source> "Literature"@en ;
       <http://www.w3.org/2004/02/skos/core#altLabel> "Al14(Cr20Fe40Mn25Ni15)100-14" ,
@@ -397,13 +486,25 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#AlCu
 :AlCu rdf:type owl:Class ;
       owl:equivalentClass [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasMaterialShortName ;
+                            owl:onProperty :materialNickname ;
                             owl:hasValue "AlCu"
                           ] ;
       rdfs:subClassOf :HighEntropyAlloy ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNominalComposition ;
+                        owl:onProperty :atComposition ;
                         owl:hasValue "Al9.1Cr18.2Cu18.2Fe18.2Ni36.4"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :elements ;
+                        owl:hasValue "AlCrCuFeNi"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :volComposition ;
+                        owl:hasValue "AlCrCuFeNi100"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :wtComposition ;
+                        owl:hasValue "Al4.5Cr17.2Cu21Fe18.2Ni38.8"
                       ] ;
       <http://purl.org/dc/terms/source> <http://doi.org/10.1016/j.jallcom.2013.09.105> ;
       <http://www.w3.org/2004/02/skos/core#altLabel> "AlCuCrFeNi" ;
@@ -413,13 +514,25 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#AlMo
 :AlMo rdf:type owl:Class ;
       owl:equivalentClass [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasMaterialShortName ;
+                            owl:onProperty :materialNickname ;
                             owl:hasValue "AlMo"
                           ] ;
       rdfs:subClassOf :HighEntropyAlloy ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNominalComposition ;
+                        owl:onProperty :atComposition ;
                         owl:hasValue "Al3Cr6Fe31Mo34Ni26"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :elements ;
+                        owl:hasValue "AlCrFeMoNi"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :volComposition ;
+                        owl:hasValue "AlCrFeMoNi100"
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :wtComposition ;
+                        owl:hasValue "Al1.2Cr4.5Fe25Mo34Ni22.1"
                       ] ;
       <http://purl.org/dc/terms/source> "VTT CoBRAIN partner suggestion"@en ;
       <http://www.w3.org/2004/02/skos/core#prefLabel> "AlMo" .
@@ -456,13 +569,25 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#Cantor
 :Cantor rdf:type owl:Class ;
         owl:equivalentClass [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasMaterialShortName ;
+                              owl:onProperty :materialNickname ;
                               owl:hasValue "Cantor"
                             ] ;
         rdfs:subClassOf :HighEntropyAlloy ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNominalComposition ;
+                          owl:onProperty :atComposition ;
                           owl:hasValue "Co20Cr20Fe20Mn20Ni20"
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :elements ;
+                          owl:hasValue "CoCrFeMnNi"
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :volComposition ;
+                          owl:hasValue "CoCrFeMnNi100"
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :wtComposition ;
+                          owl:hasValue "Co21Cr18.5Fe19.9Mn19.6Ni20.9"
                         ] ;
         <http://purl.org/dc/terms/source> "Literature"@en ;
         <http://www.w3.org/2004/02/skos/core#prefLabel> "Cantor" .
@@ -632,6 +757,11 @@ It can operate on open- or closed-loop principles."""@en ;
 :CriticalLoad rdf:type owl:Class ;
               rdfs:subClassOf :CharacterisatonProperty ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Critical Load" .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Density
+:Density rdf:type owl:Class ;
+         rdfs:subClassOf elite:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Deposition
@@ -1224,6 +1354,7 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Nanoindentation
 :Nanoindentation rdf:type owl:Class ;
                  rdfs:subClassOf elite:Characterisation ;
+                 rdfs:isDefinedBy <https://w3id.org/emmo/domain/characterisation-methodology/chameo#Nanoindentation> ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
 
 
@@ -1383,7 +1514,9 @@ The pore size in a material can be conveyed either through a complete distributi
 ###  https://www.cobrain-project.eu/ontology/cobrain#Powder
 :Powder rdf:type owl:Class ;
         rdfs:subClassOf elite:Material ,
-                        elite:Solid .
+                        elite:Solid ;
+        owl:hasKey ( :lotNumber
+                   ) .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedRate
@@ -1489,6 +1622,20 @@ These can be or not be integrated into a single monitoring system.""" ;
                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Time Per Layer"@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Pycnometer
+:Pycnometer rdf:type owl:Class ;
+            rdfs:subClassOf :CharacterisationDevice ;
+            rdfs:seeAlso <https://en.wikipedia.org/wiki/Gas_pycnometer> ;
+            :elucidation "A laboratory device used for measuring the density of solids employing some method of gas displacement and the volume:pressure relationship known as Boyle's law."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Pycnometry
+:Pycnometry rdf:type owl:Class ;
+            rdfs:subClassOf elite:Characterisation ;
+            rdfs:seeAlso <https://en.wikipedia.org/wiki/Gas_pycnometer> ;
+            :elucidation "A characterisation methodology for measuring the density (or, more accurately, the volume) of solids."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometer
 :Pyrometer rdf:type owl:Class ;
            rdfs:subClassOf :CharacterisationDevice ;
@@ -1545,8 +1692,7 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SAESteelGrade
 :SAESteelGrade rdf:type owl:Class ;
-               rdfs:subClassOf elite:Property ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "SAE Steel Grade"@en .
+               rdfs:subClassOf elite:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Sample
@@ -1556,6 +1702,12 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
                           owl:onProperty :isSampleOf ;
                           owl:someValuesFrom elite:Object
                         ] .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#SkeletalDensity
+:SkeletalDensity rdf:type owl:Class ;
+                 rdfs:subClassOf :Density ;
+                 :elucidation "The density calculated from a volume measured using a gas pycnometer."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SpecificWearRate
@@ -1635,7 +1787,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 ###  https://www.cobrain-project.eu/ontology/cobrain#Stellite
 :Stellite rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasMaterialShortName ;
+                                owl:onProperty :materialNickname ;
                                 owl:hasValue "Stellite"
                               ] ;
           rdfs:subClassOf :Alloy ;
@@ -1799,13 +1951,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-Al0
 :TiC-Al0 rdf:type owl:Class ;
          owl:equivalentClass [ rdf:type owl:Restriction ;
-                               owl:onProperty :hasMaterialShortName ;
+                               owl:onProperty :materialNickname ;
                                owl:hasValue "TiC-Al0"
                              ] ;
          rdfs:subClassOf :CerMet ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasNominalComposition ;
+                           owl:onProperty :atComposition ;
                            owl:hasValue "Ti28.7C28.7Cr8.5Fe17Mn10.6Ni6.4"
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :elements ;
+                           owl:hasValue "TiC-AlCrFeMnNi"
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :volComposition ;
+                           owl:hasValue "TiC60AlCrFeMnNi40"
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :wtComposition ;
+                           owl:hasValue "Ti33.7C8.5Cr10.9Fe23.4Mn10.6Ni9.2"
                          ] ;
          <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on Al0"@en ;
          <http://www.w3.org/2004/02/skos/core#altLabel> "Al0(CrFeMnNi)+60TiC" ,
@@ -1816,13 +1980,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-Al14
 :TiC-Al14 rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasMaterialShortName ;
+                                owl:onProperty :materialNickname ;
                                 owl:hasValue "TiC-Al14"
                               ] ;
           rdfs:subClassOf :CerMet ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasNominalComposition ;
+                            owl:onProperty :atComposition ;
                             owl:hasValue "Ti32.5C32.4Al4.9Cr6Fe12.1Mn7.6Ni4.5"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :elements ;
+                            owl:hasValue "TiC-AlCrFeMnNi"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :volComposition ;
+                            owl:hasValue "TiC60AlCrFeMnNi40"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :wtComposition ;
+                            owl:hasValue "Ti41.5C10.4Al3.5Cr8.4Fe18Mn7.6Ni7.1"
                           ] ;
           <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on Al14"@en ;
           <http://www.w3.org/2004/02/skos/core#altLabel> "Al14(CrFeMnNi)+60TiC" ,
@@ -1833,13 +2009,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-AlCu
 :TiC-AlCu rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasMaterialShortName ;
+                                owl:onProperty :materialNickname ;
                                 owl:hasValue "TiC-AlCu"
                               ] ;
           rdfs:subClassOf :CerMet ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasNominalComposition ;
+                            owl:onProperty :atComposition ;
                             owl:hasValue "Ti32C31.9Al3.3Cr6.6Cu6.6Fe6.6Ni13.1"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :elements ;
+                            owl:hasValue "TiC-AlCrCuFeNi"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :volComposition ;
+                            owl:hasValue "TiC60AlCrCuFeNi40"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :wtComposition ;
+                            owl:hasValue "Ti39.3C9.8Al2.3Cr8.8Cu10.7Fe6.6Ni19.8"
                           ] ;
           <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on AlCu"@en ;
           <http://www.w3.org/2004/02/skos/core#altLabel> "AlCrCuFeNi+60TiC" ,
@@ -1850,13 +2038,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-AlMo
 :TiC-AlMo rdf:type owl:Class ;
           owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasMaterialShortName ;
+                                owl:onProperty :materialNickname ;
                                 owl:hasValue "TiC-AlMo"
                               ] ;
           rdfs:subClassOf :CerMet ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasNominalComposition ;
+                            owl:onProperty :atComposition ;
                             owl:hasValue "Ti32.2C32.1Al1Cr2.1Fe10.7Mo7.2Ni14.7"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :elements ;
+                            owl:hasValue "TiC-AlCrFeMoNi"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :volComposition ;
+                            owl:hasValue "TiC60AlCrFeMoNi40"
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :wtComposition ;
+                            owl:hasValue "Ti36.6C9.2Al0.7Cr2.6Fe14.2Mo7.2Ni20.4"
                           ] ;
           <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on AlMo"@en ;
           <http://www.w3.org/2004/02/skos/core#altLabel> "AlCrFeMoNi+60TiC" ,
@@ -1867,13 +2067,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-Cantor
 :TiC-Cantor rdf:type owl:Class ;
             owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasMaterialShortName ;
+                                  owl:onProperty :materialNickname ;
                                   owl:hasValue "TiC-Cantor"
                                 ] ;
             rdfs:subClassOf :CerMet ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasNominalComposition ;
+                              owl:onProperty :atComposition ;
                               owl:hasValue "Ti31.6C31.5Co7.4Cr7.4Fe7.4Mn7.4Ni7.4"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :elements ;
+                              owl:hasValue "TiC-CoCrFeMnNi"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :volComposition ;
+                              owl:hasValue "TiC60CoCrFeMnNi40"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :wtComposition ;
+                              owl:hasValue "Ti38.2C9.6Co11Cr9.7Fe10.4Mn7.4Ni10.9"
                             ] ;
             <http://purl.org/dc/terms/source> "CoBRAIN"@en ;
             <http://www.w3.org/2004/02/skos/core#altLabel> "Cantor+60TiC" ,
@@ -1884,13 +2096,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC30-AlCu
 :TiC30-AlCu rdf:type owl:Class ;
             owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasMaterialShortName ;
+                                  owl:onProperty :materialNickname ;
                                   owl:hasValue "TiC30-AlCu"
                                 ] ;
             rdfs:subClassOf :CerMet ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasNominalComposition ;
+                              owl:onProperty :atComposition ;
                               owl:hasValue "Ti16.8C16.7Al6Cr12.1Cu10.6Fe13.7Ni24.1"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :elements ;
+                              owl:hasValue "TiC-AlCrCuFeNi"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :volComposition ;
+                              owl:hasValue "TiC30AlCrCuFeNi70"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :wtComposition ;
+                              owl:hasValue "Ti17.3C4.3Al3.5Cr13.5Cu14.5Fe13.7Ni30.4"
                             ] ;
             <http://purl.org/dc/terms/source> "CoBRAIN CerMet for CGS based on AlCu"@en ;
             <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 21.6wt% - Al3.5 Cu16.5 Cr13.5 Fe14.5 Ni30.4" ;
@@ -1900,13 +2124,25 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC30-AlMo
 :TiC30-AlMo rdf:type owl:Class ;
             owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :hasMaterialShortName ;
+                                  owl:onProperty :materialNickname ;
                                   owl:hasValue "TiC30-AlMo"
                                 ] ;
             rdfs:subClassOf :CerMet ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasNominalComposition ;
+                              owl:onProperty :atComposition ;
                               owl:hasValue "Ti15.9C15.8Al1.8Cr3.6Cu16.2Fe26.6Ni20.2"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :elements ;
+                              owl:hasValue "TiC-AlCrFeMoNi"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :volComposition ;
+                              owl:hasValue "TiC30AlCrCuFeNi70"
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :wtComposition ;
+                              owl:hasValue "Ti15.6C3.9Al1Cr3.8Cu21.1Fe26.6Ni24.3"
                             ] ;
             <http://purl.org/dc/terms/source> "CoBRAIN CerMet for CGS based on AlMo"@en ;
             <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 19wt% - Al 1 Cr4 Fe21 Ni24Mo30" ;
@@ -1980,13 +2216,25 @@ Vickers hardness is specifically told into:
 ###  https://www.cobrain-project.eu/ontology/cobrain#WCCoCr
 :WCCoCr rdf:type owl:Class ;
         owl:equivalentClass [ rdf:type owl:Restriction ;
-                              owl:onProperty :hasMaterialShortName ;
+                              owl:onProperty :materialNickname ;
                               owl:hasValue "WCCoCr"
                             ] ;
         rdfs:subClassOf :CerMet ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNominalComposition ;
+                          owl:onProperty :atComposition ;
                           owl:hasValue "W39C39Co15.1Cr6.8Fe0Mn0Ni0"
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :elements ;
+                          owl:hasValue "WC-CoCr"
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :volComposition ;
+                          owl:hasValue "WC79.5CoCr20.5"
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :wtComposition ;
+                          owl:hasValue "W80.7C5.3Co10Cr4Fe0Mn0Ni0"
                         ] ;
         <http://purl.org/dc/terms/source> "Industrial Reference"@en ;
         <http://www.w3.org/2004/02/skos/core#altLabel> "WOKA 3652" ;
@@ -2052,18 +2300,25 @@ Vickers hardness is specifically told into:
  ] .
 
 #################################################################
+#    Annotations
+#################################################################
+
+:SAESteelGrade :elucidation "The SAE steel grade for the material of the substrate."@en .
+
+
+#################################################################
 #    General axioms
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-   owl:members ( :Al0
-                 :Al10
-                 :Al14
-                 :AlCu
-                 :AlMo
-                 :Cantor
-               )
- ] .
+  owl:members ( :Al0
+                :Al10
+                :Al14
+                :AlCu
+                :AlMo
+                :Cantor
+              )
+] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
