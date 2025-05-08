@@ -215,6 +215,7 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
          rdfs:subPropertyOf :MBNID ,
                             :uniqueID ;
          rdf:type owl:FunctionalProperty ;
+         rdfs:domain :CoatedSubstrate ;
          rdfs:range xsd:string ;
          :elucidation "MBN ID code for laboratory samples"@en .
 
@@ -224,7 +225,7 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
            rdfs:subPropertyOf :MBNID ,
                               :uniqueID ;
            rdf:type owl:FunctionalProperty ;
-           rdfs:domain elite:Material ;
+           rdfs:domain :Powder ;
            rdfs:range xsd:string ;
            rdfs:comment "A lot number univocally identifies a material batch that can be used by different processes. Since the EMMO represents 4D entities, the domain of this data property is a material entity extending in space and time, including the ramifications when portions of the batch goes through different locations."@en ;
            <http://www.w3.org/2004/02/skos/core#altLabel> "hasBatchReference"@en ;
@@ -253,6 +254,8 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#nonUniqueID
 :nonUniqueID rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:comment """A non-unique ID is in practical terms suggests that all entities with the same ID value may belong to a more general class that is not explicitly defined in the ontology for some reason (e.g., keep a simple taxonomy).
+For example, if two individuals having a non unique ID data property called :colorID both with value \"red\"."""@en ;
              :elucidation "An ID potentially shared by more than one individuals, used to identify individuals sharing a common trait."@en .
 
 
@@ -339,6 +342,11 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 #################################################################
 #    Classes
 #################################################################
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing owl:hasKey ( :labCode
+                     ) .
+
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Adhesion
 :Adhesion rdf:type owl:Class ;
@@ -640,6 +648,8 @@ After removing all contaminants, parts should be protected from airborne debris 
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Substrate
                                  ] ;
+                 owl:hasKey ( :labCode
+                            ) ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Coated Substrate"@en ;
                  :elucidation "A substrate with a deposited coating layer"@en .
 
@@ -963,6 +973,8 @@ The friction coefficient is a dimensionless value that measures the resistance t
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlasting
 :GritBlasting rdf:type owl:Class ;
               rdfs:subClassOf :Roughening ;
+              owl:hasKey ( :processID
+                         ) ;
               rdfs:isDefinedBy "EN 13507:2018: Thermal Spraying - Pre-treatment of surfaces of metallic parts and components for thermal spraying."@en ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting"@en ;
               :elucidation "Method of cleaning or finishing using an abrasive in a stream of compressed air, with or without water"@en .
@@ -1053,6 +1065,8 @@ The system can feature flow meters and temperature sensors to monitor the flow r
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAF
 :HVAF rdf:type owl:Class ;
       rdfs:subClassOf :ThermalSpraying ;
+      owl:hasKey ( :processID
+                 ) ;
       rdfs:comment """HVAF (High Velocity Air Fuel) is a thermal spray process similar to HVOF but using compressed air instead of pure oxygen as the comburent. Fuels are typically gaseous (propane, propylene); powder injection is typically axial in the combustion chamber. Nozzles may feature a secondary air-fuel injection. Fuel mixtures, e.g. propane+hydrogen, can sometimes be employed.
 Compressed air is also used to cool the torch before being injected into the combustion chamber, thus achieving regenerative pre-heating.""" ;
       rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
@@ -1129,6 +1143,8 @@ Process gas flows are usually regulated by adjusting their inlet pressure, whils
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVOF
 :HVOF rdf:type owl:Class ;
       rdfs:subClassOf :ThermalSpraying ;
+      owl:hasKey ( :processID
+                 ) ;
       rdfs:comment """Fuels can be liquid (e.g. kerosene), gaesous (e.g. hydrogen, propane, prolpylene, ethene, ecc.)
 Powders can be injected axially in the combustion chamber or radially downstream of the combustion chamber, which affects their heating and acceleration history
 Expansion nozzles can be converging or converging/diverging (De Laval type) and can have a straight barrel downstream""" ;
