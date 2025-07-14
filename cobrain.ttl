@@ -141,13 +141,14 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFData
 :HVAFData rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :HVAF ;
           :elucidation "The super property for all data properties refering to HVAF process specific data."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#MBNID
-:MBNID rdf:type owl:DatatypeProperty ;
-       rdfs:comment "The data properties includes uniivocal and non-univocal IDs."@en ;
-       :elucidation "Data properties for the MBN ID system."@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#MBN_ID
+:MBN_ID rdf:type owl:DatatypeProperty ;
+        rdfs:comment "The data properties includes uniivocal and non-univocal IDs."@en ;
+        :elucidation "Data properties for the MBN ID system."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SAESteelGrade
@@ -163,10 +164,15 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
          rdfs:range xsd:anyURI .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#UMRID
-:UMRID rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf owl:topDataProperty ;
-       :elucidation "Data properties for the UNIMORE ID system."@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#UB_ID
+:UB_ID rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#UMR_ID
+:UMR_ID rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        :elucidation "Data properties for the UNIMORE ID system."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#atComposition
@@ -200,8 +206,9 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#executionDate
 :executionDate rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain elite:Process ;
                rdfs:range xsd:dateTime ;
-               :elucidation "A reference date and time for an entity."@en .
+               :elucidation "A reference date and time for a process execution."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#injectorType
@@ -212,7 +219,7 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#labCode
 :labCode rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf :MBNID ,
+         rdfs:subPropertyOf :MBN_ID ,
                             :uniqueID ;
          rdf:type owl:FunctionalProperty ;
          rdfs:domain :CoatedSubstrate ;
@@ -222,7 +229,7 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#lotNumber
 :lotNumber rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf :MBNID ,
+           rdfs:subPropertyOf :MBN_ID ,
                               :uniqueID ;
            rdf:type owl:FunctionalProperty ;
            rdfs:domain :Powder ;
@@ -235,6 +242,7 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#materialName
 :materialName rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain elite:Material ;
               :elucidation "A name that can be used to identify a material, not necessarily well-formed."@en .
 
 
@@ -274,7 +282,7 @@ For example, if two individuals having a non unique ID data property called :col
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#processID
 :processID rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf :MBNID ,
+           rdfs:subPropertyOf :MBN_ID ,
                               :nonUniqueID ;
            rdfs:range xsd:string ;
            :elucidation "MBN ID code for processes"@en .
@@ -288,11 +296,17 @@ For example, if two individuals having a non unique ID data property called :col
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#sampleID
 :sampleID rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf :UMRID ,
+          rdfs:subPropertyOf :UMR_ID ,
                              :nonUniqueID ;
           rdfs:range xsd:string ;
           rdfs:comment "The string provided by this data property is a useful tag for querying several ontological entities related to the same set of operanting conditions such as materials or procedures, used to generate a sample."@en ;
-          :elucidation "A human friendly non unique identifier that may be used to tag different entities related to a coated sample preparation or characterization (e.g. the sample, the deposition process) under a same name or keyword."@en .
+          :elucidation "UMR human friendly non unique identifier  that is used to tag different entities related to a coated sample or thermal spraying related process, such as preparation or characterization (e.g. the sample, the deposition process), under a same name or keyword."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#sampleNumber
+:sampleNumber rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :UB_ID ;
+              rdfs:comment "UB ID code for laboratory samples"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#secondaryNozzleType
