@@ -4,12 +4,12 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix elite: <https://w3id.org/emmo/emmo-lite#> .
+@prefix elite: <https://w3id.org/emmo/emmo-for-humans#> .
 @base <https://www.cobrain-project.eu/ontology/cobrain#> .
 
 <https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
                                                    owl:versionIRI <https://www.cobrain-project.eu/ontology/cobrain/0.0.1> ;
-                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.4> ;
+                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.5> ;
                                                    <http://purl.org/dc/terms/contributor> """Alvise Bianchin
 Matres scrl
 alvise.bianchin@matres.org""" ,
@@ -77,7 +77,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
+###  https://w3id.org/emmo/emmo-for-humans#isRemovedfrom
 elite:isRemovedfrom rdf:type owl:ObjectProperty .
 
 
@@ -95,6 +95,11 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
            owl:inverseOf :isSampleFor ;
            rdfs:domain elite:Measurement ;
            rdfs:range :Sample .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#isMeasuredBy
+:isMeasuredBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf elite:isInterpretedBy .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isMeasurerFor
@@ -169,6 +174,12 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
          rdfs:range xsd:anyURI .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#absoluteError
+:absoluteError rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               :elucidation "The absolute error of a data value. It shares the same refrence unit of the value."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#atComposition
 :atComposition rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :composition .
@@ -213,6 +224,13 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#gunType
 :gunType rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf :CGSData .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#indenterLoad
+:indenterLoad rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Indentation ;
+              :elucidation "The load of the indenter during hardness measurement, expressed in grams [g]"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#injectorType
@@ -319,6 +337,12 @@ HVAF"""@en ;
            :elucidation "A non unique ID code used within CoBRAIN project to identify thermal spraying processes."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#relativeError
+:relativeError rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               :elucidation "The reative error of a data value. It is expressed as percentage %."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#runNumber
 :runNumber rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
@@ -347,6 +371,12 @@ Coated Substrate"""@en ;
               rdf:type owl:FunctionalProperty ;
               rdfs:range xsd:string ;
               :elucidation "The serial number of a product."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#species
+:species rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :SingelComponentComposition .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#standardDeviation
@@ -387,6 +417,10 @@ Coated Substrate"""@en ;
 #################################################################
 #    Classes
 #################################################################
+
+###  https://w3id.org/emmo/emmo-for-humans#Device
+elite:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_494b372c_cfdf_47d3_a4de_5e037c540de8> .
+
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Adhesion
 :Adhesion rdf:type owl:Class ;
@@ -699,6 +733,13 @@ phenomenon of attachment at the interface between a solid surface and another ma
                          rdfs:subClassOf elite:Property .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#ChemicalComposition
+:ChemicalComposition rdf:type owl:Class ;
+                     rdfs:subClassOf :Composition ;
+                     rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_7efd64d1_05a1_49cd_a7f0_783ca050d4f3> ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Chemical Composition"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#Cleaning
 :Cleaning rdf:type owl:Class ;
           rdfs:subClassOf :SubstratePreparation ;
@@ -782,6 +823,12 @@ Sometimes, the convergent part of the nozzle can also act as a combustion chambe
                    rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Combustion Chamber" ;
                    :elucidation "The combustion chamber is the location within a HVOF or HVAF torch where a confined fuel-comburent combustion takes place at pressures above ambient pressure." .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Composition
+:Composition rdf:type owl:Class ;
+             rdfs:subClassOf elite:Property ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Composition"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ControlSystem
@@ -1243,6 +1290,13 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
            :elucidation "A thermal spray torch specifically designed to perform the HVOF process" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Hardness
+:Hardness rdf:type owl:Class ;
+          rdfs:subClassOf :CharacterisatonProperty ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Hardness"@en ;
+          :elucidation "A hardness test measures a material's resistance to permanent surface deformation by pressing a harder indenter into its surface with a specific force. The hardness is determined by measuring the depth of the indentation or the size of the resulting impression, using methods like Rockwell, Vickers, Knoop, and Brinell. These tests are used for material comparison, quality control, and to determine a material's suitability for a particular application."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#HighEntropyAlloy
 :HighEntropyAlloy rdf:type owl:Class ;
                   rdfs:subClassOf :Alloy ;
@@ -1267,6 +1321,12 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Holding System" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Indentation
+:Indentation rdf:type owl:Class ;
+             rdfs:subClassOf elite:Characterisation ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#IndentationCurve
 :IndentationCurve rdf:type owl:Class ;
                   rdfs:subClassOf :CharacterisatonProperty ;
@@ -1275,21 +1335,20 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#IndentationHardness
 :IndentationHardness rdf:type owl:Class ;
-                     rdfs:subClassOf :CharacterisatonProperty ;
+                     rdfs:subClassOf :Hardness ;
                      rdfs:seeAlso """SO 14577-1:2015
 ISO 14577-2:2015
 ISO 14577-3:2015
 ISO 14577-4:2016""" ;
                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation Hardness" ;
-                     :elucidation """Hardness is the resistance of a material to permanent penetration by another material.
-The indentation hardness (HIT) is specifically defined as the average contact pressure between the indenter and the indented material, i.e. HIT = Fmax/Ap, were Fmax = maximum applied load and Ap = contact area projected into the plane of the sample surface (\"projected contact area\").
+                     :elucidation """The indentation hardness (HIT) is specifically defined as the average contact pressure between the indenter and the indented material, i.e. HIT = Fmax/Ap, were Fmax = maximum applied load and Ap = contact area projected into the plane of the sample surface (\"projected contact area\").
 It is obtained by a depth-sensing indentation measure, where the applied load (F) and indenter penetration (h) are recorded continuously during penetration and retraction.
 Fmax is directly obtained by the load recording; Ap is obtained by processing the load-penetration curve according to the Oliver-Pharr procedure.
 A Vickers or Berkovich indenter can be used interchangeably.
 Indentation hardness is specifically told into:
 - Macro-hardness: 2 N ≤ Fmax ≤ 30 kN
 - Micro-hardness: Fmax < 2 N; h > 0.2 μm
-- Nano-hardness: h ≤ 0.2 μm""" .
+- Nano-hardness: h ≤ 0.2 μm"""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Indenter
@@ -1303,6 +1362,13 @@ Indentation hardness is specifically told into:
                rdfs:subClassOf :PlateWeight ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Initial Weight"@en ;
                :elucidation "The initial weight of the uncoated substrate plate (after substrate preparation, e.g. grit-blasting and acetone-cleaning)"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#LECO
+:LECO rdf:type owl:Class ;
+      rdfs:subClassOf elite:Characterisation ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "LECO"@en ;
+      :elucidation "LECO analysis is a method for reliably determining the concentration of gases within metals and oxides, including Carbon, Hydrogen, Nitrogen, Oxygen and Sulfur."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LaserPyrometer
@@ -1416,6 +1482,21 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Medium Pressure Cold Spraying" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Microhardness
+:Microhardness rdf:type owl:Class ;
+               rdfs:subClassOf :Hardness ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Microhardness"@en ;
+               :elucidation "Microhardness testing measures a material's hardness on a microscopic level by impressing a diamond indenter into its surface with a light load (typically 0.015 to 1 kg)."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Microindentation
+:Microindentation rdf:type owl:Class ;
+                  rdfs:subClassOf :Indentation ;
+                  rdfs:seeAlso "ASTM E384-22"@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Microindentation"@en ;
+                  :elucidation "Microindentation tests are utilized to evaluate and quantify hardness variations that occur over a small distance."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenter
 :NanoIndenter rdf:type owl:Class ;
               rdfs:subClassOf :CharacterisationDevice ;
@@ -1431,15 +1512,9 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Nanoindentation
 :Nanoindentation rdf:type owl:Class ;
-                 rdfs:subClassOf elite:Characterisation ;
+                 rdfs:subClassOf :Indentation ;
                  rdfs:isDefinedBy <https://w3id.org/emmo/domain/characterisation-methodology/chameo#Nanoindentation> ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#NominalComposition
-:NominalComposition rdf:type owl:Class ;
-                    rdfs:subClassOf elite:Property ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Nominal Composition"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NominalElectricityConsumption
@@ -1533,7 +1608,7 @@ The distribution is summarized by the 10th, 50th and 90th quantiles or by averag
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PhaseComposition
 :PhaseComposition rdf:type owl:Class ;
-                  rdfs:subClassOf elite:Property ;
+                  rdfs:subClassOf :Composition ;
                   rdfs:seeAlso """EN 13925-1:2003
 EN 13925-2:2003
 EN 13925-3:2005""" ;
@@ -1794,6 +1869,13 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
                           owl:onProperty :isSampleOf ;
                           owl:someValuesFrom elite:Object
                         ] .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#SingelComponentComposition
+:SingelComponentComposition rdf:type owl:Class ;
+                            rdfs:subClassOf :ChemicalComposition ;
+                            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_172e2c96_180b_40f8_a3e7_b624471f40c2> ;
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Component Composition"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SkeletalDensity
@@ -2287,19 +2369,18 @@ Turntables can also be used to coat planar substrates of limited lateral width t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#VickersHardness
 :VickersHardness rdf:type owl:Class ;
-                 rdfs:subClassOf :CharacterisatonProperty ;
+                 rdfs:subClassOf :Hardness ;
                  rdfs:seeAlso """ISO 6507-1:2018
 ISO 6507-2:2018
 ISO 6507-3:2018
 ISO 6507-4:2018
 ISO 4516:2002""" ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Vickers Hardness" ;
-                 :elucidation """Hardness is the resistance of a material to permanent penetration by another material.
-Vickers microhardness is specifically defined as the ratio between the maximum load (F, expressed in kgf) applied onto a Vickers indenter and the lateral surface area (Ar) of the residual impression left in the indented material after complete unloading (in mm2). The latter is computed from the length of the diagonals of the residual impression, measured with an optical microscope.
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Vickers Hardness"@en ;
+                 :elucidation """Vickers microhardness is specifically defined as the ratio between the maximum load (F, expressed in kgf) applied onto a Vickers indenter and the lateral surface area (Ar) of the residual impression left in the indented material after complete unloading (in mm2). The latter is computed from the length of the diagonals of the residual impression, measured with an optical microscope.
 Vickers hardness is specifically told into:
 - Vickers hardness: F ≥ 49.03 N (5 kgf)
 - Low-force Vickers hardness: 1.961 N (200 gf) ≤ F < 49.03 N (5 kgf)
-- Vickers micro-hardness: 0.009807 N (1 gf) ≤ F < 1.961 N (200 gf)""" .
+- Vickers micro-hardness: 0.009807 N (1 gf) ≤ F < 1.961 N (200 gf)"""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#VolumeFlowFeeder
