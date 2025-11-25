@@ -3,9 +3,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix hume: <https://w3id.org/emmo/hume#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix elite: <https://w3id.org/emmo/elite#> .
-@prefix hume: <https://w3id.org/emmo/hume#> .
 @base <https://www.cobrain-project.eu/ontology/cobrain#> .
 
 <https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
@@ -78,7 +78,7 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-for-humans#isRemovedfrom
+###  https://w3id.org/emmo/hume#isRemovedfrom
 hume:isRemovedfrom rdf:type owl:ObjectProperty .
 
 
@@ -229,7 +229,7 @@ hume:isRemovedfrom rdf:type owl:ObjectProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#indenterLoad
 :indenterLoad rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:subPropertyOf :microHardnessData ;
               rdfs:domain :Indentation ;
               :elucidation "The load of the indenter during hardness measurement, expressed in grams [g]"@en .
 
@@ -243,6 +243,12 @@ hume:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#inletGas
 :inletGas rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf :CGSData .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#instrumentID
+:instrumentID rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :nonUniqueID ;
+              :elucidation "An ID associated to an instrument (non unique)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#labCode
@@ -283,6 +289,17 @@ Powder"""@en ;
 :materialNickname rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf :materialName ;
                   :elucidation "A name used to univocally identify a material type within the CoBRAIN project."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#microHardnessData
+:microHardnessData rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#modelType
+:modelType rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           :elucidation "The model of a device."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#nominalComposition
@@ -330,6 +347,7 @@ GritBlasting"""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#processID
 :processID rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf :nonUniqueID ;
+           rdfs:domain :ThermalSpraying ;
            rdfs:range xsd:string ;
            rdfs:comment """Used as key for:
 CGS
@@ -353,6 +371,7 @@ HVAF"""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#sampleID
 :sampleID rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf :nonUniqueID ;
+          rdfs:domain :CoatedSubstrate ;
           rdfs:range xsd:string ;
           rdfs:comment "The string provided by this data property is a useful tag for querying several ontological entities related to the same set of operanting conditions such as materials or procedures, used to generate a sample."@en ,
                        """Used as key for:
@@ -368,10 +387,10 @@ Coated Substrate"""@en ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#serialNumber
 :serialNumber rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :uniqueID ;
+              rdfs:subPropertyOf :nonUniqueID ;
               rdf:type owl:FunctionalProperty ;
               rdfs:range xsd:string ;
-              :elucidation "The serial number of a product."@en .
+              :elucidation "The serial number of a product (not usually unique)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#species
@@ -402,7 +421,7 @@ Coated Substrate"""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#uniqueID
 :uniqueID rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:comment "An ID that univocally identifies an individual across different types. This ID can be used as IRI for entities."@en .
+          rdfs:comment "An ID that univocally identifies an individual across different types in the CoBRAIN framework. This ID can be used as IRI for entities."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#volComposition
@@ -419,8 +438,25 @@ Coated Substrate"""@en ;
 #    Classes
 #################################################################
 
-###  https://w3id.org/emmo/emmo-for-humans#Device
+###  https://w3id.org/emmo/hume#Device
 hume:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_494b372c_cfdf_47d3_a4de_5e037c540de8> .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Abrasimeter
+:Abrasimeter rdf:type owl:Class ;
+             rdfs:subClassOf :CharacterisationDevice .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#AbrasiveWearTest
+:AbrasiveWearTest rdf:type owl:Class ;
+                  rdfs:subClassOf hume:Characterisation ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Test"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#AbrasiveWearTestingProperties
+:AbrasiveWearTestingProperties rdf:type owl:Class ;
+                               rdfs:subClassOf hume:Property ;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Testing Properties"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Adhesion
@@ -625,6 +661,18 @@ phenomenon of attachment at the interface between a solid surface and another ma
 :Alloy rdf:type owl:Class ;
        rdfs:subClassOf hume:Material ;
        owl:disjointWith :CerMet .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#AverageAbrasiveWearTestArea
+:AverageAbrasiveWearTestArea rdf:type owl:Class ;
+                             rdfs:subClassOf :AbrasiveWearTestingProperties ;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Abrasive Wear Test Area"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#AverageAbrasiveWearTestTotalVolume
+:AverageAbrasiveWearTestTotalVolume rdf:type owl:Class ;
+                                    rdfs:subClassOf :AbrasiveWearTestingProperties ;
+                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Abrasive Wear Test Total Volume"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AverageMaximaTemperature
