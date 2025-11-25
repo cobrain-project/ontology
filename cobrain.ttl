@@ -4,12 +4,13 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix elite: <https://w3id.org/emmo/emmo-for-humans#> .
+@prefix elite: <https://w3id.org/emmo/elite#> .
+@prefix hume: <https://w3id.org/emmo/hume#> .
 @base <https://www.cobrain-project.eu/ontology/cobrain#> .
 
 <https://www.cobrain-project.eu/ontology/cobrain> rdf:type owl:Ontology ;
                                                    owl:versionIRI <https://www.cobrain-project.eu/ontology/cobrain/0.0.1> ;
-                                                   owl:imports <https://w3id.org/emmo/emmo-lite/0.0.5> ;
+                                                   owl:imports <https://w3id.org/emmo/elite/0.0.6> ;
                                                    <http://purl.org/dc/terms/contributor> """Alvise Bianchin
 Matres scrl
 alvise.bianchin@matres.org""" ,
@@ -78,65 +79,65 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 #################################################################
 
 ###  https://w3id.org/emmo/emmo-for-humans#isRemovedfrom
-elite:isRemovedfrom rdf:type owl:ObjectProperty .
+hume:isRemovedfrom rdf:type owl:ObjectProperty .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasMeasurer
 :hasMeasurer rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf elite:affects ,
-                                elite:hasInterpreter ;
+             rdfs:subPropertyOf hume:affects ,
+                                hume:hasInterpreter ;
              owl:inverseOf :isMeasurerFor .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#hasSample
 :hasSample rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf elite:hasInput ,
-                              elite:hasReferent ;
+           rdfs:subPropertyOf hume:hasInput ,
+                              hume:hasReferent ;
            owl:inverseOf :isSampleFor ;
-           rdfs:domain elite:Measurement ;
+           rdfs:domain hume:Measurement ;
            rdfs:range :Sample .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isMeasuredBy
 :isMeasuredBy rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf elite:isInterpretedBy .
+              rdfs:subPropertyOf hume:isInterpretedBy .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isMeasurerFor
 :isMeasurerFor rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf elite:isInterpreterFor ,
-                                  elite:participatesTo ;
-               rdfs:domain elite:Measurer ;
-               rdfs:range elite:Measurement .
+               rdfs:subPropertyOf hume:isInterpreterFor ,
+                                  hume:participatesTo ;
+               rdfs:domain hume:Measurer ;
+               rdfs:range hume:Measurement .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isSampleFor
 :isSampleFor rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf elite:isInputOf ,
-                                elite:isReferentFor ;
-             rdfs:range elite:Characterisation .
+             rdfs:subPropertyOf hume:isInputOf ,
+                                hume:isReferentFor ;
+             rdfs:range hume:Characterisation .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#isSampleOf
 :isSampleOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf elite:isRemovedfrom ;
+            rdfs:subPropertyOf hume:isRemovedfrom ;
             rdfs:domain :Sample ;
-            rdfs:range elite:Object .
+            rdfs:range hume:Object .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#propertyProvidedBy
 :propertyProvidedBy rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf elite:isOutputOf ,
-                                       elite:isSignFor ;
+                    rdfs:subPropertyOf hume:isOutputOf ,
+                                       hume:isSignFor ;
                     owl:inverseOf :providesProperty .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#providesProperty
 :providesProperty rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf elite:hasOutput ,
-                                     elite:hasSign ;
-                  rdfs:domain elite:Measurement ;
-                  rdfs:range elite:Property .
+                  rdfs:subPropertyOf hume:hasOutput ,
+                                     hume:hasSign ;
+                  rdfs:domain hume:Measurement ;
+                  rdfs:range hume:Property .
 
 
 #################################################################
@@ -216,7 +217,7 @@ elite:isRemovedfrom rdf:type owl:ObjectProperty .
 ###  https://www.cobrain-project.eu/ontology/cobrain#executionDate
 :executionDate rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:domain elite:Process ;
+               rdfs:domain hume:Process ;
                rdfs:range xsd:dateTime ;
                :elucidation "A reference date and time for a process execution."@en .
 
@@ -261,7 +262,7 @@ Coated Substrate"""@en ;
            rdfs:subPropertyOf :MBN_ID ,
                               :uniqueID ;
            rdf:type owl:FunctionalProperty ;
-           rdfs:domain elite:Material ,
+           rdfs:domain hume:Material ,
                        :Powder ;
            rdfs:range xsd:string ;
            rdfs:comment "A lot number univocally identifies a material batch that can be used by different processes. Since the EMMO represents 4D entities, the domain of this data property is a material entity extending in space and time, including the ramifications when portions of the batch goes through different locations."@en ,
@@ -274,7 +275,7 @@ Powder"""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#materialName
 :materialName rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain elite:Material ;
+              rdfs:domain hume:Material ;
               :elucidation "A name that can be used to identify a material, not necessarily well-formed."@en .
 
 
@@ -382,7 +383,7 @@ Coated Substrate"""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#standardDeviation
 :standardDeviation rdf:type owl:DatatypeProperty ;
                    rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:domain elite:Data ;
+                   rdfs:domain hume:Data ;
                    :elucidation "Given a data value which is an average over a list of values, this data property provides its standard deviation."@en .
 
 
@@ -419,12 +420,12 @@ Coated Substrate"""@en ;
 #################################################################
 
 ###  https://w3id.org/emmo/emmo-for-humans#Device
-elite:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_494b372c_cfdf_47d3_a4de_5e037c540de8> .
+hume:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_494b372c_cfdf_47d3_a4de_5e037c540de8> .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Adhesion
 :Adhesion rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:seeAlso "ASTM C633-13 (2017)" ,
                        """ISO 4618:2023, 3.7
 phenomenon of attachment at the interface between a solid surface and another material caused by molecular forces""" ;
@@ -445,11 +446,11 @@ phenomenon of attachment at the interface between a solid surface and another ma
 :AirFeed rdf:type owl:Class ;
          rdfs:subClassOf :GasFeedDescription ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty elite:hasDatum ;
+                           owl:onProperty hume:hasDatum ;
                            owl:someValuesFrom :AirFlowRate
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty elite:hasDatum ;
+                           owl:onProperty hume:hasDatum ;
                            owl:someValuesFrom :AirPressure
                          ] ;
          <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Feed"@en .
@@ -622,7 +623,7 @@ phenomenon of attachment at the interface between a solid surface and another ma
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Alloy
 :Alloy rdf:type owl:Class ;
-       rdfs:subClassOf elite:Material ;
+       rdfs:subClassOf hume:Material ;
        owl:disjointWith :CerMet .
 
 
@@ -716,7 +717,7 @@ phenomenon of attachment at the interface between a solid surface and another ma
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CerMet
 :CerMet rdf:type owl:Class ;
-        rdfs:subClassOf elite:Material ;
+        rdfs:subClassOf hume:Material ;
         rdfs:comment "A cermet is a composite material composed of ceramic and metal materials."@en ;
         rdfs:seeAlso <https://en.wikipedia.org/wiki/Cermet> ,
                      "Tinklepaugh, James R. (1960). Cermets. New York: Reinhold Publishing Corporation. ASIN B0007E6FO4."@en ;
@@ -725,12 +726,12 @@ phenomenon of attachment at the interface between a solid surface and another ma
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisationDevice
 :CharacterisationDevice rdf:type owl:Class ;
-                        rdfs:subClassOf elite:Device .
+                        rdfs:subClassOf hume:Device .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisatonProperty
 :CharacterisatonProperty rdf:type owl:Class ;
-                         rdfs:subClassOf elite:Property .
+                         rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ChemicalComposition
@@ -756,15 +757,15 @@ After removing all contaminants, parts should be protected from airborne debris 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoatedSubstrate
 :CoatedSubstrate rdf:type owl:Class ;
-                 rdfs:subClassOf elite:Object ,
-                                 elite:System ,
+                 rdfs:subClassOf hume:Object ,
+                                 hume:System ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty elite:hasComponent ;
+                                   owl:onProperty hume:hasComponent ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Coating
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty elite:hasComponent ;
+                                   owl:onProperty hume:hasComponent ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Substrate
                                  ] ;
@@ -778,10 +779,10 @@ After removing all contaminants, parts should be protected from airborne debris 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Coating
 :Coating rdf:type owl:Class ;
-         rdfs:subClassOf elite:Component ,
-                         elite:Object ,
+         rdfs:subClassOf hume:Component ,
+                         hume:Object ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty elite:isComponentOf ;
+                           owl:onProperty hume:isComponentOf ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :CoatedSubstrate
                          ] ;
@@ -827,13 +828,13 @@ Sometimes, the convergent part of the nozzle can also act as a combustion chambe
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Composition
 :Composition rdf:type owl:Class ;
-             rdfs:subClassOf elite:Property ;
+             rdfs:subClassOf hume:Property ;
              <http://www.w3.org/2004/02/skos/core#prefLabel> "Composition"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ControlSystem
 :ControlSystem rdf:type owl:Class ;
-               rdfs:subClassOf elite:System ;
+               rdfs:subClassOf hume:System ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Control System" .
 
 
@@ -854,7 +855,7 @@ It can operate on open- or closed-loop principles."""@en ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoolingSystem
 :CoolingSystem rdf:type owl:Class ;
-               rdfs:subClassOf elite:System ;
+               rdfs:subClassOf hume:System ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooling Systemen"@en .
 
 
@@ -882,7 +883,7 @@ It can operate on open- or closed-loop principles."""@en ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Density
 :Density rdf:type owl:Class ;
-         rdfs:subClassOf elite:Property .
+         rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Deposition
@@ -911,7 +912,7 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                   rdfs:subClassOf :Length ,
                                   :ThermalSprayingProcessProperty ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty elite:isPropertyOf ;
+                                    owl:onProperty hume:isPropertyOf ;
                                     owl:someValuesFrom :Substrate
                                   ] ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Length"@en ;
@@ -922,11 +923,11 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
 :DepositionPassWeights rdf:type owl:Class ;
                        rdfs:subClassOf :ThermalSprayingProcessDescription ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty elite:hasPart ;
+                                         owl:onProperty hume:hasPart ;
                                          owl:someValuesFrom :FinalWeight
                                        ] ,
                                        [ rdf:type owl:Restriction ;
-                                         owl:onProperty elite:hasPart ;
+                                         owl:onProperty hume:hasPart ;
                                          owl:someValuesFrom :InitialWeight
                                        ] ;
                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Pass Weights"@en ;
@@ -946,7 +947,7 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                  rdfs:subClassOf :ThermalSprayingProcessProperty ,
                                  :Width ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty elite:isPropertyOf ;
+                                   owl:onProperty hume:isPropertyOf ;
                                    owl:someValuesFrom :Substrate
                                  ] ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition Width"@en ;
@@ -975,13 +976,13 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FIB
 :FIB rdf:type owl:Class ;
-     rdfs:subClassOf elite:Characterisation ;
+     rdfs:subClassOf hume:Characterisation ;
      <http://www.w3.org/2004/02/skos/core#prefLabel> "Focused Ion Beam" .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FeedRate
 :FeedRate rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
           rdfs:seeAlso "Glossary of Terms, in: R.C. Tucker Jr. (Ed.), ASM Handbook Vol. 5A, ASM International, Materials Park, OH, USA, 2013, pp. 351-381." ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Feed Rate" ;
@@ -1011,7 +1012,7 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FlowRate
 :FlowRate rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
           rdfs:seeAlso "Glossary of Terms, in: R.C. Tucker Jr. (Ed.), ASM Handbook Vol. 5A, ASM International, Materials Park, OH, USA, 2013, pp. 351-381." ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Flow Rate" ;
@@ -1028,7 +1029,7 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FrictionCoefficient
 :FrictionCoefficient rdf:type owl:Class ;
-                     rdfs:subClassOf elite:Property ;
+                     rdfs:subClassOf hume:Property ;
                      rdfs:isDefinedBy "ISO 80000-4:2019" ;
                      rdfs:seeAlso """ASTM G99-17: Pin-on-Disc Sliding Test
 ASTM G133-05(2016): Linearly Reciprocating Ball-on-Flat Sliding Test
@@ -1047,13 +1048,13 @@ The friction coefficient is a dimensionless value that measures the resistance t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GasFeedDescription
 :GasFeedDescription rdf:type owl:Class ;
-                    rdfs:subClassOf elite:Description ,
+                    rdfs:subClassOf hume:Description ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty elite:hasDatum ;
+                                      owl:onProperty hume:hasDatum ;
                                       owl:someValuesFrom :FlowRate
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                      owl:onProperty elite:hasDatum ;
+                                      owl:onProperty hume:hasDatum ;
                                       owl:someValuesFrom :Pressure
                                     ] ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Feed Description"@en ;
@@ -1147,11 +1148,11 @@ The system can feature flow meters and temperature sensors to monitor the flow r
 :H2Feed rdf:type owl:Class ;
         rdfs:subClassOf :GasFeedDescription ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty elite:hasDatum ;
+                          owl:onProperty hume:hasDatum ;
                           owl:someValuesFrom :H2FlowRate
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty elite:hasDatum ;
+                          owl:onProperty hume:hasDatum ;
                           owl:someValuesFrom :H2Pressure
                         ] ;
         <http://www.w3.org/2004/02/skos/core#prefLabel> "H₂ Feed"@en .
@@ -1317,13 +1318,13 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HoldingSystem
 :HoldingSystem rdf:type owl:Class ;
-               rdfs:subClassOf elite:System ;
+               rdfs:subClassOf hume:System ;
                <http://www.w3.org/2004/02/skos/core#prefLabel> "Holding System" .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Indentation
 :Indentation rdf:type owl:Class ;
-             rdfs:subClassOf elite:Characterisation ;
+             rdfs:subClassOf hume:Characterisation ;
              <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation"@en .
 
 
@@ -1366,7 +1367,7 @@ Indentation hardness is specifically told into:
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LECO
 :LECO rdf:type owl:Class ;
-      rdfs:subClassOf elite:Characterisation ;
+      rdfs:subClassOf hume:Characterisation ;
       <http://www.w3.org/2004/02/skos/core#prefLabel> "LECO"@en ;
       :elucidation "LECO analysis is a method for reliably determining the concentration of gases within metals and oxides, including Carbon, Hydrogen, Nitrogen, Oxygen and Sulfur."@en .
 
@@ -1381,12 +1382,12 @@ https://www.iso.org/obp/ui/#iso:std:iso:10878:ed-1:v1:en:term:1.69"""@en .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Length
 :Length rdf:type owl:Class ;
-        rdfs:subClassOf elite:Property .
+        rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LinearThermalExpansionCoefficient
 :LinearThermalExpansionCoefficient rdf:type owl:Class ;
-                                   rdfs:subClassOf elite:Property ;
+                                   rdfs:subClassOf hume:Property ;
                                    rdfs:isDefinedBy "ISO 80000-5:2019" ;
                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Linear Thermal Expansion Coefficient" ;
                                    :elucidation "Relative change of length of a material with temperature." .
@@ -1423,7 +1424,7 @@ https://www.iso.org/obp/ui/#iso:std:iso:10878:ed-1:v1:en:term:1.69"""@en .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Manipulator
 :Manipulator rdf:type owl:Class ;
-             rdfs:subClassOf elite:Device ;
+             rdfs:subClassOf hume:Device ;
              rdfs:comment """Definition adapted from EN 1395-6:2007: Thermal spraying - Acceptance inspection of thermal spraying equipment - Part 6: Manipulator systems.
 
 Typically, two types of manipulators can be employed:
@@ -1506,7 +1507,7 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenterComponent
 :NanoIndenterComponent rdf:type owl:Class ;
-                       rdfs:subClassOf elite:Component ;
+                       rdfs:subClassOf hume:Component ;
                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter Component"@en .
 
 
@@ -1560,11 +1561,11 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
 :O2Feed rdf:type owl:Class ;
         rdfs:subClassOf :GasFeedDescription ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty elite:hasDatum ;
+                          owl:onProperty hume:hasDatum ;
                           owl:someValuesFrom :O2FlowRate
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty elite:hasDatum ;
+                          owl:onProperty hume:hasDatum ;
                           owl:someValuesFrom :O2Pressure
                         ] ;
         <http://www.w3.org/2004/02/skos/core#prefLabel> "O₂ Feed"@en .
@@ -1586,7 +1587,7 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ParticleSizeDistribution
 :ParticleSizeDistribution rdf:type owl:Class ;
-                          rdfs:subClassOf elite:Property ;
+                          rdfs:subClassOf hume:Property ;
                           rdfs:isDefinedBy "ISO 13320:2020 - Particle size analysis — Laser diffraction method" ,
                                            "ISO 9276-1" ,
                                            "ISO 9276-2" ;
@@ -1637,7 +1638,7 @@ Fitting of the experimental pattern with suitable mathematical functions and int
              rdfs:subClassOf :ThermalSprayingProcessProperty ,
                              :Weight ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty elite:isPropertyOf ;
+                               owl:onProperty hume:isPropertyOf ;
                                owl:someValuesFrom :Substrate
                              ] ;
              <http://www.w3.org/2004/02/skos/core#prefLabel> "Plate Weight"@en ;
@@ -1654,7 +1655,7 @@ Fitting of the experimental pattern with suitable mathematical functions and int
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PoreSize
 :PoreSize rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 15901-1:2016 (mercury intrusion porosimetry)" ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Pore Size" ;
           :elucidation """Pore size is the equivalent diameter of a pore, i.e. the diameter of a sphere with a volume equivalent to that of the pore.
@@ -1663,7 +1664,7 @@ The pore size in a material can be conveyed either through a complete distributi
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Porosity
 :Porosity rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ASTM E2109-01(2021) - Porosity of thermal spray coatings by image analysis" ,
                            "ISO 15901-1:2016 - Mercury intrusion porosimetry" ;
           rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
@@ -1673,8 +1674,8 @@ The pore size in a material can be conveyed either through a complete distributi
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Powder
 :Powder rdf:type owl:Class ;
-        rdfs:subClassOf elite:Material ,
-                        elite:Solid ;
+        rdfs:subClassOf hume:Material ,
+                        hume:Solid ;
         owl:hasKey ( :lotNumber
                    ) .
 
@@ -1752,7 +1753,7 @@ Pre-heating serves multiple purposes: it removed adsorbates and condensates (e.g
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pressure
 :Pressure rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressure" ;
           :elucidation "Quotient of the component of a force normal to a surface and its area" .
@@ -1798,7 +1799,7 @@ These can be or not be integrated into a single monitoring system.""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pycnometry
 :Pycnometry rdf:type owl:Class ;
-            rdfs:subClassOf elite:Characterisation ;
+            rdfs:subClassOf hume:Characterisation ;
             rdfs:seeAlso <https://en.wikipedia.org/wiki/Gas_pycnometer> ;
             :elucidation "A characterisation methodology for measuring the density (or, more accurately, the volume) of solids."@en .
 
@@ -1812,13 +1813,13 @@ These can be or not be integrated into a single monitoring system.""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometry
 :Pyrometry rdf:type owl:Class ;
-           rdfs:subClassOf elite:Characterisation ;
+           rdfs:subClassOf hume:Characterisation ;
            <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyrometry"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ResidualStress
 :ResidualStress rdf:type owl:Class ;
-                rdfs:subClassOf elite:Property ;
+                rdfs:subClassOf hume:Property ;
                 rdfs:isDefinedBy "EN 15305:2018 - Residual stress measurement by XRD" ;
                 rdfs:seeAlso "NPL Good Practice Guide 143: Residual stress measurement by FIB+DIC" ,
                              """V. Hauk, Structural and Residual Stress Analysis by Nondestructive Methods. Evaluation - Application - Assessment, Elsevier, 1997
@@ -1859,15 +1860,15 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SAESteelGrade
 :SAESteelGrade rdf:type owl:Class ;
-               rdfs:subClassOf elite:Property .
+               rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Sample
 :Sample rdf:type owl:Class ;
-        rdfs:subClassOf elite:Object ,
+        rdfs:subClassOf hume:Object ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :isSampleOf ;
-                          owl:someValuesFrom elite:Object
+                          owl:someValuesFrom hume:Object
                         ] .
 
 
@@ -1912,7 +1913,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SprayTorch
 :SprayTorch rdf:type owl:Class ;
-            rdfs:subClassOf elite:Device ;
+            rdfs:subClassOf hume:Device ;
             rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
             rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
             <http://www.w3.org/2004/02/skos/core#altLabel> "Gun" ,
@@ -1955,7 +1956,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Steel
 :Steel rdf:type owl:Class ;
-       rdfs:subClassOf elite:CondensedMatter ,
+       rdfs:subClassOf hume:CondensedMatter ,
                        :Alloy .
 
 
@@ -1974,7 +1975,7 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 :Substrate rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayingComponent ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty elite:isComponentOf ;
+                             owl:onProperty hume:isComponentOf ;
                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                              owl:onClass :CoatedSubstrate
                            ] ;
@@ -2013,13 +2014,13 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SupplySystem
 :SupplySystem rdf:type owl:Class ;
-              rdfs:subClassOf elite:System ;
+              rdfs:subClassOf hume:System ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Supply System" .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Temperature
 :Temperature rdf:type owl:Class ;
-             rdfs:subClassOf elite:Property ;
+             rdfs:subClassOf hume:Property ;
              rdfs:seeAlso "ISO 80000-5:2019" ;
              <http://www.w3.org/2004/02/skos/core#prefLabel> "Temperature" ;
              :elucidation "Partial derivative of internal energy of a system with respect to entropy at constant volume and constant number of particles in the system." .
@@ -2027,7 +2028,7 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TemperaturePeaks
 :TemperaturePeaks rdf:type owl:Class ;
-                  rdfs:subClassOf elite:ArrayData ,
+                  rdfs:subClassOf hume:ArrayData ,
                                   :Temperature ,
                                   :ThermalSprayingProcessProperty ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Temperature Peaks"@en ;
@@ -2036,7 +2037,7 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSpraySystem
 :ThermalSpraySystem rdf:type owl:Class ;
-                    rdfs:subClassOf elite:System ;
+                    rdfs:subClassOf hume:System ;
                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spray System" .
 
 
@@ -2074,26 +2075,26 @@ The definition is adapted from ISO 14917:2017""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingComponent
 :ThermalSprayingComponent rdf:type owl:Class ;
-                          rdfs:subClassOf elite:Component ;
+                          rdfs:subClassOf hume:Component ;
                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying System Component"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingProcessDescription
 :ThermalSprayingProcessDescription rdf:type owl:Class ;
-                                   rdfs:subClassOf elite:Description ;
+                                   rdfs:subClassOf hume:Description ;
                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Description"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingProcessProperty
 :ThermalSprayingProcessProperty rdf:type owl:Class ;
-                                rdfs:subClassOf elite:Property ;
+                                rdfs:subClassOf hume:Property ;
                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Property"@en ;
                                 :elucidation "A property defined specifically for the description of thermal spraying process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingRelatedProcess
 :ThermalSprayingRelatedProcess rdf:type owl:Class ;
-                               rdfs:subClassOf elite:Process ;
+                               rdfs:subClassOf hume:Process ;
                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Related Process"@en .
 
 
@@ -2101,7 +2102,7 @@ The definition is adapted from ISO 14917:2017""" ;
 :ThermalSprayingStage rdf:type owl:Class ;
                       rdfs:subClassOf :ThermalSprayingRelatedProcess ,
                                       [ rdf:type owl:Restriction ;
-                                        owl:onProperty elite:isStageOf ;
+                                        owl:onProperty hume:isStageOf ;
                                         owl:someValuesFrom :ThermalSpraying
                                       ] ;
                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Stage"@en .
@@ -2111,7 +2112,7 @@ The definition is adapted from ISO 14917:2017""" ;
 :ThermalSprayingSubProcess rdf:type owl:Class ;
                            rdfs:subClassOf :ThermalSprayingRelatedProcess ,
                                            [ rdf:type owl:Restriction ;
-                                             owl:onProperty elite:isSubProcessOf ;
+                                             owl:onProperty hume:isSubProcessOf ;
                                              owl:someValuesFrom :ThermalSpraying
                                            ] ;
                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Sub Process"@en .
@@ -2119,7 +2120,7 @@ The definition is adapted from ISO 14917:2017""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Thickness
 :Thickness rdf:type owl:Class ;
-           rdfs:subClassOf elite:Property ;
+           rdfs:subClassOf hume:Property ;
            rdfs:isDefinedBy "ISO 80000-3:2019" ;
            <http://www.w3.org/2004/02/skos/core#prefLabel> "Thickness" ;
            :elucidation "Minimum length of a straight line segment between two parallel planes enclosing an object" .
@@ -2328,7 +2329,7 @@ The definition is adapted from ISO 14917:2017""" ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Time
 :Time rdf:type owl:Class ;
-      rdfs:subClassOf elite:Property .
+      rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Tooling
@@ -2343,13 +2344,13 @@ The sample holder (\"tool\") might include shadow masks. In this case, the proce
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TorchComponent
 :TorchComponent rdf:type owl:Class ;
-                rdfs:subClassOf elite:Component ;
+                rdfs:subClassOf hume:Component ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Torch Component" .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Turntable
 :Turntable rdf:type owl:Class ;
-           rdfs:subClassOf elite:Device ;
+           rdfs:subClassOf hume:Device ;
            rdfs:comment """Turntables can feature simple continuous rotation or be synchronized with the manipulator.
 Turntables can also be used to coat planar substrates of limited lateral width to achieve higher relative torch/substrate linear velocities than woukd be possible through the linear motion of the manipulator in front of a stationary substrate.""" ;
            rdfs:isDefinedBy "EN 1395-6:2007: Thermal spraying - Acceptance inspection of thermal spraying equipment - Part 6: Manipulator systems." ;
@@ -2361,7 +2362,7 @@ Turntables can also be used to coat planar substrates of limited lateral width t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Velocity
 :Velocity rdf:type owl:Class ;
-          rdfs:subClassOf elite:Property ;
+          rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-3:2019" ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Velocity" ;
           :elucidation "Vector quantity corresponding to the rate of change of position" .
@@ -2425,12 +2426,12 @@ Vickers hardness is specifically told into:
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Weight
 :Weight rdf:type owl:Class ;
-        rdfs:subClassOf elite:Property .
+        rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Width
 :Width rdf:type owl:Class ;
-       rdfs:subClassOf elite:Property .
+       rdfs:subClassOf hume:Property .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#XYManipulator
