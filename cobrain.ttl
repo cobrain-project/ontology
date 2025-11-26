@@ -387,10 +387,10 @@ Coated Substrate"""@en ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#serialNumber
 :serialNumber rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf :nonUniqueID ;
+              rdfs:subPropertyOf :uniqueID ;
               rdf:type owl:FunctionalProperty ;
               rdfs:range xsd:string ;
-              :elucidation "The serial number of a product (not usually unique)."@en .
+              :elucidation "The serial number of a product (unique in the scope of CoBRAIN)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#species
@@ -840,6 +840,12 @@ After removing all contaminants, parts should be protected from airborne debris 
                                                         "Layer"@en ;
          <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating"@en ;
          :elucidation "A layer of material built up onto the substrate by a thermal spray process"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#CoatingThickness
+:CoatingThickness rdf:type owl:Class ;
+                  rdfs:subClassOf :CharacterisatonProperty ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating Thickness"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoatingWeight
