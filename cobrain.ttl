@@ -157,6 +157,12 @@ hume:isRemovedfrom rdf:type owl:ObjectProperty .
           :elucidation "The super property for all data properties refering to HVAF process specific data."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#JCPDSCode
+:JCPDSCode rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           :elucidation "A standard reference number assigned to a specific crystalline material's X-ray diffraction (XRD) pattern"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#MBN_ID
 :MBN_ID rdf:type owl:DatatypeProperty ;
         rdfs:comment "The data properties includes uniivocal and non-univocal IDs."@en ;
@@ -1026,6 +1032,18 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                  :elucidation "The width of the deposition area on the substrate."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Diffractometer
+:Diffractometer rdf:type owl:Class ;
+                rdfs:subClassOf :CharacterisationDevice ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometer"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Diffractometry
+:Diffractometry rdf:type owl:Class ;
+                rdfs:subClassOf hume:Characterisation ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometry"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#ElasticModulus
 :ElasticModulus rdf:type owl:Class ;
                 rdfs:subClassOf :CharacterisatonProperty ;
@@ -1035,6 +1053,12 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                 <http://www.w3.org/2004/02/skos/core#altLabel> "Young Modulus"@en ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Elastic Modulus" ;
                 :elucidation "The proportionality coefficient between the stress applied to a material and the resulting strain within the linear reversible deformation regime." .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#ElectronDiffractometry
+:ElectronDiffractometry rdf:type owl:Class ;
+                        rdfs:subClassOf :Diffractometry ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Electron Diffractometry"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ErosiveWearRate
@@ -2543,6 +2567,14 @@ Vickers hardness is specifically told into:
 :Width rdf:type owl:Class ;
        rdfs:subClassOf hume:Property ;
        <http://www.w3.org/2004/02/skos/core#prefLabel> "Width"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#XRD
+:XRD rdf:type owl:Class ;
+     rdfs:subClassOf :Diffractometry ;
+     <http://www.w3.org/2004/02/skos/core#altLabel> "X-Ray Diffraction"@en ;
+     <http://www.w3.org/2004/02/skos/core#prefLabel> "XRD"@en ;
+     :elucidation "A specific type of diffractometry that exclusively uses X-rays as the radiation source, ideal for bulk crystal structure, phase identification, and residual stress in metals, ceramics, and minerals."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#XYManipulator
