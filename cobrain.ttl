@@ -437,7 +437,8 @@ Coated Substrate"""@en ;
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#wtComposition
 :wtComposition rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf :composition .
+               rdfs:subPropertyOf :composition ;
+               rdfs:comment "Weight fraction of a constituent type (e.g., species, substance)"@en .
 
 
 #################################################################
