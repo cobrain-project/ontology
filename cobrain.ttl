@@ -346,6 +346,53 @@ For example, if two individuals having a non unique ID data property called :col
            rdfs:subPropertyOf owl:topDataProperty .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#pinOnDiscData
+:pinOnDiscData rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podDistance
+:podDistance rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :pinOnDiscData ;
+             :elucidation "The total sliding distance traveled by the pin against the rotating disc during the test, measured in meters (m)"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podLoad
+:podLoad rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf :pinOnDiscData ;
+         :elucidation "The normal force (applied weight/load) pressing the stationary pin onto the surface of the rotating disc, measured in Newtons (N)."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podPinDiameter
+:podPinDiameter rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :pinOnDiscData ;
+                :elucidation "The nominal diameter of the cylindrical pin (or the diameter of the spherical ball if a ball-on-disc configuration is used), expressed in millimeters (mm)."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podPinMaterial
+:podPinMaterial rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :pinOnDiscData ;
+                :elucidation "A literal string or controlled vocabulary identifier specifying the composition, alloy, or coating of the pin specimen (e.g., \"AISI 52100 steel\", \"Alumina\")."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podSpeed
+:podSpeed rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :pinOnDiscData ;
+          :elucidation "The relative linear sliding velocity at the contact interface (in cm/s)"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podTemperature
+:podTemperature rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :pinOnDiscData ;
+                :elucidation "The ambient or controlled environmental temperature at which the tribological test is conducted, typically expressed in degrees Celsius (°C)"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#podTrackRadius
+:podTrackRadius rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :pinOnDiscData ;
+                :elucidation "The radial distance from the center of rotation of the disc to the center of the pin's contact path (wear track), recorded in millimeters (mm)."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#preparationID
 :preparationID rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :nonUniqueID ;
@@ -468,7 +515,7 @@ hume:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/e
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AbrasiveWearTest
 :AbrasiveWearTest rdf:type owl:Class ;
-                  rdfs:subClassOf hume:Characterisation ;
+                  rdfs:subClassOf :WearTest ;
                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Test"@en .
 
 
@@ -703,6 +750,12 @@ phenomenon of attachment at the interface between a solid surface and another ma
                           :elucidation "Average of measured peak temperatures of an entity."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#BallWearPin
+:BallWearPin rdf:type owl:Class ;
+             rdfs:subClassOf :WearPin ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Ball Wear Pin"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#BlastingMediaConsumption
 :BlastingMediaConsumption rdf:type owl:Class ;
                           rdfs:subClassOf :GritBlastingProcessProperties ;
@@ -803,6 +856,12 @@ phenomenon of attachment at the interface between a solid surface and another ma
 :CharacterisatonProperty rdf:type owl:Class ;
                          rdfs:subClassOf hume:Property ;
                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Property"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#CharactersationComponent
+:CharactersationComponent rdf:type owl:Class ;
+                          rdfs:subClassOf hume:Component ;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Component"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ChemicalComposition
@@ -1032,6 +1091,12 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                  :elucidation "The width of the deposition area on the substrate."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Diameter
+:Diameter rdf:type owl:Class ;
+          rdfs:subClassOf :Length ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Diameter"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#Diffractometer
 :Diffractometer rdf:type owl:Class ;
                 rdfs:subClassOf :CharacterisationDevice ;
@@ -1042,6 +1107,12 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
 :Diffractometry rdf:type owl:Class ;
                 rdfs:subClassOf hume:Characterisation ;
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometry"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Distance
+:Distance rdf:type owl:Class ;
+          rdfs:subClassOf :Length ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Distance"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ElasticModulus
@@ -1116,6 +1187,12 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
           :elucidation "The volume of a gas passing across the section of a conduit per unit time" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Force
+:Force rdf:type owl:Class ;
+       rdfs:subClassOf hume:Property ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Force"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#FractureToughness
 :FractureToughness rdf:type owl:Class ;
                    rdfs:subClassOf :CharacterisatonProperty ;
@@ -1126,7 +1203,7 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FrictionCoefficient
 :FrictionCoefficient rdf:type owl:Class ;
-                     rdfs:subClassOf hume:Property ;
+                     rdfs:subClassOf :CharacterisatonProperty ;
                      rdfs:isDefinedBy "ISO 80000-4:2019" ;
                      rdfs:seeAlso """ASTM G99-17: Pin-on-Disc Sliding Test
 ASTM G133-05(2016): Linearly Reciprocating Ball-on-Flat Sliding Test
@@ -1466,7 +1543,7 @@ Indentation hardness is specifically told into:
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Indenter
 :Indenter rdf:type owl:Class ;
-          rdfs:subClassOf :NanoIndenterComponent ;
+          rdfs:subClassOf :CharactersationComponent ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter" .
 
 
@@ -1520,6 +1597,12 @@ https://www.iso.org/obp/ui/#iso:std:iso:10878:ed-1:v1:en:term:1.69"""@en .
 :LiquidFuelledHVOFTorch rdf:type owl:Class ;
                         rdfs:subClassOf :HVOFTorch ;
                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid-Fuelled HVOF torch" .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#Load
+:Load rdf:type owl:Class ;
+      rdfs:subClassOf :Force ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Load"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LowPressureColdSpraying
@@ -1622,12 +1705,6 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
               rdfs:subClassOf :CharacterisationDevice ;
               <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter" ;
               :elucidation "The Nano Indenter G200 indentation testing system, designed for nanoscale measurements during characterization and development of a wide range of materials." .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenterComponent
-:NanoIndenterComponent rdf:type owl:Class ;
-                       rdfs:subClassOf hume:Component ;
-                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter Component"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Nanoindentation
@@ -1743,6 +1820,21 @@ Fitting of the experimental pattern with suitable mathematical functions and int
 :PillarSplitting rdf:type owl:Class ;
                  rdfs:subClassOf :Nanoindentation ;
                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Pillar Splitting" .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#PinOnDiscTest
+:PinOnDiscTest rdf:type owl:Class ;
+               rdfs:subClassOf :WearTest ;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "Pin-on-disk Test"@en-us ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Pin-on-disc Wear Test"@en-gb ;
+               :elucidation "A pin-on-disc wear test is a standard laboratory method (governed by ASTM G99-95a) used in tribology to evaluate the friction, wear resistance, and durability of materials, coatings, and lubricants."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#PinOnDiscTribometer
+:PinOnDiscTribometer rdf:type owl:Class ;
+                     rdfs:subClassOf :Tribometer ;
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "Pin-on-disk Tribometer"@en-us ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Pin-on--disc Tribometer"@en-gb .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pitch
@@ -2481,6 +2573,13 @@ The sample holder (\"tool\") might include shadow masks. In this case, the proce
                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Torch Component" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#Tribometer
+:Tribometer rdf:type owl:Class ;
+            rdfs:subClassOf :CharacterisationDevice ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Tribometer"@en ;
+            :elucidation "A tribometer is a precision scientific instrument that measures tribological quantities, specifically the coefficient of friction, friction force, and wear volume, between two surfaces in relative motion."@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#Turntable
 :Turntable rdf:type owl:Class ;
            rdfs:subClassOf hume:Device ;
@@ -2551,10 +2650,22 @@ Vickers hardness is specifically told into:
         <http://www.w3.org/2004/02/skos/core#prefLabel> "WCCoCr" .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#WearPin
+:WearPin rdf:type owl:Class ;
+         rdfs:subClassOf :CharactersationComponent ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Pin"@en .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#WearRate
 :WearRate rdf:type owl:Class ;
           rdfs:subClassOf :CharacterisatonProperty ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Rate" .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#WearTest
+:WearTest rdf:type owl:Class ;
+          rdfs:subClassOf hume:Characterisation ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Test"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Weight
