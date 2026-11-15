@@ -335,6 +335,11 @@ For example, if two individuals having a non unique ID data property called :col
                           :elucidation "The number of passes performed by the torch following the deposition program on the set of substrates mounted on the equipment."@en .
 
 
+###  https://www.cobrain-project.eu/ontology/cobrain#phaseName
+:phaseName rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
 ###  https://www.cobrain-project.eu/ontology/cobrain#preparationID
 :preparationID rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :nonUniqueID ;
@@ -1972,6 +1977,12 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
                             rdfs:subClassOf :ChemicalComposition ;
                             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_172e2c96_180b_40f8_a3e7_b624471f40c2> ;
                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Component Composition"@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#SinglePhaseData
+:SinglePhaseData rdf:type owl:Class ;
+                 rdfs:subClassOf :PhaseComposition ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Phase Data"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SkeletalDensity
