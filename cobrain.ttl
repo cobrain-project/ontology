@@ -462,7 +462,7 @@ Coated Substrate"""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#species
 :species rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf owl:topDataProperty ;
-         rdfs:domain :SingelComponentComposition .
+         rdfs:domain :SingleComponentComposition .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#standardDeviation
@@ -1554,12 +1554,12 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
                     :elucidation "A nanoindentation technique in which a large array of shallow, rapid indentations (several per second) is made over a region of the surface to produce spatially resolved maps of hardness and elastic modulus (e.g. KLA NanoBlitz 3D)."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#HighVelocityIndentation
-:HighVelocityIndentation rdf:type owl:Class ;
-                         rdfs:subClassOf :Hardness ;
-                         <http://www.w3.org/2004/02/skos/core#altLabel> "HVI"@en ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "High Velocity Indentation Hardness"@en ;
-                         :elucidation "A dynamic hardness determined by impacting the surface of a sample with an indenter at high velocity and evaluating the resulting impression, thereby probing the material response at high strain rates."@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#HighVelocityIndentationHardness
+:HighVelocityIndentationHardness rdf:type owl:Class ;
+                                 rdfs:subClassOf :Hardness ;
+                                 <http://www.w3.org/2004/02/skos/core#altLabel> "HVI"@en ;
+                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "High Velocity Indentation Hardness"@en ;
+                                 :elucidation "A dynamic hardness determined by impacting the surface of a sample with an indenter at high velocity and evaluating the resulting impression, thereby probing the material response at high strain rates."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HoldingSystem
@@ -2170,8 +2170,8 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
         :elucidation "An object taken from, or prepared to be representative of, a larger object or material in order to be analysed or tested (e.g. a coated coupon cut for characterisation)."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#SingelComponentComposition
-:SingelComponentComposition rdf:type owl:Class ;
+###  https://www.cobrain-project.eu/ontology/cobrain#SingleComponentComposition
+:SingleComponentComposition rdf:type owl:Class ;
                             rdfs:subClassOf :ChemicalComposition ;
                             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_172e2c96_180b_40f8_a3e7_b624471f40c2> ;
                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Component Composition"@en ;
