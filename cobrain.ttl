@@ -67,11 +67,13 @@ owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#elucidation
 :elucidation rdf:type owl:AnnotationProperty ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "elucidation"@en ;
              rdfs:subPropertyOf rdfs:comment .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#productionInformation
 :productionInformation rdf:type owl:AnnotationProperty ;
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "production information"@en ;
                        rdfs:subPropertyOf rdfs:comment .
 
 
@@ -510,19 +512,22 @@ hume:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/e
 ###  https://www.cobrain-project.eu/ontology/cobrain#Abrasimeter
 :Abrasimeter rdf:type owl:Class ;
              rdfs:subClassOf :CharacterisationDevice ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasimeter"@en .
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasimeter"@en ;
+             :elucidation "A characterisation device used to perform abrasive wear tests, in which a specimen is worn against an abrasive medium (e.g. abrasive wheel, abrasive slurry or abrasive paper) under controlled load and sliding distance."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AbrasiveWearTest
 :AbrasiveWearTest rdf:type owl:Class ;
                   rdfs:subClassOf :WearTest ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Test"@en .
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Test"@en ;
+                  :elucidation "A wear test in which the surface of the specimen is worn by hard particles or by hard asperities of a counterface (e.g. dry sand/rubber wheel test, ASTM G65), and the wear resistance is evaluated from the resulting mass or volume loss."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#AbrasiveWearTestingProperties
-:AbrasiveWearTestingProperties rdf:type owl:Class ;
-                               rdfs:subClassOf hume:Property ;
-                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Testing Properties"@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#AbrasiveWearTestingProperty
+:AbrasiveWearTestingProperty rdf:type owl:Class ;
+                             rdfs:subClassOf hume:Property ;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Abrasive Wear Testing Property"@en ;
+                             :elucidation "A property describing the conditions or the results of an abrasive wear test."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Adhesion
@@ -531,9 +536,9 @@ hume:Device <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/e
           rdfs:seeAlso "ASTM C633-13 (2017)" ,
                        """ISO 4618:2023, 3.7
 phenomenon of attachment at the interface between a solid surface and another material caused by molecular forces""" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Adhesion" ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Adhesion"@en ;
           :elucidation """(ASTM D907) \"The state in which two surfaces are held together by interphase forces which may consist of chemical forces or interlocking action, or both\"
-Tensile adhesion is obtained by a pull-off test.""" .
+Tensile adhesion is obtained by a pull-off test."""@en .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :Adhesion ;
@@ -555,7 +560,8 @@ phenomenon of attachment at the interface between a solid surface and another ma
                            owl:onProperty hume:hasDatum ;
                            owl:someValuesFrom :AirPressure
                          ] ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Feed"@en .
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Feed"@en ;
+         :elucidation "A gas feed description of the compressed air fed to a device or process, characterised by its flow rate and pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AirFlowRate
@@ -572,13 +578,13 @@ phenomenon of attachment at the interface between a solid surface and another ma
              :elucidation "The air pressure."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#AirSupplysystem
-:AirSupplysystem rdf:type owl:Class ;
+###  https://www.cobrain-project.eu/ontology/cobrain#AirSupplySystem
+:AirSupplySystem rdf:type owl:Class ;
                  rdfs:subClassOf :GasSupplySystem ;
-                 rdfs:comment "This system is designed to provide a consistent, safe, and high-quality supply of compressed air to the thermal spray system. The system can be pressure- and/or volume flow-controlled. Compressed air is usually produced on-site with a suitably sized compressor." ;
+                 rdfs:comment "This system is designed to provide a consistent, safe, and high-quality supply of compressed air to the thermal spray system. The system can be pressure- and/or volume flow-controlled. Compressed air is usually produced on-site with a suitably sized compressor."@en ;
                  rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Supply System" ;
-                 :elucidation "The air supply system feeds and regulates the flow of air to the thermal spray system, including as process gas, as torch cooling medium, and as substrate cooling medium" .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Air Supply System"@en ;
+                 :elucidation "The air supply system feeds and regulates the flow of air to the thermal spray system, including as process gas, as torch cooling medium, and as substrate cooling medium"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Al0
@@ -605,9 +611,10 @@ phenomenon of attachment at the interface between a solid surface and another ma
                        owl:hasValue "Cr18.8Fe40.4Mn25Ni15.9"
                      ] ;
      <http://purl.org/dc/terms/source> "Literature"@en ;
-     <http://www.w3.org/2004/02/skos/core#altLabel> "Al0(Cr20Fe40Mn25Ni15)100" ,
-                                                    "Al0(CrFeMnNi)" ;
-     <http://www.w3.org/2004/02/skos/core#prefLabel> "Al0" .
+     <http://www.w3.org/2004/02/skos/core#altLabel> "Al0(Cr20Fe40Mn25Ni15)100"@en ,
+                                                    "Al0(CrFeMnNi)"@en ;
+     <http://www.w3.org/2004/02/skos/core#prefLabel> "Al0"@en ;
+     :elucidation "A CrFeMnNi high entropy alloy without aluminium, used as the base of the Al-containing series, with nominal composition Cr20Fe40Mn25Ni15 (at.%)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Al10
@@ -634,9 +641,10 @@ phenomenon of attachment at the interface between a solid surface and another ma
                         owl:hasValue "Al5.1Cr17.8Fe38.3Mn22.5Ni15.1"
                       ] ;
       <http://purl.org/dc/terms/source> "Literature"@en ;
-      <http://www.w3.org/2004/02/skos/core#altLabel> "Al10(CrFeMnNi)" ,
-                                                     "Al5.1 Cr17.8 Fe38.3 Mn23.5 Ni15.1" ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "Al10" .
+      <http://www.w3.org/2004/02/skos/core#altLabel> "Al10(CrFeMnNi)"@en ,
+                                                     "Al5.1 Cr17.8 Fe38.3 Mn23.5 Ni15.1"@en ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Al10"@en ;
+      :elucidation "An AlCrFeMnNi high entropy alloy obtained by adding 10 at.% Al to the Al0 base composition, with nominal composition Al10Cr18Fe36Mn22.5Ni13.5 (at.%)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Al14
@@ -663,9 +671,10 @@ phenomenon of attachment at the interface between a solid surface and another ma
                         owl:hasValue "Al7.4Cr17.5Fe37.5Mn21.3Ni14.8"
                       ] ;
       <http://purl.org/dc/terms/source> "Literature"@en ;
-      <http://www.w3.org/2004/02/skos/core#altLabel> "Al14(Cr20Fe40Mn25Ni15)100-14" ,
-                                                     "Al14(CrFeMnNi)" ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "Al14" .
+      <http://www.w3.org/2004/02/skos/core#altLabel> "Al14(Cr20Fe40Mn25Ni15)100-14"@en ,
+                                                     "Al14(CrFeMnNi)"@en ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Al14"@en ;
+      :elucidation "An AlCrFeMnNi high entropy alloy obtained by adding 14 at.% Al to the Al0 base composition, with nominal composition Al14Cr17.2Fe34.5Mn21.3Ni12.9 (at.%)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AlCu
@@ -692,8 +701,9 @@ phenomenon of attachment at the interface between a solid surface and another ma
                         owl:hasValue "Al4.5Cr17.2Cu21Fe18.2Ni38.8"
                       ] ;
       <http://purl.org/dc/terms/source> <http://doi.org/10.1016/j.jallcom.2013.09.105> ;
-      <http://www.w3.org/2004/02/skos/core#altLabel> "AlCuCrFeNi" ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "AlCu" .
+      <http://www.w3.org/2004/02/skos/core#altLabel> "AlCuCrFeNi"@en ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "AlCu"@en ;
+      :elucidation "An AlCrCuFeNi high entropy alloy with nominal composition Al9.1Cr18.2Cu18.2Fe18.2Ni36.4 (at.%), i.e. AlCr2Cu2Fe2Ni4 in molar ratio."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AlMo
@@ -720,26 +730,30 @@ phenomenon of attachment at the interface between a solid surface and another ma
                         owl:hasValue "Al1.2Cr4.5Fe25Mo34Ni22.1"
                       ] ;
       <http://purl.org/dc/terms/source> "VTT CoBRAIN partner suggestion"@en ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "AlMo" .
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "AlMo"@en ;
+      :elucidation "An AlCrFeMoNi high entropy alloy with nominal composition Al3Cr6Fe31Mo34Ni26 (at.%), proposed by the CoBRAIN partner VTT."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Alloy
 :Alloy rdf:type owl:Class ;
        rdfs:subClassOf hume:Material ;
        owl:disjointWith :CerMet ;
-       <http://www.w3.org/2004/02/skos/core#prefLabel> "Alloy"@en .
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Alloy"@en ;
+       :elucidation "A metallic material made of a metal combined with one or more other chemical elements (metals or non-metals), typically forming solid solutions and/or intermetallic phases."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AverageAbrasiveWearTestArea
 :AverageAbrasiveWearTestArea rdf:type owl:Class ;
-                             rdfs:subClassOf :AbrasiveWearTestingProperties ;
-                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Abrasive Wear Test Area"@en .
+                             rdfs:subClassOf :AbrasiveWearTestingProperty ;
+                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Abrasive Wear Test Area"@en ;
+                             :elucidation "The average area of the wear scars produced on the specimen in an abrasive wear test, averaged over the repeated tests."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AverageAbrasiveWearTestTotalVolume
 :AverageAbrasiveWearTestTotalVolume rdf:type owl:Class ;
-                                    rdfs:subClassOf :AbrasiveWearTestingProperties ;
-                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Abrasive Wear Test Total Volume"@en .
+                                    rdfs:subClassOf :AbrasiveWearTestingProperty ;
+                                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Average Abrasive Wear Test Total Volume"@en ;
+                                    :elucidation "The average total volume of material removed from the specimen in an abrasive wear test, averaged over the repeated tests."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#AverageMaximaTemperature
@@ -753,7 +767,8 @@ phenomenon of attachment at the interface between a solid surface and another ma
 ###  https://www.cobrain-project.eu/ontology/cobrain#BallWearPin
 :BallWearPin rdf:type owl:Class ;
              rdfs:subClassOf :WearPin ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Ball Wear Pin"@en .
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Ball Wear Pin"@en ;
+             :elucidation "A wear pin whose contact tip is a ball of defined diameter and material (e.g. alumina, WC-Co, steel), used as the counterbody in ball-on-disc tests."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#BlastingMediaConsumption
@@ -778,7 +793,7 @@ phenomenon of attachment at the interface between a solid surface and another ma
      rdfs:comment """There are three variants of cold spraying:
 - Low-pressure cold spray utilizes compressed air at pressures up to 10 bar and temperatures up to 600 °C. The powder is injected radially in the divergent part of the nozzle, using a pressureless powder feeder.
 - High-pressure cold-spray utilizes nitrogen or helium at pressures up to 6 MPa and temperatures up to 1100 °C. The powder is injected axially in the cold spray torch, upstream of the nozzle, using a pressurized powder feeder.
-- Medium-pressure cold spray operates with compressed air at intermediate pressure levels, usually in the range of 7 - 35 bar, with temperatures up to 550 °C - 600 °C. The powder is injected radially in the convergent part of the nozzle using a presureless powder feeder.""" ;
+- Medium-pressure cold spray operates with compressed air at intermediate pressure levels, usually in the range of 7 - 35 bar, with temperatures up to 550 °C - 600 °C. The powder is injected radially in the convergent part of the nozzle using a presureless powder feeder."""@en ;
      rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
      rdfs:seeAlso "Gartner F, Stoltenhoff T, Schmidt T, Kreye H (2006) The cold spray process and its potential  for industrial applications. J Therm Spray Technol 15(2):223–232" ,
                   "J. Karthikeyan (2013), Cold Spray Process, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
@@ -787,27 +802,28 @@ phenomenon of attachment at the interface between a solid surface and another ma
                                                     "Cold Spraying"@en ,
                                                     "Kinetic Spraying"@en ;
      <http://www.w3.org/2004/02/skos/core#prefLabel> "CGS"@en ;
-     :elucidation "A thermal spray process utilizing a supersonic jet of produced by the expansion of a compressed through a converging/diverging nozzle gas to accelerate, at or near room temperature, powder particles to high velocities. The solid particles traveling at speeds often above 500 m/s plastically deform and consolidate on impact with their substrate to create a coating." .
+     :elucidation "A thermal spray process utilizing a supersonic jet of produced by the expansion of a compressed through a converging/diverging nozzle gas to accelerate, at or near room temperature, powder particles to high velocities. The solid particles traveling at speeds often above 500 m/s plastically deform and consolidate on impact with their substrate to create a coating."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CGSInletGasPressure
 :CGSInletGasPressure rdf:type owl:Class ;
-                     rdfs:subClassOf :CGSProperties ;
+                     rdfs:subClassOf :CGSProperty ;
                      <http://www.w3.org/2004/02/skos/core#prefLabel> "CGS Inlet Gas Pressure"@en ;
                      :elucidation "The inlet gas pressure for the CGS spraying process"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CGSInletGasTemperature
 :CGSInletGasTemperature rdf:type owl:Class ;
-                        rdfs:subClassOf :CGSProperties ;
-                        <http://www.w3.org/2004/02/skos/core#prefLabel> "CGS Inlet Gas Temperature"@en ,
-                                                                        "The inlet gas temperature for the CGS spraying process"@en .
+                        rdfs:subClassOf :CGSProperty ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "CGS Inlet Gas Temperature"@en ;
+                        :elucidation "The temperature of the process gas at the inlet of the CGS torch."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#CGSProperties
-:CGSProperties rdf:type owl:Class ;
-               rdfs:subClassOf :ThermalSprayingProcessProperty ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "CGS Process Properties"@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#CGSProperty
+:CGSProperty rdf:type owl:Class ;
+             rdfs:subClassOf :ThermalSprayingProcessProperty ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "CGS Process Property"@en ;
+             :elucidation "A thermal spraying process property that is specific to the cold gas spraying (CGS) process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Cantor
@@ -834,7 +850,8 @@ phenomenon of attachment at the interface between a solid surface and another ma
                           owl:hasValue "Co21Cr18.5Fe19.9Mn19.6Ni20.9"
                         ] ;
         <http://purl.org/dc/terms/source> "Literature"@en ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "Cantor" .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Cantor"@en ;
+        :elucidation "The equiatomic CoCrFeMnNi high entropy alloy (Co20Cr20Fe20Mn20Ni20 at.%), named after B. Cantor, who first reported it in 2004."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CerMet
@@ -843,52 +860,56 @@ phenomenon of attachment at the interface between a solid surface and another ma
         rdfs:comment "A cermet is a composite material composed of ceramic and metal materials."@en ;
         rdfs:seeAlso <https://en.wikipedia.org/wiki/Cermet> ,
                      "Tinklepaugh, James R. (1960). Cermets. New York: Reinhold Publishing Corporation. ASIN B0007E6FO4."@en ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "CerMet"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "CerMet"@en ;
+        :elucidation "A composite material composed of a ceramic phase (e.g. carbides such as TiC or WC) bonded by a metallic phase (binder)."@en .
+
+
+###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisationComponent
+:CharacterisationComponent rdf:type owl:Class ;
+                           rdfs:subClassOf hume:Component ;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Component"@en ;
+                           :elucidation "A component of a characterisation device that takes part directly in the measurement by interacting with the specimen, such as an indenter or a wear pin."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisationDevice
 :CharacterisationDevice rdf:type owl:Class ;
                         rdfs:subClassOf hume:Device ;
-                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Device"@en .
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Device"@en ;
+                        :elucidation "A device used to carry out a characterisation process, i.e. to measure one or more properties of a sample."@en .
 
 
-###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisatonProperty
-:CharacterisatonProperty rdf:type owl:Class ;
-                         rdfs:subClassOf hume:Property ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Property"@en .
-
-
-###  https://www.cobrain-project.eu/ontology/cobrain#CharactersationComponent
-:CharactersationComponent rdf:type owl:Class ;
-                          rdfs:subClassOf hume:Component ;
-                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Component"@en .
+###  https://www.cobrain-project.eu/ontology/cobrain#CharacterisationProperty
+:CharacterisationProperty rdf:type owl:Class ;
+                          rdfs:subClassOf hume:Property ;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Characterisation Property"@en ;
+                          :elucidation "A property of a sample (e.g. of a coating or a material) that is determined through a characterisation process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ChemicalComposition
 :ChemicalComposition rdf:type owl:Class ;
                      rdfs:subClassOf :Composition ;
                      rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_7efd64d1_05a1_49cd_a7f0_783ca050d4f3> ;
-                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Chemical Composition"@en .
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Chemical Composition"@en ;
+                     :elucidation "A composition expressing the type and relative amount (as atomic, weight or volume fraction) of the chemical elements or compounds that constitute a material."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Cleaning
 :Cleaning rdf:type owl:Class ;
           rdfs:subClassOf :SubstratePreparation ;
           rdfs:comment """This is the first step for the substrate preparation.
-After removing all contaminants, parts should be protected from airborne debris and fingerprints and should be handled with clean fixtures and materials.""" ;
+After removing all contaminants, parts should be protected from airborne debris and fingerprints and should be handled with clean fixtures and materials."""@en ;
           rdfs:isDefinedBy "Anon. (2013), Introduction to Coating Design and Processing, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                            "EN 13507:2018: Thermal Spraying - Pre-treatment of surfaces of metallic parts and components for thermal spraying." ;
           rdfs:seeAlso "Fauchais, Pierre L.; Heberlein, Joachim VR; Boulos, Maher I. Thermal spray fundamentals: from powder to part. Springer Science & Business Media, 2014." ,
                        "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
           <http://www.w3.org/2004/02/skos/core#altLabel> "Degreasing"@en ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Cleaning" ;
-          :elucidation "The process removes all contaminants, such as scale, oil, grease, and paint, from the surface to be roughened and coated." .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Cleaning"@en ;
+          :elucidation "The process removes all contaminants, such as scale, oil, grease, and paint, from the surface to be roughened and coated."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoatedSubstrate
 :CoatedSubstrate rdf:type owl:Class ;
-                 rdfs:subClassOf hume:Object ,
-                                 hume:System ,
+                 rdfs:subClassOf hume:System ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty hume:hasComponent ;
                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -910,7 +931,6 @@ After removing all contaminants, parts should be protected from airborne debris 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Coating
 :Coating rdf:type owl:Class ;
          rdfs:subClassOf hume:Component ,
-                         hume:Object ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty hume:isComponentOf ;
                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -926,8 +946,10 @@ After removing all contaminants, parts should be protected from airborne debris 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoatingThickness
 :CoatingThickness rdf:type owl:Class ;
-                  rdfs:subClassOf :CharacterisatonProperty ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating Thickness"@en .
+                  rdfs:subClassOf :CharacterisationProperty ,
+                                  :Thickness ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Coating Thickness"@en ;
+                  :elucidation "The thickness of the coating deposited on the substrate, i.e. the distance between the substrate-coating interface and the outer surface of the coating, measured perpendicularly to the substrate."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoatingWeight
@@ -944,34 +966,36 @@ After removing all contaminants, parts should be protected from airborne debris 
                 rdfs:comment """The torch has no combustion chamber.
 The gas is pre-heated with electrical resistance systems that are located in the torch itself and/or in external heating units.
 Nozzles are convergent/divergent; they are usually interchangeable and vary in shape, size, and material, to achieve specific spray patterns and avoid clogging.
-Cold Spray torches can either have a water-cooled nozzle or (especially in low-pressure models) no nozzle cooling system.""" ;
+Cold Spray torches can either have a water-cooled nozzle or (especially in low-pressure models) no nozzle cooling system."""@en ;
                 rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
                 rdfs:seeAlso "J. Karthikeyan (2013), Cold Spray Process, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                <http://www.w3.org/2004/02/skos/core#altLabel> "Cold Spray Gun" ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Cold Spray Torch" ;
-                :elucidation "A thermal spray torch specifically designed to perform the Cold Spray process" .
+                <http://www.w3.org/2004/02/skos/core#altLabel> "Cold Spray Gun"@en ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Cold Spray Torch"@en ;
+                :elucidation "A thermal spray torch specifically designed to perform the Cold Spray process"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CombustionChamber
 :CombustionChamber rdf:type owl:Class ;
                    rdfs:subClassOf :TorchComponent ;
                    rdfs:comment """Fuel and comburent can be pre-mixed before entering the combustion chamber, as in most gas-fuelled HVOF and HVAF torch types, or they can be mixed in the combustion chamber, as in most liquid-fuelled HVOF torches.
-Sometimes, the convergent part of the nozzle can also act as a combustion chamber.""" ;
+Sometimes, the convergent part of the nozzle can also act as a combustion chamber."""@en ;
                    rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Combustion Chamber" ;
-                   :elucidation "The combustion chamber is the location within a HVOF or HVAF torch where a confined fuel-comburent combustion takes place at pressures above ambient pressure." .
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Combustion Chamber"@en ;
+                   :elucidation "The combustion chamber is the location within a HVOF or HVAF torch where a confined fuel-comburent combustion takes place at pressures above ambient pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Composition
 :Composition rdf:type owl:Class ;
              rdfs:subClassOf hume:Property ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Composition"@en .
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Composition"@en ;
+             :elucidation "A property expressing the type and relative amount of the constituents (chemical elements, compounds or phases) of a material."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ControlSystem
 :ControlSystem rdf:type owl:Class ;
                rdfs:subClassOf hume:System ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Control System" .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Control System"@en ;
+               :elucidation "A system that monitors and regulates the operation of other systems or devices by acting on their operating parameters."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ControlUnit
@@ -992,48 +1016,51 @@ It can operate on open- or closed-loop principles."""@en ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#CoolingSystem
 :CoolingSystem rdf:type owl:Class ;
                rdfs:subClassOf hume:System ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooling Systemen"@en .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooling System"@en ;
+               :elucidation "A system that removes heat from an object or device by means of a cooling fluid (liquid or gas) in order to keep its temperature within acceptable limits."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CorrosionCurrentDensity
 :CorrosionCurrentDensity rdf:type owl:Class ;
-                         rdfs:subClassOf :CharacterisatonProperty ;
+                         rdfs:subClassOf :CharacterisationProperty ;
                          rdfs:seeAlso "Pierre R. Roberge (2000), Handbook of Corrosion Engineering. McGraw-Hill, New York. D.J. De Renzo (1985), CORROSION RESISTANT MATERIALS HANDBOOK, Fourth Edition. NOYES DATA CORPORATION Park Ridge, New Jersey, U.S.A." ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Corrosion Current Density" ;
-                         :elucidation "The current corrosion density value represents the rate at which a metal or alloy is corroding in a specific environment. It is a measure of the amount of metal ions that are being released from the material due to the corrosion process." .
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Corrosion Current Density"@en ;
+                         :elucidation "The current corrosion density value represents the rate at which a metal or alloy is corroding in a specific environment. It is a measure of the amount of metal ions that are being released from the material due to the corrosion process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CorrosionPotential
 :CorrosionPotential rdf:type owl:Class ;
-                    rdfs:subClassOf :CharacterisatonProperty ;
+                    rdfs:subClassOf :CharacterisationProperty ;
                     rdfs:seeAlso "Pierre R. Roberge (2000), Handbook of Corrosion Engineering. McGraw-Hill, New York. D.J. De Renzo (1985), CORROSION RESISTANT MATERIALS HANDBOOK, Fourth Edition. NOYES DATA CORPORATION Park Ridge, New Jersey, U.S.A." ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Corrosion Potential" ;
-                    :elucidation "The corrosion potential value represents the tendency of a metal or alloy to corrode in a specific environment. It is a measure of the electrochemical potential difference between the metal and its environment, which is the driving force for the corrosion process." .
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Corrosion Potential"@en ;
+                    :elucidation "The corrosion potential value represents the tendency of a metal or alloy to corrode in a specific environment. It is a measure of the electrochemical potential difference between the metal and its environment, which is the driving force for the corrosion process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#CriticalLoad
 :CriticalLoad rdf:type owl:Class ;
-              rdfs:subClassOf :CharacterisatonProperty ;
-              <http://www.w3.org/2004/02/skos/core#prefLabel> "Critical Load" .
+              rdfs:subClassOf :CharacterisationProperty ;
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Critical Load"@en ;
+              :elucidation "The lowest normal load at which a specific failure event (e.g. cracking, delamination or exposure of the substrate) occurs in a coating during a scratch test (cf. ISO 20502, ASTM C1624)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Density
 :Density rdf:type owl:Class ;
          rdfs:subClassOf hume:Property ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Density"@en .
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Density"@en ;
+         :elucidation "Mass per unit volume of a material."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Deposition
 :Deposition rdf:type owl:Class ;
             rdfs:subClassOf :ThermalSprayingStage ;
             rdfs:comment """During this stage, the torch is moved in front of the substrates with a specified kinematics and for a specified number of cycles by using the coordinated motion of the turntable and the manipulator or robot.
-The substrate can be cooled during the deposition stage to prevent excessive rise in temperatures that would result in high residual stress levels being generated both during and after the deposition process.""" ;
+The substrate can be cooled during the deposition stage to prevent excessive rise in temperatures that would result in high residual stress levels being generated both during and after the deposition process."""@en ;
             rdfs:seeAlso "Anon. (2013), Introduction to Coating Design and Processing, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "Build-up" ,
-                                                           "Coating" ,
-                                                           "Spraying" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition" ;
-            :elucidation "Deposition is the stage of the thermal spray process during which the coating is built up onto the substrate." .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Build-up"@en ,
+                                                           "Coating"@en ,
+                                                           "Spraying"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Deposition"@en ;
+            :elucidation "Deposition is the stage of the thermal spray process during which the coating is built up onto the substrate."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#DepositionArea
@@ -1094,42 +1121,47 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
 ###  https://www.cobrain-project.eu/ontology/cobrain#Diameter
 :Diameter rdf:type owl:Class ;
           rdfs:subClassOf :Length ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Diameter"@en .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Diameter"@en ;
+          :elucidation "The length of a straight line segment that passes through the centre of a circle or sphere and has its endpoints on its boundary; for non-spherical objects an equivalent diameter may be used."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Diffractometer
 :Diffractometer rdf:type owl:Class ;
                 rdfs:subClassOf :CharacterisationDevice ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometer"@en .
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometer"@en ;
+                :elucidation "A characterisation device that measures the pattern of radiation (X-rays, electrons or neutrons) diffracted by a sample."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Diffractometry
 :Diffractometry rdf:type owl:Class ;
                 rdfs:subClassOf hume:Characterisation ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometry"@en .
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Diffractometry"@en ;
+                :elucidation "A characterisation technique that analyses the pattern of radiation (X-rays, electrons or neutrons) diffracted by a sample to determine its crystal structure, phases and lattice strains."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Distance
 :Distance rdf:type owl:Class ;
           rdfs:subClassOf :Length ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Distance"@en .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Distance"@en ;
+          :elucidation "The length of the shortest straight line segment between two points or objects."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ElasticModulus
 :ElasticModulus rdf:type owl:Class ;
-                rdfs:subClassOf :CharacterisatonProperty ;
+                rdfs:subClassOf :CharacterisationProperty ;
                 rdfs:isDefinedBy "ISO 14577 (Instrumented indentation test)" ,
                                  "ISO 80000-4:2019" ;
                 rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
                 <http://www.w3.org/2004/02/skos/core#altLabel> "Young Modulus"@en ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Elastic Modulus" ;
-                :elucidation "The proportionality coefficient between the stress applied to a material and the resulting strain within the linear reversible deformation regime." .
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Elastic Modulus"@en ;
+                :elucidation "The proportionality coefficient between the stress applied to a material and the resulting strain within the linear reversible deformation regime."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ElectronDiffractometry
 :ElectronDiffractometry rdf:type owl:Class ;
                         rdfs:subClassOf :Diffractometry ;
-                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Electron Diffractometry"@en .
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Electron Diffractometry"@en ;
+                        :elucidation "A diffractometry technique that uses an electron beam as the radiation source, typically within a scanning or transmission electron microscope (e.g. EBSD, selected-area electron diffraction)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ErosiveWearRate
@@ -1137,15 +1169,17 @@ The substrate can be cooled during the deposition stage to prevent excessive ris
                  rdfs:subClassOf :WearRate ;
                  rdfs:seeAlso """ASTM G76-18: Erosion Test by Solid Particle Impingement Using Gas Jet
 ASTM G211-14(2020): Elevated Temperature Erosion Test by Solid Particle Impingement Using Gas Jet""" ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Erosive Wear Rate" ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Erosive Wear Rate"@en ;
                  :elucidation """The erosive wear rate (or erosion rate) is a measure of the loss of material from a surface due to erosion by solid particles carried by a compressible (gas) or incompressible (water) fluid flow.
-The erosive wear rate is expressed as the volume of material removed per unit mass of impinging solid particles.""" .
+The erosive wear rate is expressed as the volume of material removed per unit mass of impinging solid particles."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FIB
 :FIB rdf:type owl:Class ;
      rdfs:subClassOf hume:Characterisation ;
-     <http://www.w3.org/2004/02/skos/core#prefLabel> "Focused Ion Beam" .
+     <http://www.w3.org/2004/02/skos/core#altLabel> "FIB"@en ;
+     <http://www.w3.org/2004/02/skos/core#prefLabel> "Focused Ion Beam"@en ;
+     :elucidation "A technique that uses a finely focused ion beam (typically Ga+) to image, mill or deposit material at the micro- and nanoscale, e.g. to prepare cross-sections, TEM lamellae or micropillars."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FeedRate
@@ -1153,7 +1187,7 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
           rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
           rdfs:seeAlso "Glossary of Terms, in: R.C. Tucker Jr. (Ed.), ASM Handbook Vol. 5A, ASM International, Materials Park, OH, USA, 2013, pp. 351-381." ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Feed Rate" ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Feed Rate"@en ;
           :elucidation "The mass of material that passes through a given section of a conduit per unit time."@en .
 
 
@@ -1172,8 +1206,8 @@ The erosive wear rate is expressed as the volume of material removed per unit ma
 Shadow masks can be integrated in the fixture.
 Fixtures are usually permanent but may need periodic regeneration to remove deposits that build up in areas of the fixture exposed to the thermal spray jet."""@en ;
          rdfs:seeAlso "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-         <http://www.w3.org/2004/02/skos/core#altLabel> "Tool" ,
-                                                        "Tooling" ;
+         <http://www.w3.org/2004/02/skos/core#altLabel> "Tool"@en ,
+                                                        "Tooling"@en ;
          <http://www.w3.org/2004/02/skos/core#prefLabel> "Fixture"@en ;
          :elucidation "The fixture is a suitably designed system to hold one or more substrates allowing their mounting on a turntable with a suitable geometrical configuration with respect to the thermal spray torch and the manipulator."@en .
 
@@ -1183,41 +1217,43 @@ Fixtures are usually permanent but may need periodic regeneration to remove depo
           rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
           rdfs:seeAlso "Glossary of Terms, in: R.C. Tucker Jr. (Ed.), ASM Handbook Vol. 5A, ASM International, Materials Park, OH, USA, 2013, pp. 351-381." ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Flow Rate" ;
-          :elucidation "The volume of a gas passing across the section of a conduit per unit time" .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Flow Rate"@en ;
+          :elucidation "The volume of a gas passing across the section of a conduit per unit time"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Force
 :Force rdf:type owl:Class ;
        rdfs:subClassOf hume:Property ;
-       <http://www.w3.org/2004/02/skos/core#prefLabel> "Force"@en .
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Force"@en ;
+       :elucidation "A vector quantity expressing an interaction that changes, or tends to change, the state of motion or the shape of a body; equal to the rate of change of its momentum."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FractureToughness
 :FractureToughness rdf:type owl:Class ;
-                   rdfs:subClassOf :CharacterisatonProperty ;
+                   rdfs:subClassOf :CharacterisationProperty ;
                    rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
-                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Fracture Toughness" ;
-                   :elucidation "Toughness is the ability of a material to resist fracture or failure when subjected to stress, shock, or impact. It is a property of a material that combines its strength and its ability to absorb energy without breaking." .
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Fracture Toughness"@en ;
+                   :elucidation "Toughness is the ability of a material to resist fracture or failure when subjected to stress, shock, or impact. It is a property of a material that combines its strength and its ability to absorb energy without breaking."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#FrictionCoefficient
 :FrictionCoefficient rdf:type owl:Class ;
-                     rdfs:subClassOf :CharacterisatonProperty ;
+                     rdfs:subClassOf :CharacterisationProperty ;
                      rdfs:isDefinedBy "ISO 80000-4:2019" ;
                      rdfs:seeAlso """ASTM G99-17: Pin-on-Disc Sliding Test
 ASTM G133-05(2016): Linearly Reciprocating Ball-on-Flat Sliding Test
 ASTM G77-17: Block-on-Ring Sliding Test""" ,
                                   "Gwidon W. Stachowiak (2006), WEAR–MATERIALS, MECHANISMSAND PRACTICE, JohnWiley&SonsLtd, The Atrium, Southern Gate, Chichester, West Sussex, England" ;
-                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Friction Coefficient" ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Friction Coefficient"@en ;
                      :elucidation """Proportionality factor between the magnitude of the tangential friction force applied to contacting bodies to maintain (kinetic friction coefficient) or initiate (static friction coefficient) relative motion, and the magnitude of the normal contact force between the bodies.
-The friction coefficient is a dimensionless value that measures the resistance to relative motion, caused by dissipative effects such as asperity-level adhesion, abrasion, (visco)elastic hysteresis, third-body effects.""" .
+The friction coefficient is a dimensionless value that measures the resistance to relative motion, caused by dissipative effects such as asperity-level adhesion, abrasion, (visco)elastic hysteresis, third-body effects."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#G200NanoIndenter
 :G200NanoIndenter rdf:type owl:Class ;
                   rdfs:subClassOf :NanoIndenter ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter G200" .
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter G200"@en ;
+                  :elucidation "A Nano Indenter G200 (KLA, formerly Keysight/Agilent), an instrumented nanoindentation testing system."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GasFeedDescription
@@ -1238,22 +1274,24 @@ The friction coefficient is a dimensionless value that measures the resistance t
 ###  https://www.cobrain-project.eu/ontology/cobrain#GasFeeding
 :GasFeeding rdf:type owl:Class ;
             rdfs:subClassOf :ThermalSprayingSubProcess ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Feeding" .
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Feeding"@en ;
+            :elucidation "A thermal spraying sub-process that supplies the process gases (e.g. fuel, oxygen, air, carrier or propellant gas) to the thermal spray torch at controlled flow rates and pressures."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GasFuelledHVOFTorch
 :GasFuelledHVOFTorch rdf:type owl:Class ;
                      rdfs:subClassOf :HVOFTorch ;
-                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas-Fuelled HVOF torch" .
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas-Fuelled HVOF Torch"@en ;
+                     :elucidation "An HVOF torch in which the fuel fed into the combustion chamber is a gas (e.g. hydrogen, propane, propylene, methane)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GasSupplySystem
 :GasSupplySystem rdf:type owl:Class ;
                  rdfs:subClassOf :SupplySystem ;
-                 rdfs:comment "This system is designed to provide consistent, safe, and high-quality supply of gases to the thermal spray system. Gases other than air are usually taken from compressed gas bottles, although other sources are possible (e.g. in-situ hydrogen generators). The flow can be pressure- and/or volume-flow controlled." ;
+                 rdfs:comment "This system is designed to provide consistent, safe, and high-quality supply of gases to the thermal spray system. Gases other than air are usually taken from compressed gas bottles, although other sources are possible (e.g. in-situ hydrogen generators). The flow can be pressure- and/or volume-flow controlled."@en ;
                  rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Supply System" ;
-                 :elucidation "The gas supply system feeds and regulates the flow of the various process gases to the thermal spray system" .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Gas Supply System"@en ;
+                 :elucidation "The gas supply system feeds and regulates the flow of the various process gases to the thermal spray system"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlasting
@@ -1267,60 +1305,68 @@ The friction coefficient is a dimensionless value that measures the resistance t
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingAirPressure
 :GritBlastingAirPressure rdf:type owl:Class ;
                          rdfs:subClassOf :GritBlastingProcessProperties ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting Air Pressure"@en .
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting Air Pressure"@en ;
+                         :elucidation "The pressure of the compressed air used in the grit blasting process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelFirstStagePressure
 :GritBlastingGPLFuelFirstStagePressure rdf:type owl:Class ;
                                        rdfs:subClassOf :GritBlastingProcessProperties ;
-                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel First Stage Pressure"@en .
+                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel First Stage Pressure"@en ;
+                                       :elucidation "The pressure of the LPG (GPL) fuel fed to the first (primary) combustion stage of the torch during grit blasting."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelSecondStagePressure
 :GritBlastingGPLFuelSecondStagePressure rdf:type owl:Class ;
                                         rdfs:subClassOf :GritBlastingProcessProperties ;
-                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Second Stage Pressure"@en .
+                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Second Stage Pressure"@en ;
+                                        :elucidation "The pressure of the LPG (GPL) fuel fed to the second (secondary) combustion stage of the torch during grit blasting."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelTotalConsumptionPerLayer
 :GritBlastingGPLFuelTotalConsumptionPerLayer rdf:type owl:Class ;
                                              rdfs:subClassOf :GritBlastingProcessProperties ;
-                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Total Consumption Per Layer"@en .
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Total Consumption Per Layer"@en ;
+                                             :elucidation "The volume of liquid LPG (GPL) used during grit blasting per unit of surface area for each layer."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingGPLFuelTotalFlowRate
 :GritBlastingGPLFuelTotalFlowRate rdf:type owl:Class ;
                                   rdfs:subClassOf :GritBlastingProcessProperties ;
-                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Total Flow Rate"@en .
+                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting GPL Fuel Total Flow Rate"@en ;
+                                  :elucidation "The total flow rate of LPG (GPL) fuel fed to the torch during grit blasting, summed over all combustion stages."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingN2CarrierConsumptionPerLayer
 :GritBlastingN2CarrierConsumptionPerLayer rdf:type owl:Class ;
                                           rdfs:subClassOf :GritBlastingProcessProperties ;
-                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting N₂ Carrier Consumption Per Layer"@en .
+                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting N₂ Carrier Consumption Per Layer"@en ;
+                                          :elucidation "The volume of nitrogen carrier gas used during grit blasting per unit of surface area for each layer."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingN2CarrierFlowRate
 :GritBlastingN2CarrierFlowRate rdf:type owl:Class ;
                                rdfs:subClassOf :GritBlastingProcessProperties ;
-                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting N₂ Carrier Flow Rate"@en .
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting N₂ Carrier Flow Rate"@en ;
+                               :elucidation "The flow rate of the nitrogen carrier gas that conveys the abrasive grit into the torch during grit blasting."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GritBlastingProcessProperties
 :GritBlastingProcessProperties rdf:type owl:Class ;
                                rdfs:subClassOf :ThermalSprayingProcessProperty ;
-                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting Process Properties"@en .
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Grit Blasting Process Properties"@en ;
+                               :elucidation "A thermal spraying process property that describes the conditions of a grit blasting process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#GunCoolingSystem
 :GunCoolingSystem rdf:type owl:Class ;
                   rdfs:subClassOf :CoolingSystem ;
                   rdfs:comment """The gun cooling system can use either liquids (deionized water), gases (compressed air), or a mixture or both.
-The system can feature flow meters and temperature sensors to monitor the flow rate of cooling medium and its inlet and outlet temperature, thereby allowing a quantification of the thermal power lost by the torch to the cooling system.""" ;
+The system can feature flow meters and temperature sensors to monitor the flow rate of cooling medium and its inlet and outlet temperature, thereby allowing a quantification of the thermal power lost by the torch to the cooling system."""@en ;
                   rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                  <http://www.w3.org/2004/02/skos/core#altLabel> "Cooling Circuit" ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Gun Cooling System" ;
-                  :elucidation "A system that delivers a liquid or gaseous cooling fluid to the thermal spray torch to prevent overheating of critical parts" .
+                  <http://www.w3.org/2004/02/skos/core#altLabel> "Cooling Circuit"@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Gun Cooling System"@en ;
+                  :elucidation "A system that delivers a liquid or gaseous cooling fluid to the thermal spray torch to prevent overheating of critical parts"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#H2Feed
@@ -1334,7 +1380,8 @@ The system can feature flow meters and temperature sensors to monitor the flow r
                           owl:onProperty hume:hasDatum ;
                           owl:someValuesFrom :H2Pressure
                         ] ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "H₂ Feed"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "H₂ Feed"@en ;
+        :elucidation "A gas feed description of the hydrogen fuel fed to a device or process, characterised by its flow rate and pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#H2FlowRate
@@ -1357,33 +1404,36 @@ The system can feature flow meters and temperature sensors to monitor the flow r
       owl:hasKey ( :processID
                  ) ;
       rdfs:comment """HVAF (High Velocity Air Fuel) is a thermal spray process similar to HVOF but using compressed air instead of pure oxygen as the comburent. Fuels are typically gaseous (propane, propylene); powder injection is typically axial in the combustion chamber. Nozzles may feature a secondary air-fuel injection. Fuel mixtures, e.g. propane+hydrogen, can sometimes be employed.
-Compressed air is also used to cool the torch before being injected into the combustion chamber, thus achieving regenerative pre-heating.""" ;
+Compressed air is also used to cool the torch before being injected into the combustion chamber, thus achieving regenerative pre-heating."""@en ;
       rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
       rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                    "Fauchais, Pierre L.; Heberlein, Joachim VR; Boulos, Maher I. Thermal spray fundamentals: from powder to part. Springer Science & Business Media, 2014." ;
-      <http://www.w3.org/2004/02/skos/core#altLabel> "HVAF Spraying" ,
-                                                     "High Velocity Air Fuel" ,
-                                                     "High Velocity Air Fuel Spraying" ;
+      <http://www.w3.org/2004/02/skos/core#altLabel> "HVAF Spraying"@en ,
+                                                     "High Velocity Air Fuel"@en ,
+                                                     "High Velocity Air Fuel Spraying"@en ;
       <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF"@en ;
-      :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of air and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle." .
+      :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of air and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFAirPressure
 :HVAFAirPressure rdf:type owl:Class ;
                  rdfs:subClassOf :HVAFProperty ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Air Pressure"@en .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Air Pressure"@en ;
+                 :elucidation "The pressure of the compressed air fed to the HVAF torch as the comburent."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFGPLFuelFirstStagePressure
 :HVAFGPLFuelFirstStagePressure rdf:type owl:Class ;
                                rdfs:subClassOf :HVAFProperty ;
-                               <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel First Stage Pressure"@en .
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel First Stage Pressure"@en ;
+                               :elucidation "The pressure of the LPG (GPL) fuel fed to the first (primary) combustion stage of the HVAF torch."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFGPLFuelSecondStagePressure
 :HVAFGPLFuelSecondStagePressure rdf:type owl:Class ;
                                 rdfs:subClassOf :HVAFProperty ;
-                                <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel Second Stage Pressure"@en .
+                                <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel Second Stage Pressure"@en ;
+                                :elucidation "The pressure of the LPG (GPL) fuel fed to the second (secondary) combustion stage of the HVAF torch."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFGPLFuelTotalConsumptionPerLayer
@@ -1396,38 +1446,42 @@ Compressed air is also used to cool the torch before being injected into the com
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFGPLFuelTotalFlowRate
 :HVAFGPLFuelTotalFlowRate rdf:type owl:Class ;
                           rdfs:subClassOf :HVAFProperty ;
-                          <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel Total Flow Rate"@en .
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF GPL Fuel Total Flow Rate"@en ;
+                          :elucidation "The total flow rate of LPG (GPL) fuel fed to the HVAF torch, summed over all combustion stages."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFN2CarrierConsumptionPerLayer
 :HVAFN2CarrierConsumptionPerLayer rdf:type owl:Class ;
                                   rdfs:subClassOf :HVAFProperty ;
-                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF N₂ Carrier Consumption Per Layer"@en .
+                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF N₂ Carrier Consumption Per Layer"@en ;
+                                  :elucidation "The volume of nitrogen carrier gas used per unit of surface area for each deposited layer in the HVAF process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFN2CarrierFlowRate
 :HVAFN2CarrierFlowRate rdf:type owl:Class ;
                        rdfs:subClassOf :HVAFProperty ;
-                       <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF N₂ Carrier Flow Rate"@en .
+                       <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF N₂ Carrier Flow Rate"@en ;
+                       :elucidation "The flow rate of the nitrogen carrier gas that conveys the powder feedstock from the powder feeder into the HVAF torch."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFProperty
 :HVAFProperty rdf:type owl:Class ;
               rdfs:subClassOf :ThermalSprayingProcessProperty ;
               rdfs:comment "Property that is specific to HVAF process."@en ;
-              <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Process Properties"@en .
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Process Properties"@en ;
+              :elucidation "A thermal spraying process property that is specific to the HVAF process."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVAFTorch
 :HVAFTorch rdf:type owl:Class ;
            rdfs:subClassOf :ThermalSprayTorch ;
            rdfs:comment """HVAF torches can usually be fit with multiple, interchangeable, and separate combustion chambers and nozzles, offering more hardware variety in a single device than do HVOF torches. Often, the combustion chamber ends with a converging/diverging nozzle and a separate, secondary nozzle is installed downstream of the chamber-integrated nozzle.
-Process gas flows are usually regulated by adjusting their inlet pressure, whilst volume flow rates can be optionally measured but are not directly controlled.""" ;
+Process gas flows are usually regulated by adjusting their inlet pressure, whilst volume flow rates can be optionally measured but are not directly controlled."""@en ;
            rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
            rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-           <http://www.w3.org/2004/02/skos/core#altLabel> "HVAF Gun" ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Torch" ;
-           :elucidation "A thermal spray torch specifically designed to perform the HVAF process" .
+           <http://www.w3.org/2004/02/skos/core#altLabel> "HVAF Gun"@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "HVAF Torch"@en ;
+           :elucidation "A thermal spray torch specifically designed to perform the HVAF process"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVOF
@@ -1437,16 +1491,16 @@ Process gas flows are usually regulated by adjusting their inlet pressure, whils
                  ) ;
       rdfs:comment """Fuels can be liquid (e.g. kerosene), gaesous (e.g. hydrogen, propane, prolpylene, ethene, ecc.)
 Powders can be injected axially in the combustion chamber or radially downstream of the combustion chamber, which affects their heating and acceleration history
-Expansion nozzles can be converging or converging/diverging (De Laval type) and can have a straight barrel downstream""" ;
+Expansion nozzles can be converging or converging/diverging (De Laval type) and can have a straight barrel downstream"""@en ;
       rdfs:isDefinedBy "EN 1395-2:2007: Thermal Spraying - Acceptance inspection of thermal spraying equipment - Part 2: Flame spraying including HVOF" ,
                        "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
       rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                    "Fauchais, Pierre L.; Heberlein, Joachim VR; Boulos, Maher I. Thermal spray fundamentals: from powder to part. Springer Science & Business Media, 2014." ;
-      <http://www.w3.org/2004/02/skos/core#altLabel> "HVOF Spraying" ,
-                                                     "High Velocity Oxygen Fuel" ,
-                                                     "High Velocity Oxygen Fuel Spraying" ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "HVOF" ;
-      :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of oxygen and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle." .
+      <http://www.w3.org/2004/02/skos/core#altLabel> "HVOF Spraying"@en ,
+                                                     "High Velocity Oxygen Fuel"@en ,
+                                                     "High Velocity Oxygen Fuel Spraying"@en ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "HVOF"@en ;
+      :elucidation "A thermal spray process that involves accelerating and heating a feedstock material in powder form by feeding it into a stream of exhaust gases originating from the confined combustion of oxygen and fuel(s) at high pressure and the subsequent expansion of the combustion products through a nozzle."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HVOFTorch
@@ -1462,18 +1516,18 @@ Expansion nozzles can be converging or converging/diverging (De Laval type) and 
 
 - HVOF torch with atomization of liquid fuel in a combustion chamber where combustion with oxygen is triggered by a spark plug; the chamber ends with a convergent-divergent nozzle followed by an interchangeable straight barrel; powder is injected radially at the barrel inlet.
 
-Process gases are usually fed at constant pressure with a volume flow rate-control system.""" ;
+Process gases are usually fed at constant pressure with a volume flow rate-control system."""@en ;
            rdfs:isDefinedBy "EN 1395-2:2007: Thermal Spraying - Acceptance inspection of thermal spraying equipment - Part 2: Flame spraying including HVOF" ,
                             "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
            rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-           <http://www.w3.org/2004/02/skos/core#altLabel> "HVOF Gun" ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "HVOF Torch" ;
-           :elucidation "A thermal spray torch specifically designed to perform the HVOF process" .
+           <http://www.w3.org/2004/02/skos/core#altLabel> "HVOF Gun"@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "HVOF Torch"@en ;
+           :elucidation "A thermal spray torch specifically designed to perform the HVOF process"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Hardness
 :Hardness rdf:type owl:Class ;
-          rdfs:subClassOf :CharacterisatonProperty ;
+          rdfs:subClassOf :CharacterisationProperty ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Hardness"@en ;
           :elucidation "A hardness test measures a material's resistance to permanent surface deformation by pressing a harder indenter into its surface with a specific force. The hardness is determined by measuring the depth of the indentation or the size of the resulting impression, using methods like Rockwell, Vickers, Knoop, and Brinell. These tests are used for material comparison, quality control, and to determine a material's suitability for a particular application."@en .
 
@@ -1482,44 +1536,51 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
 :HighEntropyAlloy rdf:type owl:Class ;
                   rdfs:subClassOf :Alloy ;
                   owl:disjointWith :Stellite ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "High Entropy Alloy"@en .
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "High Entropy Alloy"@en ;
+                  :elucidation "An alloy composed of multiple (typically four or more) principal elements, each present in substantial concentration, rather than of a single base element; the high configurational entropy of mixing tends to stabilise simple solid-solution phases."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HighPressureColdSpraying
 :HighPressureColdSpraying rdf:type owl:Class ;
                           rdfs:subClassOf :CGS ;
-                          <http://www.w3.org/2004/02/skos/core#prefLabel> "High Pressure Cold Spraying" .
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "High Pressure Cold Spraying"@en ;
+                          :elucidation "A cold gas spraying process operated at high process gas pressure (typically above about 2.5 MPa and up to 5–7 MPa), usually with preheated nitrogen or helium, in which the powder is injected upstream of the nozzle throat."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HighSpeed3DMapping
 :HighSpeed3DMapping rdf:type owl:Class ;
                     rdfs:subClassOf :Nanoindentation ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "High-Speed 3D Mapping" .
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "High-Speed 3D Mapping"@en ;
+                    :elucidation "A nanoindentation technique in which a large array of shallow, rapid indentations (several per second) is made over a region of the surface to produce spatially resolved maps of hardness and elastic modulus (e.g. KLA NanoBlitz 3D)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HighVelocityIndentation
 :HighVelocityIndentation rdf:type owl:Class ;
                          rdfs:subClassOf :Hardness ;
-                         <http://www.w3.org/2004/02/skos/core#altLabel> "HVI" ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "High Velocity Indentation Hardness"@en .
+                         <http://www.w3.org/2004/02/skos/core#altLabel> "HVI"@en ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "High Velocity Indentation Hardness"@en ;
+                         :elucidation "A dynamic hardness determined by impacting the surface of a sample with an indenter at high velocity and evaluating the resulting impression, thereby probing the material response at high strain rates."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#HoldingSystem
 :HoldingSystem rdf:type owl:Class ;
                rdfs:subClassOf hume:System ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Holding System" .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Holding System"@en ;
+               :elucidation "A system that holds and positions one or more substrates during the thermal spray process, such as a fixture mounted on a turntable."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Indentation
 :Indentation rdf:type owl:Class ;
              rdfs:subClassOf hume:Characterisation ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation"@en .
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation"@en ;
+             :elucidation "A characterisation technique in which an indenter of known geometry and mechanical properties is pressed into the surface of a sample under controlled load or displacement in order to measure mechanical properties such as hardness and elastic modulus."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#IndentationCurve
 :IndentationCurve rdf:type owl:Class ;
-                  rdfs:subClassOf :CharacterisatonProperty ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation Curve" .
+                  rdfs:subClassOf :CharacterisationProperty ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation Curve"@en ;
+                  :elucidation "The load versus penetration depth curve recorded during the loading and unloading phases of an instrumented indentation test."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#IndentationHardness
@@ -1529,8 +1590,8 @@ Process gases are usually fed at constant pressure with a volume flow rate-contr
 ISO 14577-2:2015
 ISO 14577-3:2015
 ISO 14577-4:2016""" ;
-                     <http://www.w3.org/2004/02/skos/core#altLabel> "HIT" ;
-                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation Hardness" ;
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "HIT"@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Indentation Hardness"@en ;
                      :elucidation """The indentation hardness (HIT) is specifically defined as the average contact pressure between the indenter and the indented material, i.e. HIT = Fmax/Ap, were Fmax = maximum applied load and Ap = contact area projected into the plane of the sample surface (\"projected contact area\").
 It is obtained by a depth-sensing indentation measure, where the applied load (F) and indenter penetration (h) are recorded continuously during penetration and retraction.
 Fmax is directly obtained by the load recording; Ap is obtained by processing the load-penetration curve according to the Oliver-Pharr procedure.
@@ -1543,8 +1604,9 @@ Indentation hardness is specifically told into:
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Indenter
 :Indenter rdf:type owl:Class ;
-          rdfs:subClassOf :CharactersationComponent ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter" .
+          rdfs:subClassOf :CharacterisationComponent ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Indenter"@en ;
+          :elucidation "A characterisation component consisting of a hard tip of defined geometry (e.g. Vickers, Berkovich, spherical, cube-corner), usually made of diamond, that is pressed into the surface of the specimen during an indentation test."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#InitialWeight
@@ -1572,50 +1634,55 @@ https://www.iso.org/obp/ui/#iso:std:iso:10878:ed-1:v1:en:term:1.69"""@en .
 ###  https://www.cobrain-project.eu/ontology/cobrain#Length
 :Length rdf:type owl:Class ;
         rdfs:subClassOf hume:Property ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "Length"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Length"@en ;
+        :elucidation "The extent of an object or path along a given direction."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LinearThermalExpansionCoefficient
 :LinearThermalExpansionCoefficient rdf:type owl:Class ;
                                    rdfs:subClassOf hume:Property ;
                                    rdfs:isDefinedBy "ISO 80000-5:2019" ;
-                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Linear Thermal Expansion Coefficient" ;
-                                   :elucidation "Relative change of length of a material with temperature." .
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Linear Thermal Expansion Coefficient"@en ;
+                                   :elucidation "Relative change of length of a material with temperature."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LiquidFuelSupplySystem
 :LiquidFuelSupplySystem rdf:type owl:Class ;
                         rdfs:subClassOf :SupplySystem ;
-                        rdfs:comment "The system is typically based on a volumetric pump. Fuels such as kerosene or paraffin are taken from tanks. This system is usually equipped only in thermal spray system intended to operate with a liquid-fuelled HVOF torch." ;
+                        rdfs:comment "The system is typically based on a volumetric pump. Fuels such as kerosene or paraffin are taken from tanks. This system is usually equipped only in thermal spray system intended to operate with a liquid-fuelled HVOF torch."@en ;
                         rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Fuel Pump" ;
-                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid Fuel Supply System" ;
-                        :elucidation "The liquid fuel supply system feeds and regulated the flow of liquid fuels to a thermal spray system" .
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Fuel Pump"@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid Fuel Supply System"@en ;
+                        :elucidation "The liquid fuel supply system feeds and regulated the flow of liquid fuels to a thermal spray system"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LiquidFuelledHVOFTorch
 :LiquidFuelledHVOFTorch rdf:type owl:Class ;
                         rdfs:subClassOf :HVOFTorch ;
-                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid-Fuelled HVOF torch" .
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Liquid-Fuelled HVOF Torch"@en ;
+                        :elucidation "An HVOF torch in which the fuel fed into the combustion chamber is a liquid, typically kerosene."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Load
 :Load rdf:type owl:Class ;
       rdfs:subClassOf :Force ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "Load"@en .
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Load"@en ;
+      :elucidation "A force applied to an object, e.g. the normal force applied by an indenter or a pin to a specimen during a characterisation test."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LowPressureColdSpraying
 :LowPressureColdSpraying rdf:type owl:Class ;
                          rdfs:subClassOf :CGS ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Low Pressure Cold Spraying" .
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Low Pressure Cold Spraying"@en ;
+                         :elucidation "A cold gas spraying process operated at relatively low process gas pressure (typically up to about 1 MPa), usually with air or nitrogen, in which the powder is injected downstream of the nozzle throat, in the diverging section."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#LuchsingerOPTRISCTlaser
 :LuchsingerOPTRISCTlaser rdf:type owl:Class ;
                          rdfs:subClassOf :LaserPyrometer ;
                          rdfs:seeAlso <https://www.optris.com/en/products/infrared-thermometers/cslaser-ctlaser-series/> ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Luchsinger OPTRIS CTlaser"@en .
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Luchsinger OPTRIS CTlaser"@en ;
+                         :elucidation "A pyrometer of the Optris CTlaser series (infrared thermometer with laser sighting), supplied by Luchsinger, used for non-contact temperature measurement of the substrate/coating during thermal spraying."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Manipulator
@@ -1628,15 +1695,15 @@ Typically, two types of manipulators can be employed:
 - Industrial robots, often with 5 or 6 degrees of freedom.
 
 Robots are needed to coat geometrically complex substrates and to achieve higher linear velocities, whilst X-Y or X-Y-Z manipulators are suitable for simple planar or cylindrical substrates.
-The manipulator can optionally be synchronized with the turntable to add one more controlled degree of freedom and increase the ability to follow geometrically complex substrates.""" ;
+The manipulator can optionally be synchronized with the turntable to add one more controlled degree of freedom and increase the ability to follow geometrically complex substrates."""@en ;
              rdfs:isDefinedBy "EN 1395-6:2007: Thermal spraying - Acceptance inspection of thermal spraying equipment - Part 6: Manipulator systems." ;
              rdfs:seeAlso "Anon. (2013), Introduction to Coating Design and Processing, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                           "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Axes Control" ,
-                                                            "Robot" ,
-                                                            "Translator" ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Manipulator" ;
-             :elucidation "Manipulators are employed to move the thermal spray torch with respect to the substrate or, more infrequently, to move the substrate with respect to a stationary thermal spray torch." .
+             <http://www.w3.org/2004/02/skos/core#altLabel> "Axes Control"@en ,
+                                                            "Robot"@en ,
+                                                            "Translator"@en ;
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Manipulator"@en ;
+             :elucidation "Manipulators are employed to move the thermal spray torch with respect to the substrate or, more infrequently, to move the substrate with respect to a stationary thermal spray torch."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Masking
@@ -1648,21 +1715,22 @@ Three types of mask can be employed.
 A contact mask consists of a tape wrapped onto areas where the substrate must be protected. The tape is withdrawn after grit blasting and, to get rid of residual glue, the area where it covered the surface must be cleaned with a solvent. Masking tapes can be made of: glass fabric plus adhesive or aluminium foil laminated to glass fabric with silicone plus adhesive or similar combinations.
 A shadow mask consists of a metal sheet, sometimes being an integral part of the tool, which is placed in front of the area not to be coated and in physical proximity to the surface, typically two to three coating thicknesses away.
 A paint-on mask is a paint or slurry that is applied onto the area to be protected and dried or cured.
-Masks can be applied before or after grit-blasting because, in some cases, they are required to protect both against grit-blasting and against coating deposition. Tapes and paints are removed and scrapped after the thermal spray process. Shadow masks are used multiple times and can be regenerated by removing the excess material deposited onto them e.g. by grit-blasting or chemical stripping.""" ;
+Masks can be applied before or after grit-blasting because, in some cases, they are required to protect both against grit-blasting and against coating deposition. Tapes and paints are removed and scrapped after the thermal spray process. Shadow masks are used multiple times and can be regenerated by removing the excess material deposited onto them e.g. by grit-blasting or chemical stripping."""@en ;
          rdfs:isDefinedBy "EN 13507:2018: Thermal Spraying - Pre-treatment of surfaces of metallic parts and components for thermal spraying." ,
                           "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
          rdfs:seeAlso "Anon. (2013), Introduction to Coating Design and Processing, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                       "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-         <http://www.w3.org/2004/02/skos/core#altLabel> "Fixturing" ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Masking" ;
-         :elucidation "The process consists of applying a physical protection to prevent deposit adhesion to areas of the substrate not to be coated" .
+         <http://www.w3.org/2004/02/skos/core#altLabel> "Fixturing"@en ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Masking"@en ;
+         :elucidation "The process consists of applying a physical protection to prevent deposit adhesion to areas of the substrate not to be coated"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#MassFlowFeeder
 :MassFlowFeeder rdf:type owl:Class ;
                 rdfs:subClassOf :PowderFeeder ;
                 owl:disjointWith :VolumeFlowFeeder ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Mass Flow Feeder" .
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Mass Flow Feeder"@en ;
+                :elucidation "A powder feeder that meters the powder by controlling its mass flow rate, typically in closed loop on a continuous measurement of the powder mass (e.g. loss-in-weight)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#MaximaTemperatureStandardDeviation
@@ -1676,7 +1744,8 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 ###  https://www.cobrain-project.eu/ontology/cobrain#MediumPressureColdSpraying
 :MediumPressureColdSpraying rdf:type owl:Class ;
                             rdfs:subClassOf :CGS ;
-                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Medium Pressure Cold Spraying" .
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Medium Pressure Cold Spraying"@en ;
+                            :elucidation "A cold gas spraying process operated at process gas pressures between the low and high pressure regimes (typically about 1 to 2.5 MPa)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Microhardness
@@ -1697,21 +1766,23 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Microindenter
 :Microindenter rdf:type owl:Class ;
                rdfs:subClassOf :CharacterisationDevice ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Microindenter"@en .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Microindenter"@en ;
+               :elucidation "A characterisation device that performs indentation tests in the micro range (ISO 14577: F < 2 N, h > 0.2 µm), e.g. for Vickers microhardness measurements."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NanoIndenter
 :NanoIndenter rdf:type owl:Class ;
               rdfs:subClassOf :CharacterisationDevice ;
-              <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter" ;
-              :elucidation "The Nano Indenter G200 indentation testing system, designed for nanoscale measurements during characterization and development of a wide range of materials." .
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Nano Indenter"@en ;
+              :elucidation "An indentation testing system, designed for nanoscale measurements during characterization and development of a wide range of materials."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Nanoindentation
 :Nanoindentation rdf:type owl:Class ;
                  rdfs:subClassOf :Indentation ;
                  rdfs:isDefinedBy <https://w3id.org/emmo/domain/characterisation-methodology/chameo#Nanoindentation> ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation" .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Nanoindentation"@en ;
+                 :elucidation "An instrumented indentation technique operating at nanometre-scale penetration depths (nano range of ISO 14577, h ≤ 0.2 µm), in which load and depth are recorded continuously to determine properties such as hardness and elastic modulus."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NominalElectricityConsumption
@@ -1725,11 +1796,11 @@ Masks can be applied before or after grit-blasting because, in some cases, they 
 :Nozzle rdf:type owl:Class ;
         rdfs:subClassOf :TorchComponent ;
         rdfs:comment """Definition adapted from ISO 14917:2017: Thermal Spraying - Terminology, classification.
-The geometry of the nozzle is responsible for shaping and accelerating the gas flow into a high-velocity stream entraining the particles.""" ;
+The geometry of the nozzle is responsible for shaping and accelerating the gas flow into a high-velocity stream entraining the particles."""@en ;
         rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
-        <http://www.w3.org/2004/02/skos/core#altLabel> "Spray Nozzle" ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "Nozzle" ;
-        :elucidation "The nozzle is the part of a thermal spray gun that contains the outlet opening for the spray jet" .
+        <http://www.w3.org/2004/02/skos/core#altLabel> "Spray Nozzle"@en ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Nozzle"@en ;
+        :elucidation "The nozzle is the part of a thermal spray gun that contains the outlet opening for the spray jet"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#NumberOfCycles
@@ -1764,7 +1835,8 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
                           owl:onProperty hume:hasDatum ;
                           owl:someValuesFrom :O2Pressure
                         ] ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "O₂ Feed"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "O₂ Feed"@en ;
+        :elucidation "A gas feed description of the oxygen fed to a device or process, characterised by its flow rate and pressure."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#O2FlowRate
@@ -1787,13 +1859,13 @@ The geometry of the nozzle is responsible for shaping and accelerating the gas f
                           rdfs:isDefinedBy "ISO 13320:2020 - Particle size analysis — Laser diffraction method" ,
                                            "ISO 9276-1" ,
                                            "ISO 9276-2" ;
-                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Particle Size Distribution" ;
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Particle Size Distribution"@en ;
                           :elucidation """This term designates the distribution of sizes of the particles composing a powder.
 The size is expressed as equivalent diameter, i.e. the diameter of a sphere of equivalent volume to the actual particle.
 The distribution is expressed as a volume distribution, i.e. the fraction of the overall volume of the powder comprised within each size range. A particle size distribution is understood as a volume distribution unless otherwise specified.
 Alternatively, it can be expressed as a number distribution, i.e. the fraction of the overall number of particles comprised within each size range. It should be expressly indicated whether the distribution is expressed as a number distribution. Usually, a number distribution results in an over-representation of the finer size ranges.
 It is measured by laser scattering, sieving, or image analysis on optical or SEM micrographs of a powder sample.
-The distribution is summarized by the 10th, 50th and 90th quantiles or by average and standard deviation.""" .
+The distribution is summarized by the 10th, 50th and 90th quantiles or by average and standard deviation."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ParticlesSpeed
@@ -1809,17 +1881,18 @@ The distribution is summarized by the 10th, 50th and 90th quantiles or by averag
                   rdfs:seeAlso """EN 13925-1:2003
 EN 13925-2:2003
 EN 13925-3:2005""" ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Phase Composition" ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Phase Composition"@en ;
                   :elucidation """Phase composition refers to the type and relative amount of distinct phases composing a sample.
 Phase composition is measured by X-Ray Diffraction (XRD).
 The pattern obtained by diffraction of a monochromatic beam of X-rays from a sample allows qualitative identification of its crystalline phases by (computer-assisted) matching to reference databases of diffraction patterns like the ICDD JCPDF-2 or JCPDF-4 databases.
-Fitting of the experimental pattern with suitable mathematical functions and integration of peaks' areas allows quantitative assessment of the relative mass fraction of phases by suitable techniques such as the external standard method, internal standard method, or the reference intensity ratio method.""" .
+Fitting of the experimental pattern with suitable mathematical functions and integration of peaks' areas allows quantitative assessment of the relative mass fraction of phases by suitable techniques such as the external standard method, internal standard method, or the reference intensity ratio method."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PillarSplitting
 :PillarSplitting rdf:type owl:Class ;
                  rdfs:subClassOf :Nanoindentation ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Pillar Splitting" .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Pillar Splitting"@en ;
+                 :elucidation "A nanoindentation technique in which a micropillar, typically milled by FIB, is indented with a sharp (e.g. cube-corner) indenter until it splits; the critical splitting load is used to determine the fracture toughness of the material at the microscale (Sebastiani et al., Phil. Mag. 2015)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PinOnDiscTest
@@ -1834,7 +1907,8 @@ Fitting of the experimental pattern with suitable mathematical functions and int
 :PinOnDiscTribometer rdf:type owl:Class ;
                      rdfs:subClassOf :Tribometer ;
                      <http://www.w3.org/2004/02/skos/core#altLabel> "Pin-on-disk Tribometer"@en-us ;
-                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Pin-on--disc Tribometer"@en-gb .
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Pin-on-Disc Tribometer"@en-gb ;
+                     :elucidation "A tribometer in which a stationary pin or ball is pressed with a defined normal load against a rotating disc-shaped specimen, used to measure the friction coefficient and the wear rate (ASTM G99)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pitch
@@ -1868,9 +1942,9 @@ Fitting of the experimental pattern with suitable mathematical functions and int
 :PoreSize rdf:type owl:Class ;
           rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 15901-1:2016 (mercury intrusion porosimetry)" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Pore Size" ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Pore Size"@en ;
           :elucidation """Pore size is the equivalent diameter of a pore, i.e. the diameter of a sphere with a volume equivalent to that of the pore.
-The pore size in a material can be conveyed either through a complete distribution curve or through an average value. It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry.""" .
+The pore size in a material can be conveyed either through a complete distribution curve or through an average value. It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Porosity
@@ -1879,8 +1953,8 @@ The pore size in a material can be conveyed either through a complete distributi
           rdfs:isDefinedBy "ASTM E2109-01(2021) - Porosity of thermal spray coatings by image analysis" ,
                            "ISO 15901-1:2016 - Mercury intrusion porosimetry" ;
           rdfs:seeAlso "F. Cardarelli (2008), Materials Handbook: A Concise Desktop Reference, second edition. Springer, London. G.T. Murray (1997), Handbook of Materials Selection for Engineering Applications. CRC Press." ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Porosity" ;
-          :elucidation "Porosity refers to the volume percentage of void space in a material. It is defined as the ratio of the volume of pores or voids in a material to the total volume of the material. . It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry." .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Porosity"@en ;
+          :elucidation "Porosity refers to the volume percentage of void space in a material. It is defined as the ratio of the volume of pores or voids in a material to the total volume of the material. . It is measured either by image analysis on optical or scanning electron micrographs, or by mercury intrusion porosimetry."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Powder
@@ -1889,7 +1963,8 @@ The pore size in a material can be conveyed either through a complete distributi
                         hume:Solid ;
         owl:hasKey ( :lotNumber
                    ) ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder"@en ;
+        :elucidation "A solid material in the form of a large number of fine, loose particles, which can flow when shaken or tilted."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedRate
@@ -1914,8 +1989,8 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
                                "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
               rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                            "N. Sanpo, J. Wang, C.C. Berndt (2013), Feedstock Material Considerations for Thermal Spray, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-              <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feeder" ;
-              :elucidation "The powder feeder is a system for a controlled supply of powder feedstock to a thermal spray torch" .
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feeder"@en ;
+              :elucidation "The powder feeder is a system for a controlled supply of powder feedstock to a thermal spray torch"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeederFlowRate
@@ -1928,10 +2003,10 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeeding
 :PowderFeeding rdf:type owl:Class ;
                rdfs:subClassOf :ThermalSprayingSubProcess ;
-               rdfs:comment "Powder feeding is done using either gravimetric or volumetric powder feeders. The feed rate is usually measured as a mass flow rate. The powder is usually carried with a flow of inert gas (nitrogen, argon)." ;
+               rdfs:comment "Powder feeding is done using either gravimetric or volumetric powder feeders. The feed rate is usually measured as a mass flow rate. The powder is usually carried with a flow of inert gas (nitrogen, argon)."@en ;
                rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feeding" ;
-               :elucidation "Powder feeding is the process of supplying the powder feedstock to a thermal spray torch at a controlled rate." .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feeding"@en ;
+               :elucidation "Powder feeding is the process of supplying the powder feedstock to a thermal spray torch at a controlled rate."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedstock
@@ -1942,64 +2017,68 @@ The power is usually uptaken with a flow of carrier gas then trnasports it throu
                  rdfs:seeAlso "N. Sanpo, J. Wang, C.C. Berndt (2013), Feedstock Material Considerations for Thermal Spray, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
                  <http://www.w3.org/2004/02/skos/core#altLabel> "Feedstock"@en ,
                                                                 "Powder"@en ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feedstock" ;
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feedstock"@en ;
                  :elucidation "Powder feedstock is a material in powder form used produce a coating on a substrate by feeding into a thermal spray torch"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PowderFeedstockPerLayer
 :PowderFeedstockPerLayer rdf:type owl:Class ;
                          rdfs:subClassOf :ThermalSprayingProcessProperty ;
-                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feedstock Per Layer"@en .
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Powder Feedstock Per Layer"@en ;
+                         :elucidation "The mass of powder feedstock sprayed per unit of surface area for each deposited layer."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PreHeating
 :PreHeating rdf:type owl:Class ;
             rdfs:subClassOf :ThermalSprayingStage ;
             rdfs:comment """Pre-heating can be achieved either by using a separate heating system or, more frequently, by performing one or more passes of the torch onto the substrate without powder feed to increase the substrate temperature using the heat of the gas jet itself.
-Pre-heating serves multiple purposes: it removed adsorbates and condensates (e.g. moisture, volatile organic compounds, etc.); it improves the wettability between the deposited material and the substrate; it prevents excessive temperature gradients across the coating/substrate system during the thermal spray process, which might otherwise result in transverse cracking of the coating due to excessive tensile stresses accumulated in its outer layers.""" ;
+Pre-heating serves multiple purposes: it removed adsorbates and condensates (e.g. moisture, volatile organic compounds, etc.); it improves the wettability between the deposited material and the substrate; it prevents excessive temperature gradients across the coating/substrate system during the thermal spray process, which might otherwise result in transverse cracking of the coating due to excessive tensile stresses accumulated in its outer layers."""@en ;
             rdfs:seeAlso "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "Heating" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "Pre-Heating" ;
-            :elucidation "Pre-heating is a sub-process of thermal spray whereby the temperature of the substrate is increased above room temperature shortly before deposition so that the substrate temperature is higher than room temperature when deposition begins." .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Heating"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Pre-Heating"@en ;
+            :elucidation "Pre-heating is a sub-process of thermal spray whereby the temperature of the substrate is increased above room temperature shortly before deposition so that the substrate temperature is higher than room temperature when deposition begins."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pressure
 :Pressure rdf:type owl:Class ;
           rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-4:2019" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressure" ;
-          :elucidation "Quotient of the component of a force normal to a surface and its area" .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressure"@en ;
+          :elucidation "Quotient of the component of a force normal to a surface and its area"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PressurelessFeeder
 :PressurelessFeeder rdf:type owl:Class ;
                     rdfs:subClassOf :PowderFeeder ;
                     owl:disjointWith :PressurizedFeeder ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressureless Feeder" .
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressureless Feeder"@en ;
+                    :elucidation "A powder feeder whose hopper operates at or near ambient pressure, suitable for injecting powder into a region at or below ambient pressure (e.g. downstream injection in low pressure cold spraying)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#PressurizedFeeder
 :PressurizedFeeder rdf:type owl:Class ;
                    rdfs:subClassOf :PowderFeeder ;
-                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressurized Feeder" .
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Pressurized Feeder"@en ;
+                   :elucidation "A powder feeder whose hopper is pressurised with the carrier gas, so that the powder can be injected into a region of the torch above ambient pressure (e.g. in HVOF, HVAF or high pressure cold spraying)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ProcessMonitoring
 :ProcessMonitoring rdf:type owl:Class ;
                    rdfs:subClassOf :ThermalSprayingSubProcess ;
                    rdfs:comment """Process monitoring includes both parameters directly measured by the control unit, and measures from additional sensors such as pyrometers/thermocameras for substrate temperature, in-flight process diagnostics for particle velocities/temperatures, etc.
-These can be or not be integrated into a single monitoring system.""" ;
+These can be or not be integrated into a single monitoring system."""@en ;
                    rdfs:seeAlso "D.E. Crawmer (2013), Process Control and Control Equipment, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                   <http://www.w3.org/2004/02/skos/core#altLabel> "Process Control" ;
-                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Monitoring" ;
-                   :elucidation "Measuring and controlling key parameters of the thermal spray process in real-time, such as gas flow rates, powder feed rate, substrate temperature, robot movements, etc." .
+                   <http://www.w3.org/2004/02/skos/core#altLabel> "Process Control"@en ;
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Monitoring"@en ;
+                   :elucidation "Measuring and controlling key parameters of the thermal spray process in real-time, such as gas flow rates, powder feed rate, substrate temperature, robot movements, etc."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ProcessTimePerLayer
 :ProcessTimePerLayer rdf:type owl:Class ;
                      rdfs:subClassOf :ThermalSprayingProcessProperty ;
                      rdfs:comment "Estimated time spent per unit of surface (expressed in cm²) for each layer deposited on the sample."@en ;
-                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Time Per Layer"@en .
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Process Time Per Layer"@en ;
+                     :elucidation "The estimated time spent per unit of surface area (expressed in cm²) for each layer deposited on the sample."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pycnometer
@@ -2029,7 +2108,8 @@ These can be or not be integrated into a single monitoring system.""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#Pyrometry
 :Pyrometry rdf:type owl:Class ;
            rdfs:subClassOf hume:Characterisation ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyrometry"@en .
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Pyrometry"@en ;
+           :elucidation "A characterisation technique for the non-contact measurement of the temperature of a surface from the thermal radiation it emits."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ResidualStress
@@ -2039,38 +2119,39 @@ These can be or not be integrated into a single monitoring system.""" ;
                 rdfs:seeAlso "NPL Good Practice Guide 143: Residual stress measurement by FIB+DIC" ,
                              """V. Hauk, Structural and Residual Stress Analysis by Nondestructive Methods. Evaluation - Application - Assessment, Elsevier, 1997
 https://doi.org/10.1016/B978-0-444-82476-9.X5000-2""" ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Residual Stress" ;
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Residual Stress"@en ;
                 :elucidation """A self-equilibrated system of stresses (with resulting strains) existing in a part in the absence of any externally applied action. These are usually the consequence of technological processes carried out on a part, such as machining; thermal, thermochemical or mechanical treatments; coating deposition; etc.
 Residual stresses can be measured non-destructively by X-ray diffraction or (less frequently) neutron diffraction, Raman spectroscopy, photoluminescence piezospectroscopy, or they can be measured destructively by hole-drilling.
-Micro-scale measurements of residual stresses  are carried out by Focused Ion Beam (FIB) milling coupled with Digital Image Correlation (DIC).""" .
+Micro-scale measurements of residual stresses  are carried out by Focused Ion Beam (FIB) milling coupled with Digital Image Correlation (DIC)."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#RobotManipulator
 :RobotManipulator rdf:type owl:Class ;
                   rdfs:subClassOf :Manipulator ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Robot Manipulator" .
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Robot Manipulator"@en ;
+                  :elucidation "A manipulator consisting of an industrial robot arm (typically six-axis articulated) that moves the thermal spray torch along a programmed toolpath."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Roughening
 :Roughening rdf:type owl:Class ;
             rdfs:subClassOf :SubstratePreparation ;
-            rdfs:comment "The substrate roughening in most cases is achieved by grit blasting: a compressed air stream containing abrasive particles is directed, through a nozzle, toward the part to be treated. It is also possible to use water jets with pressures, or to machine with suitably profiled tools (e.g. dove-tail profiles). Grit blasting or water jet roughening also induces compressive stress in the first tenths of mm below the substrate-roughened surface." ;
+            rdfs:comment "The substrate roughening in most cases is achieved by grit blasting: a compressed air stream containing abrasive particles is directed, through a nozzle, toward the part to be treated. It is also possible to use water jets with pressures, or to machine with suitably profiled tools (e.g. dove-tail profiles). Grit blasting or water jet roughening also induces compressive stress in the first tenths of mm below the substrate-roughened surface."@en ;
             rdfs:isDefinedBy "EN 13507:2018: Thermal Spraying - Pre-treatment of surfaces of metallic parts and components for thermal spraying." ,
                              "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
             rdfs:seeAlso "Anon. (2013), Introduction to Coating Design and Processing, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "SandBlasting" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "Roughening" ;
-            :elucidation "Roughening the surface to provide asperities or irregularities to enhance coating adhesion and provide a larger effective surface." .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "SandBlasting"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Roughening"@en ;
+            :elucidation "Roughening the surface to provide asperities or irregularities to enhance coating adhesion and provide a larger effective surface."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Roughness
 :Roughness rdf:type owl:Class ;
-           rdfs:subClassOf :CharacterisatonProperty ;
+           rdfs:subClassOf :CharacterisationProperty ;
            rdfs:isDefinedBy "ISO 21920-2:2021 (profile surface texture)" ,
                             "ISO 25178-2:2021 (areal surface texture)" ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "Roughness" ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Roughness"@en ;
            :elucidation """Deviation of the detected profile/surface of an object (mechanical/electromagnetic/auxiliary profile/surface, depending on whether it is detected through mechanical interaction, electromagnetic interactions including optical methods, or other methods including atomic force microscopy/scanning tunnelling microscopy) from the reference line/surface after removal of (1) the smallest lateral scale components caused by noise in the acquisition system, (2) the macro-scale form, by suitable fitting e.g. to polynomial or spline functions, and (3) the large-scale lateral component (waviness) with a suitable filtering operation (e.g. Gaussian or robust Gaussian filters).
-The roughness of a profile/surface can be conveyed by calculating one or more of a series of scalar parameters on the basis of a data matrix containing the complete roughness profile/surface.""" .
+The roughness of a profile/surface can be conveyed by calculating one or more of a series of scalar parameters on the basis of a data matrix containing the complete roughness profile/surface."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SAESteelGrade
@@ -2085,20 +2166,23 @@ The roughness of a profile/surface can be conveyed by calculating one or more of
                           owl:onProperty :isSampleOf ;
                           owl:someValuesFrom hume:Object
                         ] ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "Sample"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Sample"@en ;
+        :elucidation "An object taken from, or prepared to be representative of, a larger object or material in order to be analysed or tested (e.g. a coated coupon cut for characterisation)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SingelComponentComposition
 :SingelComponentComposition rdf:type owl:Class ;
                             rdfs:subClassOf :ChemicalComposition ;
                             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_172e2c96_180b_40f8_a3e7_b624471f40c2> ;
-                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Component Composition"@en .
+                            <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Component Composition"@en ;
+                            :elucidation "A chemical composition expressing the amount (fraction) of one single constituent, i.e. a chemical element or compound, in a material."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SinglePhaseData
 :SinglePhaseData rdf:type owl:Class ;
                  rdfs:subClassOf :PhaseComposition ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Phase Data"@en .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Single Phase Data"@en ;
+                 :elucidation "A phase composition datum referring to one single phase of a sample, reporting its identity (e.g. crystal structure) and its relative amount."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SkeletalDensity
@@ -2116,9 +2200,9 @@ ASTM G133-05(2016): Linearly Reciprocating Ball-on-Flat Sliding Test
 ASTM G77-17: Block-on-Ring Sliding Test
 ASTM G65-16(2021): Dry Sand/Rubber Wheel Abrasion Test
 ASTM D4060-19: Taber Abrasion Test""" ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Specific Wear Rate" ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Specific Wear Rate"@en ;
                   :elucidation """The specific wear rate is a measure of the loss of material from a surface due to mechanical wear. It represents the specific rate (i.e. rate per unit load) at which a material loses mass when subjected to wear.
-It can be measured for sliding, rolling/sliding, and abrasive wear processes.""" .
+It can be measured for sliding, rolling/sliding, and abrasive wear processes."""@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SprayJet
@@ -2127,11 +2211,11 @@ It can be measured for sliding, rolling/sliding, and abrasive wear processes."""
           rdfs:comment """The definition is taken from ISO 14917:2017: Thermal Spraying - Terminology, classification.
 The characteristics of the particles in the spray jet, i.e. their velocity and their temperature, depend on the process parameters, the thermophysical properties of the particles themselves and their size distribution. The velocity and temperature of the particles, on the other hand, are the key features that determine the properties of the coating (porosity, adhesive and cohesive strength, etc.)."""@en ;
           rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
-          <http://www.w3.org/2004/02/skos/core#altLabel> "Particle Jet" ,
-                                                         "Particle Stream" ,
-                                                         "Spray Stream" ;
+          <http://www.w3.org/2004/02/skos/core#altLabel> "Particle Jet"@en ,
+                                                         "Particle Stream"@en ,
+                                                         "Spray Stream"@en ;
           <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Jet"@en ;
-          :elucidation "The stream of particles emerging from the thermal spray torch." .
+          :elucidation "The stream of particles emerging from the thermal spray torch."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SprayTorch
@@ -2139,10 +2223,11 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
             rdfs:subClassOf hume:Device ;
             rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
             rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "Gun" ,
-                                                           "Spraying Gun" ,
-                                                           "Torch" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Torch" .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Gun"@en ,
+                                                           "Spraying Gun"@en ,
+                                                           "Torch"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "Spray Torch"@en ;
+            :elucidation "A device that projects a stream of feedstock particles towards a substrate to form a coating by means of a gas jet; in thermal spray torches the feedstock is also heated."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SprayedMass
@@ -2157,16 +2242,16 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 :SprayingEfficiency rdf:type owl:Class ;
                     rdfs:subClassOf :ThermalSprayingProcessProperty ;
                     <http://www.w3.org/2004/02/skos/core#altLabel> "Deposition Efficiency"@en ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Efficiency" ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Spraying Efficiency"@en ;
                     :elucidation "The ratio between the mass gain of a plate after coating and the calculated mass of powder sprayed onto a single substrate plate"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Stabilization
 :Stabilization rdf:type owl:Class ;
                rdfs:subClassOf :ThermalSprayingStage ;
-               rdfs:comment "Powder feeders usually take a brief time, from some tens of seconds to a few minutes, to deliver a constant feed rate upon first startup. The powder feeding must be allowed to stabilize before the torch is moved onto the substrate to avoid irregularities and poor deposit quality which would happen if the feed rate is not constant. The stabilization stage also allows to prevent issues that might arise from feeder malfunction, as this would be detected during the stabilization period and the substrate would not be compromised by an irregular deposition from a malfunctioning feeder." ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "Stabilization" ;
-               :elucidation "Stabilization is a sub-process of thermal spray during which the powder feed rate is made to stabilize while the torch is not depositing material onto the substrate" .
+               rdfs:comment "Powder feeders usually take a brief time, from some tens of seconds to a few minutes, to deliver a constant feed rate upon first startup. The powder feeding must be allowed to stabilize before the torch is moved onto the substrate to avoid irregularities and poor deposit quality which would happen if the feed rate is not constant. The stabilization stage also allows to prevent issues that might arise from feeder malfunction, as this would be detected during the stabilization period and the substrate would not be compromised by an irregular deposition from a malfunctioning feeder."@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Stabilization"@en ;
+               :elucidation "Stabilization is a sub-process of thermal spray during which the powder feed rate is made to stabilize while the torch is not depositing material onto the substrate"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Standoff
@@ -2179,9 +2264,9 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Steel
 :Steel rdf:type owl:Class ;
-       rdfs:subClassOf hume:CondensedMatter ,
-                       :Alloy ;
-       <http://www.w3.org/2004/02/skos/core#prefLabel> "Steel"@en .
+       rdfs:subClassOf :Alloy ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Steel"@en ;
+       :elucidation "An alloy of iron and carbon (typically below about 2 wt.% C), usually containing further alloying elements such as Cr, Ni, Mn or Mo to tailor its properties."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Stellite
@@ -2192,7 +2277,8 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                               ] ;
           rdfs:subClassOf :Alloy ;
           <http://purl.org/dc/terms/source> "Industrial Reference"@en ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Stellite"@en .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Stellite"@en ;
+          :elucidation "A family of cobalt-chromium based alloys, often containing tungsten or molybdenum and carbon, designed for wear and corrosion resistance; Stellite is a trade name."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Substrate
@@ -2216,10 +2302,10 @@ The characteristics of the particles in the spray jet, i.e. their velocity and t
                         rdfs:subClassOf :CoolingSystem ;
                         rdfs:comment """Compressed air is the most typical coolant, but CO2, liquid nitrogen, or even liquid Ar can also be used in special cases.
 The system can be stationary, i.e. fixed nozzles deliver the cooling jet to the substrate surface, and/or movable, i.e. nozzles are installed on the manipulator and move together with the thermal spray torch to cool the substrate surface immediately before and/or after the passage of the thermal spray jet.
-In addition to cooling, the jet also serves the purpose of limiting the amount of overspray particles attaching to the surface of the growing deposit layer.""" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Cooling Jets" ;
-                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Substrate Cooling System" ;
-                        :elucidation "A system that delivers a stream of coolant to the substrate surface" .
+In addition to cooling, the jet also serves the purpose of limiting the amount of overspray particles attaching to the surface of the growing deposit layer."""@en ;
+                        <http://www.w3.org/2004/02/skos/core#altLabel> "Cooling Jets"@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Substrate Cooling System"@en ;
+                        :elucidation "A system that delivers a stream of coolant to the substrate surface"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SubstratePreparation
@@ -2228,26 +2314,27 @@ In addition to cooling, the jet also serves the purpose of limiting the amount o
                       owl:hasKey ( :preparationID
                                  ) ;
                       rdfs:comment """The sequence of operations during substrate preparation can vary.
-Cleaning can be done before and/or after roughening, the latter also exerting a cleaning action. Masking is optional and not necessary in every case, and it can be done before or after roughening, before or after tooling, or the tool itself can include a shadow mask.""" ;
+Cleaning can be done before and/or after roughening, the latter also exerting a cleaning action. Masking is optional and not necessary in every case, and it can be done before or after roughening, before or after tooling, or the tool itself can include a shadow mask."""@en ;
                       rdfs:isDefinedBy "EN 13507:2018: Thermal Spraying - Pre-treatment of surfaces of metallic parts and components for thermal spraying" ;
                       rdfs:seeAlso "Fauchais, Pierre L.; Heberlein, Joachim VR; Boulos, Maher I. Thermal spray fundamentals: from powder to part. Springer Science & Business Media, 2014." ,
                                    "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Substrate Preparation" ;
-                      :elucidation "The purpose of substrate preparation is to allow deposition on selected substrate areas and ensure adequate adhesion of the sprayed material. This process comprises the sub-processes of cleaning, roughening, masking, and tooling." .
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Substrate Preparation"@en ;
+                      :elucidation "The purpose of substrate preparation is to allow deposition on selected substrate areas and ensure adequate adhesion of the sprayed material. This process comprises the sub-processes of cleaning, roughening, masking, and tooling."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#SupplySystem
 :SupplySystem rdf:type owl:Class ;
               rdfs:subClassOf hume:System ;
-              <http://www.w3.org/2004/02/skos/core#prefLabel> "Supply System" .
+              <http://www.w3.org/2004/02/skos/core#prefLabel> "Supply System"@en ;
+              :elucidation "A system that delivers a consumable (e.g. process gases, liquid fuel or powder feedstock) to a device in a controlled way."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Temperature
 :Temperature rdf:type owl:Class ;
              rdfs:subClassOf hume:Property ;
              rdfs:seeAlso "ISO 80000-5:2019" ;
-             <http://www.w3.org/2004/02/skos/core#prefLabel> "Temperature" ;
-             :elucidation "Partial derivative of internal energy of a system with respect to entropy at constant volume and constant number of particles in the system." .
+             <http://www.w3.org/2004/02/skos/core#prefLabel> "Temperature"@en ;
+             :elucidation "Partial derivative of internal energy of a system with respect to entropy at constant volume and constant number of particles in the system."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TemperaturePeaks
@@ -2262,7 +2349,8 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSpraySystem
 :ThermalSpraySystem rdf:type owl:Class ;
                     rdfs:subClassOf hume:System ;
-                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spray System" .
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spray System"@en ;
+                    :elucidation "The overall equipment for performing thermal spraying, comprising the spray torch and its supporting systems (e.g. gas, fuel and powder supply, cooling, control unit, manipulator and holding system)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayTorch
@@ -2270,11 +2358,11 @@ Cleaning can be done before and/or after roughening, the latter also exerting a 
                    rdfs:subClassOf :SprayTorch ;
                    rdfs:comment """Definition taken with slight adaptation from ISO 14917:2017: Thermal Spraying - Terminology, classification.
 The torch can be operated manually or automatically, and the process parameters, such as the gas flow rates and powder feed rate, can be adjusted to control the properties of the resulting coating.
-The combustion-based torch design typically consists of a combustion chamber, a powder injector, and a nozzle. Other types of torches can differ slightly in their main constituents but all encompass a nozzle from which the gas flow emerges.""" ;
+The combustion-based torch design typically consists of a combustion chamber, a powder injector, and a nozzle. Other types of torches can differ slightly in their main constituents but all encompass a nozzle from which the gas flow emerges."""@en ;
                    rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
                    rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spray Torch" ;
-                   :elucidation "The unit with which the feedstock is heated to the plastic or molten state, accelerated and projected onto the prepared substrate surface." .
+                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spray Torch"@en ;
+                   :elucidation "The unit with which the feedstock is heated to the plastic or molten state, accelerated and projected onto the prepared substrate surface."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSpraying
@@ -2282,12 +2370,12 @@ The combustion-based torch design typically consists of a combustion chamber, a 
                  rdfs:subClassOf :ThermalSprayingRelatedProcess ;
                  rdfs:comment """Thermal spraying is distinguished by cladding processes by the lack of substrate melting during the process.
 The feedstock material may be in the form of powder, ceramic rod, wire, or molten materials.
-The definition is adapted from ISO 14917:2017""" ;
+The definition is adapted from ISO 14917:2017"""@en ;
                  rdfs:isDefinedBy "ISO 14917:2017: Thermal Spraying - Terminology, classification." ;
                  rdfs:seeAlso "D.E. Crawmer (2013), Thermal Spray Processes, in: R.C. Tucker jr. (Ed.),ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ,
                               "Hermanek FJ (2001) Thermal spray terminology and company origins. ASM International, Materials Park, OH" ;
-                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying" ;
-                 :elucidation "Thermal spray comprises a group of coating processes in which finely divided materials are heated to a molten, semi-molten or plastic condition and propelled onto solid substrate surface by means of a Thermal Spray Torch, forming a coating." .
+                 <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying"@en ;
+                 :elucidation "Thermal spray comprises a group of coating processes in which finely divided materials are heated to a molten, semi-molten or plastic condition and propelled onto solid substrate surface by means of a Thermal Spray Torch, forming a coating."@en .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource :ThermalSpraying ;
@@ -2300,13 +2388,15 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingComponent
 :ThermalSprayingComponent rdf:type owl:Class ;
                           rdfs:subClassOf hume:Component ;
-                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying System Component"@en .
+                          <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying System Component"@en ;
+                          :elucidation "A component that is part of a thermal spray system or that takes part in a thermal spraying process, such as the substrate, the powder feedstock, the spray jet, the fixture or the control unit."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingProcessDescription
 :ThermalSprayingProcessDescription rdf:type owl:Class ;
                                    rdfs:subClassOf hume:Description ;
-                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Description"@en .
+                                   <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Process Description"@en ;
+                                   :elucidation "A description that collects the data characterising a specific thermal spraying process, such as process parameters and measured quantities."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingProcessProperty
@@ -2319,7 +2409,8 @@ The definition is adapted from ISO 14917:2017""" ;
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingRelatedProcess
 :ThermalSprayingRelatedProcess rdf:type owl:Class ;
                                rdfs:subClassOf hume:Process ;
-                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Related Process"@en .
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Related Process"@en ;
+                               :elucidation "A process that belongs to the thermal spraying workflow, including thermal spraying itself, its stages and sub-processes, and the preparation of the substrate."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingStage
@@ -2329,7 +2420,8 @@ The definition is adapted from ISO 14917:2017""" ;
                                         owl:onProperty hume:isStageOf ;
                                         owl:someValuesFrom :ThermalSpraying
                                       ] ;
-                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Stage"@en .
+                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Stage"@en ;
+                      :elucidation "A temporal part of a thermal spraying process, such as pre-heating, stabilisation or deposition."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#ThermalSprayingSubProcess
@@ -2339,15 +2431,16 @@ The definition is adapted from ISO 14917:2017""" ;
                                              owl:onProperty hume:isSubProcessOf ;
                                              owl:someValuesFrom :ThermalSpraying
                                            ] ;
-                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Sub Process"@en .
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thermal Spraying Sub Process"@en ;
+                           :elucidation "A process that runs as part of a thermal spraying process in support of it, such as gas feeding, powder feeding or process monitoring."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Thickness
 :Thickness rdf:type owl:Class ;
            rdfs:subClassOf hume:Property ;
            rdfs:isDefinedBy "ISO 80000-3:2019" ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thickness" ;
-           :elucidation "Minimum length of a straight line segment between two parallel planes enclosing an object" .
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Thickness"@en ;
+           :elucidation "Minimum length of a straight line segment between two parallel planes enclosing an object"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-Al0
@@ -2374,9 +2467,10 @@ The definition is adapted from ISO 14917:2017""" ;
                            owl:hasValue "Ti33.7C8.5Cr10.9Fe23.4Mn10.6Ni9.2"
                          ] ;
          <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on Al0"@en ;
-         <http://www.w3.org/2004/02/skos/core#altLabel> "Al0(CrFeMnNi)+60TiC" ,
-                                                        "TiC 49wt% - Cr9.6 Fe20.8 Mn12.8 Ni8.2" ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-Al0" .
+         <http://www.w3.org/2004/02/skos/core#altLabel> "Al0(CrFeMnNi)+60TiC"@en ,
+                                                        "TiC 49wt% - Cr9.6 Fe20.8 Mn12.8 Ni8.2"@en ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-Al0"@en ;
+         :elucidation "A cermet made of TiC particles in an Al0 (CrFeMnNi) high entropy alloy binder, with nominal composition 60 vol.% TiC and 40 vol.% binder."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-Al14
@@ -2403,9 +2497,10 @@ The definition is adapted from ISO 14917:2017""" ;
                             owl:hasValue "Ti41.5C10.4Al3.5Cr8.4Fe18Mn7.6Ni7.1"
                           ] ;
           <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on Al14"@en ;
-          <http://www.w3.org/2004/02/skos/core#altLabel> "Al14(CrFeMnNi)+60TiC" ,
-                                                         "TiC 52wt% - Al3.5 Cr8.4 Fe18 Mn11 Ni7" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-Al14" .
+          <http://www.w3.org/2004/02/skos/core#altLabel> "Al14(CrFeMnNi)+60TiC"@en ,
+                                                         "TiC 52wt% - Al3.5 Cr8.4 Fe18 Mn11 Ni7"@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-Al14"@en ;
+          :elucidation "A cermet made of TiC particles in an Al14 (AlCrFeMnNi) high entropy alloy binder, with nominal composition 60 vol.% TiC and 40 vol.% binder."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-AlCu
@@ -2432,9 +2527,10 @@ The definition is adapted from ISO 14917:2017""" ;
                             owl:hasValue "Ti39.3C9.8Al2.3Cr8.8Cu10.7Fe6.6Ni19.8"
                           ] ;
           <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on AlCu"@en ;
-          <http://www.w3.org/2004/02/skos/core#altLabel> "AlCrCuFeNi+60TiC" ,
-                                                         "TiC 49wt% - Al2.3 Cu10.7 Cr8.8 Fe9.4 Ni19.8" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-AlCu" .
+          <http://www.w3.org/2004/02/skos/core#altLabel> "AlCrCuFeNi+60TiC"@en ,
+                                                         "TiC 49wt% - Al2.3 Cu10.7 Cr8.8 Fe9.4 Ni19.8"@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-AlCu"@en ;
+          :elucidation "A cermet made of TiC particles in an AlCu (AlCrCuFeNi) high entropy alloy binder, with nominal composition 60 vol.% TiC and 40 vol.% binder."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-AlMo
@@ -2461,9 +2557,10 @@ The definition is adapted from ISO 14917:2017""" ;
                             owl:hasValue "Ti36.6C9.2Al0.7Cr2.6Fe14.2Mo7.2Ni20.4"
                           ] ;
           <http://purl.org/dc/terms/source> "CoBRAIN CerMet based on AlMo"@en ;
-          <http://www.w3.org/2004/02/skos/core#altLabel> "AlCrFeMoNi+60TiC" ,
-                                                         "TiC 46wt% - Al 0,7 Cr2,6 Fe14 Ni16 Mo20" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-AlMo" .
+          <http://www.w3.org/2004/02/skos/core#altLabel> "AlCrFeMoNi+60TiC"@en ,
+                                                         "TiC 46wt% - Al 0,7 Cr2,6 Fe14 Ni16 Mo20"@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-AlMo"@en ;
+          :elucidation "A cermet made of TiC particles in an AlMo (AlCrFeMoNi) high entropy alloy binder, with nominal composition 60 vol.% TiC and 40 vol.% binder."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC-Cantor
@@ -2490,9 +2587,10 @@ The definition is adapted from ISO 14917:2017""" ;
                               owl:hasValue "Ti38.2C9.6Co11Cr9.7Fe10.4Mn7.4Ni10.9"
                             ] ;
             <http://purl.org/dc/terms/source> "CoBRAIN"@en ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "Cantor+60TiC" ,
-                                                           "TiC-Cantor 60-40v" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-Cantor" .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "Cantor+60TiC"@en ,
+                                                           "TiC-Cantor 60-40v"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC-Cantor"@en ;
+            :elucidation "A cermet made of TiC particles in a Cantor (CoCrFeMnNi) high entropy alloy binder, with nominal composition 60 vol.% TiC and 40 vol.% binder."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC30-AlCu
@@ -2519,8 +2617,9 @@ The definition is adapted from ISO 14917:2017""" ;
                               owl:hasValue "Ti17.3C4.3Al3.5Cr13.5Cu14.5Fe13.7Ni30.4"
                             ] ;
             <http://purl.org/dc/terms/source> "CoBRAIN CerMet for CGS based on AlCu"@en ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 21.6wt% - Al3.5 Cu16.5 Cr13.5 Fe14.5 Ni30.4" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC30-AlCu" .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 21.6wt% - Al3.5 Cu16.5 Cr13.5 Fe14.5 Ni30.4"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC30-AlCu"@en ;
+            :elucidation "A cermet made of TiC particles in an AlCu (AlCrCuFeNi) high entropy alloy binder, with nominal composition 30 vol.% TiC and 70 vol.% binder, designed for cold gas spraying."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TiC30-AlMo
@@ -2547,30 +2646,33 @@ The definition is adapted from ISO 14917:2017""" ;
                               owl:hasValue "Ti15.6C3.9Al1Cr3.8Cu21.1Fe26.6Ni24.3"
                             ] ;
             <http://purl.org/dc/terms/source> "CoBRAIN CerMet for CGS based on AlMo"@en ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 19wt% - Al 1 Cr4 Fe21 Ni24Mo30" ;
-            <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC30-AlMo" .
+            <http://www.w3.org/2004/02/skos/core#altLabel> "TiC 19wt% - Al 1 Cr4 Fe21 Ni24Mo30"@en ;
+            <http://www.w3.org/2004/02/skos/core#prefLabel> "TiC30-AlMo"@en ;
+            :elucidation "A cermet made of TiC particles in an AlMo (AlCrFeMoNi) high entropy alloy binder, with nominal composition 30 vol.% TiC and 70 vol.% binder, designed for cold gas spraying."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Time
 :Time rdf:type owl:Class ;
       rdfs:subClassOf hume:Property ;
-      <http://www.w3.org/2004/02/skos/core#prefLabel> "Time"@en .
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Time"@en ;
+      :elucidation "The duration of a process, or the interval elapsed between two events."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Tooling
 :Tooling rdf:type owl:Class ;
          rdfs:subClassOf :SubstratePreparation ;
          rdfs:comment """The tool must be suitable for coupling with the turntable and, together with the turntable and the manipulators/robot, must ensure suitable part configuration and motion with respect to the thermal spray torch.
-The sample holder (\"tool\") might include shadow masks. In this case, the process of tooling also coincides with masking.""" ;
+The sample holder (\"tool\") might include shadow masks. In this case, the process of tooling also coincides with masking."""@en ;
          rdfs:seeAlso "J. Knapp, D. Lemen (2013), Precoating Operations, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Tooling" ;
-         :elucidation "Substrates are attached to a suitable sample holder e.g. through screws or springs." .
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Tooling"@en ;
+         :elucidation "Substrates are attached to a suitable sample holder e.g. through screws or springs."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#TorchComponent
 :TorchComponent rdf:type owl:Class ;
                 rdfs:subClassOf hume:Component ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "Torch Component" .
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "Torch Component"@en ;
+                :elucidation "A component that is part of a spray torch, such as the combustion chamber or the nozzle."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Tribometer
@@ -2584,20 +2686,20 @@ The sample holder (\"tool\") might include shadow masks. In this case, the proce
 :Turntable rdf:type owl:Class ;
            rdfs:subClassOf hume:Device ;
            rdfs:comment """Turntables can feature simple continuous rotation or be synchronized with the manipulator.
-Turntables can also be used to coat planar substrates of limited lateral width to achieve higher relative torch/substrate linear velocities than woukd be possible through the linear motion of the manipulator in front of a stationary substrate.""" ;
+Turntables can also be used to coat planar substrates of limited lateral width to achieve higher relative torch/substrate linear velocities than woukd be possible through the linear motion of the manipulator in front of a stationary substrate."""@en ;
            rdfs:isDefinedBy "EN 1395-6:2007: Thermal spraying - Acceptance inspection of thermal spraying equipment - Part 6: Manipulator systems." ;
            rdfs:seeAlso "Anon. (2013), Introduction to Coating Design and Processing, in: R.C. Tucker jr. (Ed.), ASM Handbook Vol. 5A: Thermal Spray Technology, ASM International, Materials Park, OH, USA." ;
-           <http://www.w3.org/2004/02/skos/core#altLabel> "Mandrel" ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "Turntable" ;
-           :elucidation "The turntable is a rotating device in a thermal spray system onto which the tool holding the substrate(s) is mounted." .
+           <http://www.w3.org/2004/02/skos/core#altLabel> "Mandrel"@en ;
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "Turntable"@en ;
+           :elucidation "The turntable is a rotating device in a thermal spray system onto which the tool holding the substrate(s) is mounted."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Velocity
 :Velocity rdf:type owl:Class ;
           rdfs:subClassOf hume:Property ;
           rdfs:isDefinedBy "ISO 80000-3:2019" ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Velocity" ;
-          :elucidation "Vector quantity corresponding to the rate of change of position" .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Velocity"@en ;
+          :elucidation "Vector quantity corresponding to the rate of change of position"@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#VickersHardness
@@ -2619,7 +2721,8 @@ Vickers hardness is specifically told into:
 ###  https://www.cobrain-project.eu/ontology/cobrain#VolumeFlowFeeder
 :VolumeFlowFeeder rdf:type owl:Class ;
                   rdfs:subClassOf :PowderFeeder ;
-                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Volume Flow Feeder" .
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Volume Flow Feeder"@en ;
+                  :elucidation "A powder feeder that meters a defined volume of powder per unit time (e.g. by a rotating grooved disc or a screw), so that the resulting mass flow depends on the bulk density of the powder."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#WCCoCr
@@ -2646,38 +2749,44 @@ Vickers hardness is specifically told into:
                           owl:hasValue "W80.7C5.3Co10Cr4Fe0Mn0Ni0"
                         ] ;
         <http://purl.org/dc/terms/source> "Industrial Reference"@en ;
-        <http://www.w3.org/2004/02/skos/core#altLabel> "WOKA 3652" ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "WCCoCr" .
+        <http://www.w3.org/2004/02/skos/core#altLabel> "WOKA 3652"@en ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "WCCoCr"@en ;
+        :elucidation "A cermet made of tungsten carbide (WC) particles in a cobalt-chromium binder, nominally WC-10Co-4Cr (wt.%), widely used for wear-resistant thermally sprayed coatings (e.g. WOKA 3652)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#WearPin
 :WearPin rdf:type owl:Class ;
-         rdfs:subClassOf :CharactersationComponent ;
-         <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Pin"@en .
+         rdfs:subClassOf :CharacterisationComponent ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Pin"@en ;
+         :elucidation "A characterisation component of a tribometer that acts as the stationary counterbody pressed against the specimen during a wear test (a pin with flat or spherical tip, or a ball)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#WearRate
 :WearRate rdf:type owl:Class ;
-          rdfs:subClassOf :CharacterisatonProperty ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Rate" .
+          rdfs:subClassOf :CharacterisationProperty ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Rate"@en ;
+          :elucidation "The rate of material loss from a surface due to wear, expressed as lost mass or volume per unit sliding distance or time (or, for the specific wear rate, per unit load and sliding distance)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#WearTest
 :WearTest rdf:type owl:Class ;
           rdfs:subClassOf hume:Characterisation ;
-          <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Test"@en .
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Wear Test"@en ;
+          :elucidation "A characterisation process in which a specimen is subjected to controlled wear conditions (e.g. sliding, abrasion, erosion) in order to measure its wear resistance and/or friction behaviour."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Weight
 :Weight rdf:type owl:Class ;
         rdfs:subClassOf hume:Property ;
-        <http://www.w3.org/2004/02/skos/core#prefLabel> "Weight"@en .
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Weight"@en ;
+        :elucidation "The mass of an object as determined by weighing. In this ontology, weight is used in the sense of mass and is expressed in mass units (g, kg)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#Width
 :Width rdf:type owl:Class ;
-       rdfs:subClassOf hume:Property ;
-       <http://www.w3.org/2004/02/skos/core#prefLabel> "Width"@en .
+       rdfs:subClassOf :Length ;
+       <http://www.w3.org/2004/02/skos/core#prefLabel> "Width"@en ;
+       :elucidation "The extent of an object measured perpendicularly to its length, typically its smaller in-plane dimension."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#XRD
@@ -2691,13 +2800,15 @@ Vickers hardness is specifically told into:
 ###  https://www.cobrain-project.eu/ontology/cobrain#XYManipulator
 :XYManipulator rdf:type owl:Class ;
                rdfs:subClassOf :Manipulator ;
-               <http://www.w3.org/2004/02/skos/core#prefLabel> "X-Y Manipulator" .
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "X-Y Manipulator"@en ;
+               :elucidation "A manipulator that moves the thermal spray torch, or the substrate, along two orthogonal linear axes (X and Y)."@en .
 
 
 ###  https://www.cobrain-project.eu/ontology/cobrain#XYZManipulator
 :XYZManipulator rdf:type owl:Class ;
                 rdfs:subClassOf :Manipulator ;
-                <http://www.w3.org/2004/02/skos/core#prefLabel> "X-Y-Z Manipulator" .
+                <http://www.w3.org/2004/02/skos/core#prefLabel> "X-Y-Z Manipulator"@en ;
+                :elucidation "A manipulator that moves the thermal spray torch, or the substrate, along three orthogonal linear axes (X, Y and Z)."@en .
 
 
 #################################################################
@@ -2714,8 +2825,8 @@ Vickers hardness is specifically told into:
 ###  https://www.cobrain-project.eu/ontology/cobrain#MTSG200-1
 :MTSG200-1 rdf:type owl:NamedIndividual ,
                     :G200NanoIndenter ;
-           <http://www.w3.org/2004/02/skos/core#prefLabel> "MTS G200 UR3" ;
-           :elucidation "The MTS G200 system available at the University of Rome laboratory." .
+           <http://www.w3.org/2004/02/skos/core#prefLabel> "MTS G200 UR3"@en ;
+           :elucidation "The MTS G200 system available at the University of Rome laboratory."@en .
 
 
 [ owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
